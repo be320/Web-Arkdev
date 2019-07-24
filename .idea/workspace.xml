@@ -2,53 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="75e9aa4d-0bbb-49d8-b674-0b38785dcc62" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Controllers/createAdmin.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Controllers/createCourse.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Controllers/createInstructor.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Controllers/createStudent.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Controllers/createTrack.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Controllers/deleteAdmin.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Controllers/deleteCourse.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Controllers/deleteInstructor.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Controllers/deleteStudnet.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Controllers/deleteTrack.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Controllers/login.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Controllers/logout.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Controllers/updateAdmin.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Controllers/updateCourse.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Controllers/updateInstructor.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Controllers/updateStudent.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Controllers/updateTrack.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Admin.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Course.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Instructor.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Student.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Track.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Repository/AdminRepository.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Repository/CourseRepository.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Repository/InstructorRepository.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Repository/StudentRepository.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Repository/TrackRepository.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/adminDashboard.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/adminEdit.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/courseDashboard.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/courseEdit.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/createAdmin.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/createCourse.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/createInstructor.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/createStudent.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/createTrack.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/home.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/instructorDashboard.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/instructorEdit.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/studentDashboard.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/studentEdit.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/trackDashboard.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/trackEdit.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Controllers/This can be removed after adding some files.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/This can be removed after adding some files.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repository/This can be removed after adding some files.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/adminEdit.html" beforeDir="false" afterPath="$PROJECT_DIR$/views/adminEdit.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/courseEdit.html" beforeDir="false" afterPath="$PROJECT_DIR$/views/courseEdit.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/createAdmin.html" beforeDir="false" afterPath="$PROJECT_DIR$/views/createAdmin.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/createCourse.html" beforeDir="false" afterPath="$PROJECT_DIR$/views/createCourse.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/createInstructor.html" beforeDir="false" afterPath="$PROJECT_DIR$/views/createInstructor.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/createStudent.html" beforeDir="false" afterPath="$PROJECT_DIR$/views/createStudent.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/createTrack.html" beforeDir="false" afterPath="$PROJECT_DIR$/views/createTrack.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/views/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/instructorEdit.html" beforeDir="false" afterPath="$PROJECT_DIR$/views/instructorEdit.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/studentEdit.html" beforeDir="false" afterPath="$PROJECT_DIR$/views/studentEdit.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/trackEdit.html" beforeDir="false" afterPath="$PROJECT_DIR$/views/trackEdit.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -64,64 +28,10 @@
   <component name="FileEditorManager">
     <leaf>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/createInstructor.html">
+        <entry file="file://$PROJECT_DIR$/views/trackEdit.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="60">
-              <caret line="4" column="16" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="16" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/instructorDashboard.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" selection-start-line="7" selection-end-line="7" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/createTrack.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" column="16" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="16" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/trackDashboard.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" column="16" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="16" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/adminEdit.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" selection-start-line="7" selection-end-line="7" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/courseEdit.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" column="16" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="16" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/studentEdit.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" column="16" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="16" />
+              <caret line="4" column="11" lean-forward="true" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="15" />
             </state>
           </provider>
         </entry>
@@ -130,25 +40,34 @@
         <entry file="file://$PROJECT_DIR$/views/instructorEdit.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="60">
-              <caret line="4" column="16" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="16" />
+              <caret line="4" column="15" selection-start-line="4" selection-start-column="15" selection-end-line="4" selection-end-column="15" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/trackEdit.html">
+        <entry file="file://$PROJECT_DIR$/views/adminEdit.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="60">
-              <caret line="4" column="16" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="16" />
+              <caret line="4" column="11" lean-forward="true" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="11" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/studentEdit.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="4" column="15" selection-start-line="4" selection-start-column="15" selection-end-line="4" selection-end-column="15" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/views/home.html">
+        <entry file="file://$PROJECT_DIR$/views/courseEdit.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="8" column="7" lean-forward="true" selection-start-line="8" selection-start-column="7" selection-end-line="8" selection-end-column="7" />
+            <state relative-caret-position="60">
+              <caret line="4" column="15" selection-start-line="4" selection-start-column="15" selection-end-line="4" selection-end-column="15" />
             </state>
           </provider>
         </entry>
@@ -162,6 +81,11 @@
       </list>
     </option>
   </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>student</find>
+    </findStrings>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -170,32 +94,23 @@
       <list>
         <option value="$PROJECT_DIR$/app/Models/Student.php" />
         <option value="$PROJECT_DIR$/views/login.html" />
-        <option value="$PROJECT_DIR$/views/createAdmin.html" />
         <option value="$PROJECT_DIR$/views/adminDashboard.html" />
-        <option value="$PROJECT_DIR$/views/createCourse.html" />
         <option value="$PROJECT_DIR$/views/courseDashboard.html" />
-        <option value="$PROJECT_DIR$/views/createStudent.html" />
         <option value="$PROJECT_DIR$/views/studentDashboard.html" />
-        <option value="$PROJECT_DIR$/views/createInstructor.html" />
         <option value="$PROJECT_DIR$/views/instructorDashboard.html" />
-        <option value="$PROJECT_DIR$/views/createTrack.html" />
         <option value="$PROJECT_DIR$/views/trackDashboard.html" />
-        <option value="$PROJECT_DIR$/views/adminEdit.html" />
-        <option value="$PROJECT_DIR$/views/courseEdit.html" />
-        <option value="$PROJECT_DIR$/views/studentEdit.html" />
-        <option value="$PROJECT_DIR$/views/instructorEdit.html" />
-        <option value="$PROJECT_DIR$/views/trackEdit.html" />
         <option value="$PROJECT_DIR$/views/home.html" />
-      </list>
-    </option>
-  </component>
-  <component name="ProjectConfigurationFiles">
-    <option name="files">
-      <list>
-        <option value="$PROJECT_DIR$/.idea/Web-Arkdev.iml" />
-        <option value="$PROJECT_DIR$/.idea/misc.xml" />
-        <option value="$PROJECT_DIR$/.idea/modules.xml" />
-        <option value="$PROJECT_DIR$/.idea/vcs.xml" />
+        <option value="$PROJECT_DIR$/views/index.html" />
+        <option value="$PROJECT_DIR$/views/createCourse.html" />
+        <option value="$PROJECT_DIR$/views/createTrack.html" />
+        <option value="$PROJECT_DIR$/views/createInstructor.html" />
+        <option value="$PROJECT_DIR$/views/createStudent.html" />
+        <option value="$PROJECT_DIR$/views/createAdmin.html" />
+        <option value="$PROJECT_DIR$/views/trackEdit.html" />
+        <option value="$PROJECT_DIR$/views/instructorEdit.html" />
+        <option value="$PROJECT_DIR$/views/adminEdit.html" />
+        <option value="$PROJECT_DIR$/views/studentEdit.html" />
+        <option value="$PROJECT_DIR$/views/courseEdit.html" />
       </list>
     </option>
   </component>
@@ -259,12 +174,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1563961662825</updated>
-      <workItem from="1563961664232" duration="2238000" />
+      <workItem from="1563961664232" duration="8312000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2238000" />
+    <option name="totallyTimeSpent" value="8312000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="40" width="1366" height="728" extended-state="0" />
@@ -290,6 +205,27 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
     </layout>
+    <layout-to-restore>
+      <window_info id="Favorites" order="0" side_tool="true" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.24962063" />
+      <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Terminal" order="1" />
+      <window_info anchor="bottom" id="Event Log" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Database Changes" order="3" />
+      <window_info anchor="bottom" id="Version Control" order="4" />
+      <window_info anchor="bottom" id="Message" order="5" />
+      <window_info anchor="bottom" id="Find" order="6" />
+      <window_info anchor="bottom" id="Run" order="7" />
+      <window_info anchor="bottom" id="Debug" order="8" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="9" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="10" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="11" />
+      <window_info anchor="right" id="Database" order="0" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="1" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="2" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="3" weight="0.25" />
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -384,28 +320,7 @@
     <entry file="file://$PROJECT_DIR$/app/Controllers/deleteTrack.php">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="16" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/createAdmin.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="16" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/adminDashboard.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="16" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/createCourse.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
           <caret line="4" column="16" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="16" />
@@ -419,21 +334,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/createStudent.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="16" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/studentDashboard.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="16" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/createInstructor.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
           <caret line="4" column="16" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="16" />
@@ -447,49 +348,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/createTrack.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="16" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/trackDashboard.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="16" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/adminEdit.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" selection-start-line="7" selection-end-line="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/courseEdit.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="16" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/studentEdit.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="16" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/instructorEdit.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="16" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/trackEdit.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
           <caret line="4" column="16" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="16" />
@@ -500,6 +359,83 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
           <caret line="8" column="7" lean-forward="true" selection-start-line="8" selection-start-column="7" selection-end-line="8" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="75" selection-start-line="8" selection-start-column="60" selection-end-line="8" selection-end-column="75" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/createAdmin.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="15" lean-forward="true" selection-end-line="15" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/createCourse.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="20" selection-end-line="22" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/createInstructor.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" selection-end-line="18" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/createStudent.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" column="14" selection-end-line="26" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/createTrack.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="7" lean-forward="true" selection-end-line="13" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/trackEdit.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="11" lean-forward="true" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/instructorEdit.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="15" selection-start-line="4" selection-start-column="15" selection-end-line="4" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/adminEdit.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="11" lean-forward="true" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/studentEdit.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="15" selection-start-line="4" selection-start-column="15" selection-end-line="4" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/courseEdit.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="15" selection-start-line="4" selection-start-column="15" selection-end-line="4" selection-end-column="15" />
         </state>
       </provider>
     </entry>
