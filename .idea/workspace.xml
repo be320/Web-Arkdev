@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="75e9aa4d-0bbb-49d8-b674-0b38785dcc62" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/app/Repository/StudentRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repository/StudentRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Controllers/createStudent.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Controllers/createStudent.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Controllers/deleteStudnet.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Controllers/deleteStudnet.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Controllers/updateStudent.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Controllers/updateStudent.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -18,19 +20,19 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/Repository/StudentRepository.php">
+        <entry file="file://$PROJECT_DIR$/app/Controllers/createStudent.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="202">
-              <caret line="129" column="6" lean-forward="true" selection-start-line="129" selection-start-column="6" selection-end-line="129" selection-end-column="6" />
+            <state relative-caret-position="522">
+              <caret line="58" column="34" lean-forward="true" selection-start-line="58" selection-start-column="34" selection-end-line="58" selection-end-column="34" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Models/Student.php">
+        <entry file="file://$PROJECT_DIR$/app/Controllers/updateStudent.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1292">
-              <caret line="76" column="5" selection-start-line="76" selection-start-column="5" selection-end-line="76" selection-end-column="5" />
+            <state relative-caret-position="530">
+              <caret line="37" column="1" lean-forward="true" selection-start-line="19" selection-end-line="37" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -75,10 +77,13 @@
         <option value="$PROJECT_DIR$/views/courseEdit.html" />
         <option value="$PROJECT_DIR$/app/Models/Student.php" />
         <option value="$PROJECT_DIR$/app/Repository/StudentRepository.php" />
+        <option value="$PROJECT_DIR$/app/Controllers/deleteStudnet.php" />
+        <option value="$PROJECT_DIR$/app/Controllers/updateStudent.php" />
+        <option value="$PROJECT_DIR$/app/Controllers/createStudent.php" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="y" value="40" />
     <option name="width" value="1369" />
     <option name="height" value="730" />
@@ -106,6 +111,12 @@
               <item name="Web-Arkdev" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="Config" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Web-Arkdev" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Web-Arkdev" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="Controllers" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Web-Arkdev" type="b2602c69:ProjectViewProjectNode" />
@@ -173,12 +184,12 @@
       <option name="presentableId" value="Default" />
       <updated>1563961662825</updated>
       <workItem from="1563961664232" duration="8312000" />
-      <workItem from="1563995933505" duration="2391000" />
+      <workItem from="1563995933505" duration="4010000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="10829000" />
+    <option name="totallyTimeSpent" value="12448000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -407,27 +418,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Controllers/createStudent.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" selection-start-line="1" selection-end-line="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Controllers/updateStudent.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" selection-start-line="1" selection-end-line="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Controllers/deleteStudnet.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" selection-start-line="1" selection-end-line="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Models/Track.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
@@ -461,17 +451,38 @@
         <state relative-caret-position="-1588" />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/Repository/StudentRepository.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="389">
+          <caret line="140" column="23" lean-forward="true" selection-start-line="140" selection-start-column="23" selection-end-line="140" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Controllers/deleteStudnet.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="39" lean-forward="true" selection-start-line="18" selection-start-column="39" selection-end-line="18" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/Models/Student.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1292">
+        <state relative-caret-position="647">
           <caret line="76" column="5" selection-start-line="76" selection-start-column="5" selection-end-line="76" selection-end-column="5" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Repository/StudentRepository.php">
+    <entry file="file://$PROJECT_DIR$/app/Controllers/updateStudent.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="202">
-          <caret line="129" column="6" lean-forward="true" selection-start-line="129" selection-start-column="6" selection-end-line="129" selection-end-column="6" />
+        <state relative-caret-position="530">
+          <caret line="37" column="1" lean-forward="true" selection-start-line="19" selection-end-line="37" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Controllers/createStudent.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="522">
+          <caret line="58" column="34" lean-forward="true" selection-start-line="58" selection-start-column="34" selection-end-line="58" selection-end-column="34" />
         </state>
       </provider>
     </entry>
