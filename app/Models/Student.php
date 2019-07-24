@@ -3,5 +3,5 @@
 
 class Student
 {
-
+protected $id;
 }

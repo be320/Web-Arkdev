@@ -137,9 +137,9 @@ CREATE TABLE IF NOT EXISTS `student_has_course` (
 
 DROP TABLE IF EXISTS `track`;
 CREATE TABLE IF NOT EXISTS `track` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `track_id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`track_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
