@@ -23,7 +23,7 @@ class Admin
     protected $password;
 
     /**
-     * User constructor.
+     * Admin constructor.
      *
      */
     public function __construct()
