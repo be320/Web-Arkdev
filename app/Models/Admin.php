@@ -8,9 +8,9 @@ class User
     protected $id;
 
     /**
-     * @var string $fname
+     * @var string $name
      */
-    protected $fname;
+    protected $name;
 
     /**
      * @var string $email
@@ -21,11 +21,6 @@ class User
      * @var string $email
      */
     protected $password;
-
-    /**
-     * @var
-     */
-    protected $profile_img;
 
     /**
      * User constructor.
@@ -44,11 +39,11 @@ class User
     }
 
     /**
-     * @param string $fname
+     * @param string $name
      */
-    public function setFname($fname)
+    public function setname($name)
     {
-        $this->fname = $fname;
+        $this->name = $name;
     }
 
     /**
@@ -62,9 +57,9 @@ class User
     /**
      * @return string
      */
-    public function getFname()
+    public function getname()
     {
-        return $this->fname;
+        return $this->name;
     }
 
     /**

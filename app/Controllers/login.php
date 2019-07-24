@@ -3,26 +3,26 @@ require_once(__DIR__ . '/../Repository/AdminRepository.php');
 require_once(__DIR__ . '/../includes/sessionStart.php');
 
 if (!isset($_POST['password']) || empty($_POST['password'])) {
-    header('Location: /login.php');
+    header('Location: /index.php');
     exit();
 }
 
 if (!isset($_POST['email']) || empty($_POST['email'])) {
-    header('location: /login.php');
+    header('location: /index.php');
 }
 
 $data = $_POST;
 
-$userRepo = new UserRepository();
-$user = $userRepo->login($data['email'], $data['password']);
+$adminRepo = new AdminRepository();
+$admin = $adminRepo->login($data['email'], $data['password']);
 
-if ($user) {
-    $_SESSION['user'] = $user;
-    header('Location: /dashboard.php');
+if ($admin) {
+    $_SESSION['admin'] = $admin;
+    header('Location: /home.php');
     exit();
 
 } else {
 
-    header('Location: /login.php');
+    header('Location: /index.php');
     exit();
 }
