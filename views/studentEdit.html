@@ -2,9 +2,26 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>editStudent</title>
 </head>
 <body>
-
+<form action="#" method="post">
+    <input type="text" id="studentName" name="name" placeholder="Student Name">
+    <input type="text" id="studentEmail" name="email" placeholder="Student Email">
+    <input type="password" id="studentPassword" name="password" placeholder="Student Password">
+    <input type="number" id="studentGpa" name="gpa" max="4" min="0" placeholder="GPA">
+    <input type="radio" id="genderMale" value="male" name="gender">Male
+    <input type="radio" id="genderFemale" value="female" name="gender">Female
+    <select name="level" id="level">
+        <option value="Level">Level</option>
+        <option value="Freshman">Freshman</option>
+        <option value="Sophomore">Sophomore</option>
+        <option value="Junior">Junior</option>
+        <option value="Senior1">Senior1</option>
+        <option value="Senior2">Senior2</option>
+    </select>
+    <input type="file" id="studentImage" name="image" accept="image/*">
+    <input type="submit" name="submit" id="submit">
+</form>
 </body>
 </html>
