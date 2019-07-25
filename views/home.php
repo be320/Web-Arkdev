@@ -5,12 +5,18 @@
     <title>Home</title>
 </head>
 <body>
-    <h1>hello Welcome Back :D</h1>
+<a class="nav-link" href="/app/Controllers/logout.php"><button type='button'>logout</button></a>
+<a class="nav-link" href="/views/adminEdit.html"><button type='button'>edit account</button></a>
+<h1>hello Welcome Back :D</h1>
 <?php
-    //require_once('/../includes/sessionStart.php');
-    session_start();
-    print_r($_SESSION);
-    echo '<h2>'.$_SESSION['name'].'</h2>';
+    require_once(__DIR__.'/../app/Models/Admin.php');
+    require_once(__DIR__.'/../app/includes/sessionStart.php');
+    if(isset($_SESSION['admin'])){
+        $admin = $_SESSION['admin'];
+        echo '<h2>'.$admin->getname().'</h2>';
+    }else{
+        echo '<h2>please login to access home</h2>';  
+    }
 ?>
 </body>
 </html>

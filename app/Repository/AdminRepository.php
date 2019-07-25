@@ -150,7 +150,6 @@ class AdminRepository
     public function login($email, $password)
     {
         $result = null;
-
         try {
             $db = DBConnection::connect();
             $stmt = $db->prepare("SELECT * FROM $this->table where email = :email and password = :password limit 1");

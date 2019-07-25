@@ -2,13 +2,14 @@
 require_once(__DIR__ . '/../Repository/AdminRepository.php');
 require_once(__DIR__ . '/../includes/sessionStart.php');
 
-if (!isset($_POST['password']) || empty($_POST['password'])) {
-    header('Location: /index.php');
-    exit();
-}
 
 if (!isset($_POST['email']) || empty($_POST['email'])) {
     header('location: /index.php');
+    exit();
+}
+
+if (!isset($_POST['password']) || empty($_POST['password'])) {
+    header('Location: /index.php');
     exit();
 }
 
@@ -24,6 +25,6 @@ if ($admin) {
 
 } else {
 
-    header('Location: /views/index.php');
+    header('Location: /views/index.html');
     exit();
 }
