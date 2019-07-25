@@ -1,5 +1,5 @@
 <?php
-require_once(__DIR__ . '/app/Repository/StudentRepository.php');
+require_once(__DIR__ . '/../app/Repository/StudentRepository.php');
 $studentRepo = new StudentRepository();
 $students = $studentRepo->getAll();
 ?>

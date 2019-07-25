@@ -1,5 +1,5 @@
 <?php
-require_once(__DIR__ . '/app/Repository/AdminRepository.php');
+require_once(__DIR__ . '/../app/Repository/AdminRepository.php');
 $adminRepo = new AdminRepository();
 $admins = $adminRepo->getAll();
 ?>
@@ -54,7 +54,7 @@ $admins = $adminRepo->getAll();
             <thead>
             <tr>
                 <th scope="col">#</th>
-                <th scope="col">First Name</th>
+                <th scope="col">Name</th>
                 <th scope="col">Email</th>
                 <th scope="col">Actions</th>
             </tr>
@@ -65,7 +65,7 @@ $admins = $adminRepo->getAll();
             foreach ($admins as $admin) {
                 echo '<tr>';
                 echo '<th scope="row">' . $admin->getId() . '</th>';
-                echo '<td>' . $admin->getFname() . '</td>';
+                echo '<td>' . $admin->getName() . '</td>';
                 echo '<td>' . $admin->getEmail() . '</td>';
 
                 echo '<td>';

@@ -1,5 +1,5 @@
 <?php
-require_once(__DIR__ . '/app/Repository/TrackRepository.php');
+require_once(__DIR__ . '/../app/Repository/TrackRepository.php');
 $trackRepo = new TrackRepository();
 $tracks = $trackRepo->getAll();
 ?>
