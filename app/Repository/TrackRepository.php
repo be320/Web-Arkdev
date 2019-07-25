@@ -51,20 +51,21 @@ class TrackRepository
 
         return $result;
     }
-    public function deleteById($id):bool
 
-try{
-    $db = DBConnection:: connect();
-    $stmt = $db ->prepare("DELETE FROM $this ->table where id = :id");
-    $stmt ->bindValue(':id', $id);
-    $success = $stmt ->execute();
+public function deleteById($id):bool
+{
     
-} catch (Exception $ex) {
-    echo $ex->getMessage();
-    exit();
-}
+    try{
+        $db = DBConnection:: connect();
+        $stmt = $db ->prepare("DELETE FROM $this ->table where id = :id");
+        $stmt ->bindValue(':id', $id);
+        $success = $stmt ->execute();
+    }catch (Exception $ex) {
+        echo $ex->getMessage();
+        exit();
+    }
 
-return $success;
+    return $success;
 }
 
 

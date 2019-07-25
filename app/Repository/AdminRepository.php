@@ -163,7 +163,6 @@ class AdminRepository
             echo $e->getMessage();
             exit();
         }
-
         return $result;
     }
 }
