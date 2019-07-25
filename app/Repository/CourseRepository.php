@@ -12,7 +12,7 @@ class CourseRepository
 
         try {
             $db = DBConnection::connect();
-            $stmt = $db->prepare("INSERT INTO this->table (name, description, track_id) VALUES (:fname,:description,:track_id)");
+            $stmt = $db->prepare("INSERT INTO course (name, description, track_id) VALUES (:fname,:description,:track_id)");
             $stmt->bindValue(':fname',$data['name']);
             $stmt->bindValue(':description',$data['description']);
             $stmt->bindValue(':track_id',$data['track_id']);
@@ -37,8 +37,27 @@ class CourseRepository
         }
         catch (PDOException $e){
             echo $e->getMessage();
+            exit();
         }
         return $success;
+    }
+
+    /**
+     * @return string
+     */
+    public function getById($id): Course
+    {
+        try{
+            $db = DBConnection::connect();
+            $stmt = $db->prepare("SELECT * FROM course WHERE id=:id");
+            $stmt->bindValue(':id',$id);
+            $stmt->setFetchMode(PDO::FETCH_CLASS, Course::class);
+            $result = $stmt->fetchAll();
+        }
+        catch (PDOException $e){
+            echo $e->getMessage();
+            exit();
+        }
     }
 
     public function update($course): bool
@@ -56,6 +75,7 @@ class CourseRepository
         }
         catch (PDOException $e){
             echo $e->getMessage();
+            exit();
         }
 
         return $success;
@@ -75,8 +95,27 @@ class CourseRepository
             $stmt->bindValue(':track_id', $data['track_id']);
         }catch (PDOException $e){
             echo $e->getMessage();
+            exit();
         }
         return $success;
+
+    }
+
+    public function getAll(): array
+    {
+        $result = [];
+        try {
+            $db = DBConnection::connect();
+            $stmt = $db->prepare("SELECT * from course");
+            $stmt->execute();
+            $stmt->setFetchMode(PDO::FETCH_CLASS, Course::class);
+            $result =$stmt->fetchAll();
+        }catch(PDOException $e){
+            echo $e->getMessage();
+            exit();
+        }
+        return $result;
+
     }
 
 }
