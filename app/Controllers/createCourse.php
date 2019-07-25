@@ -1,9 +1,11 @@
 <?php
 require_once (__DIR__."/../Repository/CourseRepository.php");
-require_once (__DIR__."/../includes/uploadFile");
+require_once (__DIR__."/../includes/uploadFile.php");
 
 $data = $_POST;
 $hasErrors = false;
+
+print_r($data);
 
 if( !isset($data['name']) || empty($data['name']) ){
     $hasErrors = true;
@@ -26,12 +28,15 @@ if($hasErrors === false){
     $success = $courseRepo->create($data);
 
     if($success){
-        uploadFile();
+        $filePath=uploadFile();
         //todo: update is not finished yet
+        updateImagePath($filePath, $data);
+
 
     }
 }
 if($success){
+    uploadFile();
     header('Location: /views/home.html');
     exit();
 }

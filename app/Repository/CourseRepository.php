@@ -12,15 +12,17 @@ class CourseRepository
 
         try {
             $db = DBConnection::connect();
-            $stmt = $db->prepare("INSERT INTO this->table (name, description, image_path, track_id) VALUES(:name,:description,:image_path,:track_id");
-            $stmt->bindValue(':name',$data['name']);
+            $stmt = $db->prepare("INSERT INTO this->table (name, description, track_id) VALUES (:fname,:description,:track_id)");
+            $stmt->bindValue(':fname',$data['name']);
             $stmt->bindValue(':description',$data['description']);
-            $stmt->bindValue(':image_path',$data['image_path']);
             $stmt->bindValue(':track_id',$data['track_id']);
+
             $success = $stmt->execute();
+
         }
         catch (PDOException $e){
             echo $e->getMessage();
+            exit();
     }
     return $success;
     }
@@ -56,6 +58,24 @@ class CourseRepository
             echo $e->getMessage();
         }
 
+        return $success;
+    }
+
+    /**
+     * @return string
+     */
+    public function updateImagePath($filePath, $data): bool
+    {
+        $success = false;
+        try {
+            $db = DBConnection::connect();
+            $stmt = $db->prepare("UPDATE $this->table set image_path=:image_path where name = :anme, decription = :description, tracj_id = : track_id");
+            $stmt->bindValue(':name', $data['name']);
+            $stmt->bindValue(':description', $data['description']);
+            $stmt->bindValue(':track_id', $data['track_id']);
+        }catch (PDOException $e){
+            echo $e->getMessage();
+        }
         return $success;
     }
 
