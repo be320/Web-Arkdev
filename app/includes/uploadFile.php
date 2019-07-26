@@ -1,7 +1,7 @@
 <?php
 function uploadFile()
 {
-    $target_dir = __DIR__ . "/../../uploads/";
+    $target_dir = __DIR__ . "/../../images/";
 
     $target_file = $target_dir . basename($_FILES["image_path"]["name"]);
 

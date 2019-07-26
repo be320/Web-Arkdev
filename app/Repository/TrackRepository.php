@@ -17,8 +17,7 @@ class TrackRepository
 
         try {
             $db = DBConnection::connect();
-            $stmt = $db->prepare("INSERT INTO $this->table (id, name) VALUES (:t, :n)");
-            $stmt->bindValue(':t', $data['id']);
+            $stmt = $db->prepare("INSERT INTO $this->table ( name) VALUES ( :n)");
             $stmt->bindValue(':n', $data['name']);
             $success = $stmt->execute();
         } catch (PDOException $e) {
@@ -52,7 +51,7 @@ class TrackRepository
         return $result;
     }
     public function deleteById($id):bool
-
+    {
 try{
     $db = DBConnection:: connect();
     $stmt = $db ->prepare("DELETE FROM $this ->table where id = :id");

@@ -100,20 +100,18 @@ class StudentRepository
      * @param Student $student
      * @return bool
      */
-    public function update(Student $student): bool
+    public function update(array $data): bool
     {
         $success = false;
-
         try {
             $db = DBConnection::connect();
-            $stmt = $db->prepare("UPDATE $this->table set name=:name, email=:email,gender=:gender, level=:level, gpa=:gpa,image_path=:image_path where id = :id");
-            $stmt->bindValue(':id', $student->getId());
-            $stmt->bindValue(':name', $student->getName());
-            $stmt->bindValue(':email', $student->getEmail());
-            $stmt->bindValue(':gender', $student->getGender());
-            $stmt->bindValue(':level', $student->getLevel());
-            $stmt->bindValue(':image_path', $student->getImagePath());
-            $stmt->bindValue(':gpa', $student->getGpa());
+            $stmt = $db->prepare("UPDATE $this->table set name=:name, email=:email,gender=:gender, level=:level, gpa=:gpa where id =:id");
+            $stmt->bindValue(':id', $data['id']);
+            $stmt->bindValue(':name', $data['name']);
+            $stmt->bindValue(':email', $data['email']);
+            $stmt->bindValue(':gender', $data['gender']);
+            $stmt->bindValue(':level', $data['level']);
+            $stmt->bindValue(':gpa',$data['gpa']);
             $success = $stmt->execute();
         } catch (PDOException $e) {
             echo $e->getMessage();
