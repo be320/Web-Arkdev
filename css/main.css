@@ -210,3 +210,6 @@ table tr td:first-child::before {
 	width:190px;
 	padding-left:10px;
 }
+.full-height {
+    height: 107vh;
+}
