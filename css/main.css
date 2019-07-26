@@ -80,7 +80,7 @@ nav ul li.parent ul.child li a {
     position: absolute;
     background-color: rgba(0, 0, 0, 0.5);
     width: 100vw;
-    height: 100vh;
+    height: 150vh;
 }
 
 .main-img img {
