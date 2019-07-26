@@ -144,4 +144,22 @@ class StudentRepository
 
         return $success;
     }
+
+    public function login ($email, $password){
+        
+        try {
+            $db = DBConnection::connect();
+            $stmt = $db->prepare("SELECT * FROM $this->table WHERE email=:email AND password=:password limit 1");
+            $stmt->bindValue(':email', $email);
+            $stmt->bindValue(':password', md5($password));
+            $stmt->execute();
+            $stmt->setFetchMode(PDO::FETCH_CLASS, Student::class);
+            $result = $stmt->fetch();
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+            exit();
+        }
+
+        return $result;
+    }
 }
