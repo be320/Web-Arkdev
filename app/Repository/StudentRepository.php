@@ -23,20 +23,21 @@ class StudentRepository
      * Create student
      *
      * @param array $data
+     * @param array $photo
      * @return bool
      */
-    public function create(array $data): bool
+    public function create(array $data,array $photo): bool
     {
         $success = false;
 
         try {
             $db = DBConnection::connect();
-            $stmt = $db->prepare("INSERT INTO $this->table (name,email,password,level,gpa,gender) VALUES ( :name, :email,:password,:level,:gpa,:gender)");
+            $stmt = $db->prepare("INSERT INTO $this->table (name,email,password,level,gpa,gender,image_path) VALUES ( :name, :email,:password,:level,:gpa,:gender,:image_path)");
             $stmt->bindValue(':name', $data['name']);
             $stmt->bindValue(':email', $data['email']);
             $stmt->bindValue(':password', md5($data['password']));
             $stmt->bindValue(':level', $data['level']);
-            //$stmt->bindValue(':image_path', $data['image_path']);
+            $stmt->bindValue(':image_path', $photo['name']);
             $stmt->bindValue(':gpa', $data['gpa']);
             $stmt->bindValue(':gender', $data['gender']);
             $success = $stmt->execute();
