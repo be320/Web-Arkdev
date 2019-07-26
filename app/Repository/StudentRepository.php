@@ -149,12 +149,11 @@ class StudentRepository
     }
 
     /**
-     * checking if email is in database
+     * getting student by email
      * @param string $email
-     * @return bool
+     * @return student
      */
-    public function emailExists($email): bool {
-      $exist = false;
+    public function getByEmail($email) {
       $result = null;
 
       try {
@@ -165,15 +164,34 @@ class StudentRepository
           $stmt->setFetchMode(PDO::FETCH_CLASS, Student::class);
           $result = $stmt->fetch();
 
-          if($result != null) {
-            $exist = true;
-          }
-
       } catch (PDOException $e) {
           echo $e->getMessage();
           exit();
       }
 
-      return $exist;
+      return $result;
     }
+
+    /**
+     * update image_Path by $email
+     * @param string $email
+     * @param string image_path
+     */
+    public function updateImagePath($email, $image_path) {
+      $success = false;
+
+      try {
+          $db = DBConnection::connect();
+          $stmt = $db->prepare("UPDATE $this->table set image_path=:image_path where email = :email");
+          $stmt->bindValue(':email', $email);
+          $stmt->bindValue(':image_path', $image_path);
+          $stmt->execute();
+      } catch (PDOException $e) {
+          echo $e->getMessage();
+          exit();
+      }
+
+      return;
+    }
+
 }
