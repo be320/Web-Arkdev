@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="75e9aa4d-0bbb-49d8-b674-0b38785dcc62" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Config/app.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Controllers/createStudent.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Controllers/createStudent.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repository/StudentRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repository/StudentRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/includes/uploadFile.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/includes/uploadFile.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/createAdmin.html" beforeDir="false" afterPath="$PROJECT_DIR$/views/createAdmin.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/createStudent.html" beforeDir="false" afterPath="$PROJECT_DIR$/views/createStudent.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -41,7 +35,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Repository/StudentRepository.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="188">
@@ -50,11 +44,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Config/app.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="51">
-              <caret line="3" column="23" selection-start-line="3" selection-start-column="23" selection-end-line="3" selection-end-column="23" />
+              <caret line="3" column="26" selection-start-line="3" selection-start-column="26" selection-end-line="3" selection-end-column="26" />
             </state>
           </provider>
         </entry>
@@ -113,8 +107,8 @@
         <option value="$PROJECT_DIR$/app/includes/uploadFile.php" />
         <option value="$PROJECT_DIR$/views/createStudent.html" />
         <option value="$PROJECT_DIR$/app/Controllers/createStudent.php" />
-        <option value="$PROJECT_DIR$/app/Config/app.php" />
         <option value="$PROJECT_DIR$/app/Repository/StudentRepository.php" />
+        <option value="$PROJECT_DIR$/app/Config/app.php" />
       </list>
     </option>
   </component>
@@ -198,15 +192,15 @@
       <updated>1563961662825</updated>
       <workItem from="1563961664232" duration="8312000" />
       <workItem from="1563995933505" duration="4010000" />
-      <workItem from="1564044089203" duration="10684000" />
+      <workItem from="1564044089203" duration="10691000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="23132000" />
+    <option name="totallyTimeSpent" value="23139000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="7" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18926175" />
@@ -500,17 +494,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Config/app.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="23" selection-start-line="3" selection-start-column="23" selection-end-line="3" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Repository/StudentRepository.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="188">
           <caret line="33" column="138" selection-start-line="33" selection-start-column="138" selection-end-line="33" selection-end-column="138" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Config/app.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="26" selection-start-line="3" selection-start-column="26" selection-end-line="3" selection-end-column="26" />
         </state>
       </provider>
     </entry>
