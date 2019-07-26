@@ -1,7 +1,7 @@
 <?php
 global $dbServerName, $dbPassword, $dbName, $dbUserName;
 
-$dbServerName = 'localhost';
+$dbServerName = 'bahaa.local';
 $dbUserName = 'root';
 $dbPassword = '';
 $dbName = 'training_management_system';

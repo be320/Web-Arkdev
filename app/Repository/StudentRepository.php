@@ -31,13 +31,12 @@ class StudentRepository
 
         try {
             $db = DBConnection::connect();
-            $stmt = $db->prepare("INSERT INTO $this->table (id,name,email,password,level,image_path,gpa,gender) VALUES (:id, :name, :email,:password,:level,:image_path,:gpa,:gender)");
-            $stmt->bindValue(':id', $data['id']);
+            $stmt = $db->prepare("INSERT INTO $this->table (name,email,password,level,gpa,gender) VALUES ( :name, :email,:password,:level,:gpa,:gender)");
             $stmt->bindValue(':name', $data['name']);
             $stmt->bindValue(':email', $data['email']);
             $stmt->bindValue(':password', md5($data['password']));
             $stmt->bindValue(':level', $data['level']);
-            $stmt->bindValue(':image_path', $data['image_path']);
+            //$stmt->bindValue(':image_path', $data['image_path']);
             $stmt->bindValue(':gpa', $data['gpa']);
             $stmt->bindValue(':gender', $data['gender']);
             $success = $stmt->execute();
@@ -45,7 +44,6 @@ class StudentRepository
             echo $e->getMessage();
             exit();
         }
-
         return $success;
     }
 
