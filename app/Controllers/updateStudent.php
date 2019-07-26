@@ -8,7 +8,7 @@ require_once(__DIR__ . '/../Models/Student.php');
 // 4- process inputs
 
 $data = $_POST;
-
+print_r($data);
 //*** validate inputs ***//
 $hasErrors = false;
 
@@ -33,9 +33,7 @@ if (!isset($data['gender']) || empty($data['gender'])) {
     $hasErrors = true;
 }
 
-if (!isset($data['image_path']) || empty($data['image_path'])) {
-    $hasErrors = true;
-}
+
 
 
 //*** Insert request data into DB ***//
@@ -43,22 +41,13 @@ $success = false;
 
 if ($hasErrors === false) {
 
-    $student = new Student();
-    $student->setId($data['id']);
-    $student->setEmail($data['email']);
-    $student->setName($data['name']);
-    $student->setPassword($data['password']);
-    $student->setLevel($data['level']);
-    $student->setGpa($data['gpa']);
-    $student->setImagePath($data['image_path']);
-    $student->setGender($data['gender']);
     $studentRepo = new StudentRepository();
-    $success = $studentRepo->update($student);
+    $success = $studentRepo->update($data);
 }
 
 
 //*** Handle redirection after saving ***//
 if ($success) {
-    header('Location: /home.php');
-    exit();
+   // header('Location: /views/index.html');
+   // exit();
 }

@@ -54,8 +54,12 @@ $students = $studentRepo->getAll();
             <thead>
             <tr>
                 <th scope="col">#</th>
-                <th scope="col">First Name</th>
+                <th scope="col">Name</th>
                 <th scope="col">Email</th>
+                <th scope="col">GPA</th>
+                <th scope="col">Level</th>
+                <th scope="col">Gender</th>
+                <th scope="col">Image Path</th>
                 <th scope="col">Actions</th>
             </tr>
             </thead>
@@ -65,12 +69,16 @@ $students = $studentRepo->getAll();
             foreach ($students as $student) {
                 echo '<tr>';
                 echo '<th scope="row">' . $student->getId() . '</th>';
-                echo '<td>' . $student->getFname() . '</td>';
+                echo '<td>' . $student->getName() . '</td>';
                 echo '<td>' . $student->getEmail() . '</td>';
+                echo '<td>' . $student->getGpa() . '</td>';
+                echo '<td>' . $student->getLevel() . '</td>';
+                echo '<td>' . $student->getGender() . '</td>';
+                echo '<td>' . $student->getImagePath() . '</td>';
 
                 echo '<td>';
-                echo '<a class="btn btn-primary" href="/edit.php?id=' . $student->getId() . '">Edit</a>';
-                echo '<a class="btn btn-danger m-lg-1" href="/app/Controllers/delete.php?id=' . $student->getId() . '">Delete</a>';
+                echo '<a class="btn btn-primary" href="/views/studentEdit.php?id=' . $student->getId() . '">Edit</a>';
+                echo '<a class="btn btn-danger m-lg-1" href="/app/Controllers/deleteStudent.php?id=' . $student->getId() . '">Delete</a>';
                 echo '</td>';
 
                 echo '</tr>';
