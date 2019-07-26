@@ -147,4 +147,33 @@ class StudentRepository
 
         return $success;
     }
+
+    /**
+     * checking if email is in database
+     * @param string $email
+     * @return bool
+     */
+    public function emailExists($email): bool {
+      $exist = false;
+      $result = null;
+
+      try {
+          $db = DBConnection::connect();
+          $stmt = $db->prepare("SELECT * FROM $this->table where email = :email");
+          $stmt->bindValue(':email', $email);
+          $stmt->execute();
+          $stmt->setFetchMode(PDO::FETCH_CLASS, Student::class);
+          $result = $stmt->fetch();
+
+          if($result != null) {
+            $exist = true;
+          }
+
+      } catch (PDOException $e) {
+          echo $e->getMessage();
+          exit();
+      }
+
+      return $exist;
+    }
 }
