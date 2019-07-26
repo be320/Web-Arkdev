@@ -5,7 +5,7 @@
     <title>createStudent</title>
 </head>
 <body>
-<form action="#" method="post">
+<form action="/../app/Controllers/createStudent.php" method="post" enctype="multipart/form-data">
     <input type="text" id="studentName" name="name" placeholder="Student Name">
     <input type="text" id="studentEmail" name="email" placeholder="Student Email">
     <input type="password" id="studentPassword" name="password" placeholder="Student Password">
@@ -20,7 +20,7 @@
         <option value="Senior1">Senior1</option>
         <option value="Senior2">Senior2</option>
     </select>
-    <input type="file" id="studentImage" name="image" accept="image/*">
+    <input type="file" id="studentImage" name="image_path" accept="image/*">
     <input type="submit" name="submit" id="submit">
 </form>
 </body>
