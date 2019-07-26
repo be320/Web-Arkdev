@@ -186,7 +186,8 @@ table tr td:first-child::before {
 
 .submit-btn .btn {
     display: block;
-    width: 100%;
+    width: 60%;
+    margin:auto;
 }
 
 #navbar{
@@ -211,5 +212,5 @@ table tr td:first-child::before {
 	padding-left:10px;
 }
 .full-height {
-    height: 107vh;
+    height: 109vh;
 }
