@@ -8,7 +8,9 @@ require_once(__DIR__ . '/../includes/uploadFile.php');
 // 4- process inputs
 
 $data = $_POST;
-print_r($data);
+$photo =$_FILES;
+//print_r($data);
+//print_r($photo);
 //*** validate inputs ***//
 $hasErrors = false;
 
@@ -46,21 +48,22 @@ if (!isset($data['password']) || empty($data['password'])) {
 $success = false;
 
 if ($hasErrors === false) {
-//    uploadFile();
+   // uploadFile();
     $studentRepo = new StudentRepository();
-    $success = $studentRepo->create($data);
+    $success = $studentRepo->create($data,$photo['image_path']);
 
     // Start upload user image if user created successfully
-   // if ($success) {
-    //        $filePath = uploadFile();
+    if ($success) {
+            $filePath = uploadFile();
+            print ($filePath);
         // todo: do not miss to update the created user with the upload file path
-    //}
+    }
 }
 
 
 //*** Handle redirection after saving ***//
 if ($success) {
-   // uploadFile();
-   // header('Location: /l');
+    uploadFile();
+    header('Location: /views/createStudent.html');
     exit();
 }
