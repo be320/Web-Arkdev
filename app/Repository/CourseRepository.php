@@ -12,7 +12,7 @@ class CourseRepository
 
         try {
             $db = DBConnection::connect();
-            $stmt = $db->prepare("INSERT INTO this->table (name, description, track_id) VALUES (:fname,:description,:track_id)");
+            $stmt = $db->prepare("INSERT INTO course (name, description, track_id) VALUES (:fname,:description,:track_id)");
             $stmt->bindValue(':fname',$data['name']);
             $stmt->bindValue(':description',$data['description']);
             $stmt->bindValue(':track_id',$data['track_id']);
