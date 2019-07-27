@@ -1,3 +1,12 @@
+<?php
+require_once(__DIR__ . '/../app/Repository/AdminRepository.php');
+require_once(__DIR__.'/../app/includes/sessionStart.php');
+require_once(__DIR__.'/../app/includes/sessionAuth.php');
+
+$adminRepo = new AdminRepository();
+$admins = $adminRepo->getAll();
+?>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -93,49 +102,28 @@
 	</div>
 <article class="main container">
     <section>
-	<div id="1">
-	<table border="1" class="table table-striped">  <!--to auto increment # coln-->
+	<div>
+	<table border="1" class="table table-striped">
 		<thead>
             <tr  class="table-info">
-                <th style="text-align:center; border-bottom:2px solid black; border-right:1px solid black;" scope="col">#</th>
+                <th style="text-align:center; border-bottom:2px solid black; border-right:1px solid black;" scope="col">ID</th>
                 <th style="text-align:center; border-bottom:2px solid black;border-right:1px solid black;" scope="col">Name</th>
                 <th style="text-align:center; border-bottom:2px solid black; border-right:2px solid black; " scope="col">Email</th>
                 <th style="text-align:center; border-bottom:2px solid black; padding-left:10px" colspan="2" scope="col">Actions</th>
             </tr>
 		</thead>
 		<tbody> 
-			<!--example-->
-			 <tr>
-			 <td></td> <!--numbered 1 as border-->
-			  <td>Kate</td>
-			  <td style="border-right:2px solid black;">kate@gmail.com</td>
-			  <td style="text-align:center;"><button style="background-color:BLUE; font-weight:bold; color:white; border:2px solid black;" type="button">Edit</button></td>
-			  <td style="text-align:center;"><button style="background-color:RED; font-weight:bold; color:white; border:2px solid black;" type="button">Delete</button></td>
-			  
-			  
-			</tr>
-			<tr>
-			  <td></td> <!--numbered 2-->
-			  <td>Anna</td>
-			  <td style="border-right:2px solid black;">Anna@gmail.com</td>
-			  <td style="text-align:center;"><button style="text-align:center; background-color:BLUE; font-weight:bold; color:white; border:2px solid black;" type="button">Edit</button></td>
-			  <td style="text-align:center;"><button style="text-align:center; background-color:RED; font-weight:bold; color:white; border:2px solid black;" type="button">Delete</button></td>
-			</tr>
-			<td></td> <!--numbered 3-->
-			 
-			  <td>jack</td>
-			  <td style="border-right:2px solid black;">jack@gmail.com</td>
-			  <td style="text-align:center;"><button style="background-color:BLUE; font-weight:bold; color:white; border:2px solid black;" type="button">Edit</button></td>
-			  <td style="text-align:center;"><button style="align:center; background-color:RED; font-weight:bold; color:white; border:2px solid black;" type="button">Delete</button></td>
-			</tr>
-			
-			<tr>
-			  <td></td> <!--numbered 4-->
-			  <td>jerry</td>
-			  <td style="border-right:2px solid black;">jerry@gmail.com</td>
-			  <td style="text-align:center;"><button style="background-color:BLUE; font-weight:bold; color:white; border:2px solid black;" type="button">Edit</button></td>
-			  <td style="text-align:center;"><button style="background-color:RED; font-weight:bold; color:white; border:2px solid black;" type="button">Delete</button></td>
-			</tr>   
+      <?php
+      foreach ($admins as $admin){
+        echo('<tr>');
+        echo('<td>'.$admin->getId() .'</td>');
+        echo('<td>'.$admin->getName().'</td>'); 
+        echo('<td style="border-right:2px solid black;">' . $admin->getEmail() . '</td>'); 
+        echo('<td style="text-align:center;"><button style="background-color:BLUE; font-weight:bold; color:white; border:2px solid black;" type="button">Edit</button></td>'); 
+        echo('<td style="text-align:center;"><button style="background-color:RED; font-weight:bold; color:white; border:2px solid black;" type="button">Delete</button></td>');   
+        echo('</tr>');
+      }
+      ?>   
 		</tbody>
 	</table>
 		</div>

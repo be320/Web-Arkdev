@@ -109,6 +109,7 @@ class AdminRepository
             $stmt->bindValue(':email', $Admin->getEmail());
             $stmt->bindValue(':password', md5($Admin->getPassword()));
             $success = $stmt->execute();
+            echo('<br>operation executed');
         } catch (PDOException $e) {
             echo $e->getMessage();
             exit();
