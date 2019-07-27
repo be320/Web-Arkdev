@@ -6,7 +6,7 @@ require_once(__DIR__ . '/../Models/Track.php');
 class TrackRepository
 {
     protected $table = 'track';
-    
+
       public function __construct()
     {
     }
@@ -17,8 +17,7 @@ class TrackRepository
 
         try {
             $db = DBConnection::connect();
-            $stmt = $db->prepare("INSERT INTO $this->table (id, name) VALUES (:t, :n)");
-            $stmt->bindValue(':t', $data['id']);
+            $stmt = $db->prepare("INSERT INTO $this->table ( name) VALUES ( :n)");
             $stmt->bindValue(':n', $data['name']);
             $success = $stmt->execute();
         } catch (PDOException $e) {
@@ -51,7 +50,7 @@ class TrackRepository
 
         return $result;
     }
-
+    
 public function deleteById($id):bool
 {
     
@@ -87,6 +86,30 @@ public function update(Track $track): bool
 
         return $success;
     }
-    
+
+    /**
+     * return track by an assoc array
+     * @param $trackId
+     * @return array
+     */
+    public function getByIdAsoc($trackId)
+    {
+        $result = null;
+
+        try{
+            $db = DBConnection::connect();
+            $stmt = $db->prepare("SELECT * FROM $this->table WHERE id=:id");
+            $stmt->bindValue(':id',$trackId);
+            $stmt->execute();
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);
+            $result = $stmt->fetch();
+        }
+        catch (PDOException $e){
+            echo $e->getMessage();
+            exit();
+        }
+        return $result;
+    }
+
 
 }

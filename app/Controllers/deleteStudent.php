@@ -27,6 +27,6 @@ if ($hasErrors === false) {
 
 //*** Handle redirection after saving ***//
 if ($success) {
-    header('Location: /home.php');
+    header('Location: /views/index.html');
     exit();
 }

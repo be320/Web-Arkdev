@@ -8,7 +8,9 @@ require_once(__DIR__ . '/../includes/uploadFile.php');
 // 4- process inputs
 
 $data = $_POST;
-
+$photo =$_FILES;
+//print_r($data);
+//print_r($photo);
 //*** validate inputs ***//
 $hasErrors = false;
 
@@ -33,7 +35,11 @@ if (!isset($data['gender']) || empty($data['gender'])) {
     $hasErrors = true;
 }
 
-if (!isset($data['image_path']) || empty($data['image_path'])) {
+//if (!isset($data['image_path']) || empty($data['image_path'])) {
+//    $hasErrors = true;
+//}
+
+if (!isset($data['password']) || empty($data['password'])) {
     $hasErrors = true;
 }
 
@@ -42,12 +48,14 @@ if (!isset($data['image_path']) || empty($data['image_path'])) {
 $success = false;
 
 if ($hasErrors === false) {
+   // uploadFile();
     $studentRepo = new StudentRepository();
-    $success = $studentRepo->create($data);
+    $success = $studentRepo->create($data,$photo['image_path']);
 
     // Start upload user image if user created successfully
     if ($success) {
-        $filePath = uploadFile();
+            $filePath = uploadFile();
+            print ($filePath);
         // todo: do not miss to update the created user with the upload file path
     }
 }
@@ -56,6 +64,6 @@ if ($hasErrors === false) {
 //*** Handle redirection after saving ***//
 if ($success) {
     uploadFile();
-    header('Location: /home.php');
+    header('Location: /views/index.html');
     exit();
 }

@@ -4,7 +4,7 @@ This is a web frontend and backend project for Registration and Management Syste
 # UPDATE 
 Please update your database as there has been some small changes with the table IDs name
 ### Installation
-download ```DB Update.sql``` file from DB folder <br />
+download ```DB Update.sql & DB Update 2.sql``` file from DB folder <br />
 Open up your phpmyadmin intrface <br />
 select ```training_management_system``` database <br />
 select ```import``` from the top bar <br />
@@ -27,7 +27,7 @@ can delelte any of them. <br />
 download the DB folder <br />
 Using the import function in PHP my admin  <br />
 import the ```training_managemet_system.sql``` file <br />
-import ```DB Update.sql``` file ```don't have to do the update above if you done this ``` <br/>
+import ```DB Update.sql and DB Update 2.sql``` file ```don't have to do the update above if you done this ``` <br/>
 now the database is set <br />
 
 an admin record is added already <br />

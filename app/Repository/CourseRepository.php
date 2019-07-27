@@ -37,8 +37,27 @@ class CourseRepository
         }
         catch (PDOException $e){
             echo $e->getMessage();
+            exit();
         }
         return $success;
+    }
+
+    /**
+     * @return string
+     */
+    public function getById($id): Course
+    {
+        try{
+            $db = DBConnection::connect();
+            $stmt = $db->prepare("SELECT * FROM course WHERE id=:id");
+            $stmt->bindValue(':id',$id);
+            $stmt->setFetchMode(PDO::FETCH_CLASS, Course::class);
+            $result = $stmt->fetchAll();
+        }
+        catch (PDOException $e){
+            echo $e->getMessage();
+            exit();
+        }
     }
 
     public function update($course): bool
@@ -56,6 +75,7 @@ class CourseRepository
         }
         catch (PDOException $e){
             echo $e->getMessage();
+            exit();
         }
 
         return $success;
@@ -75,8 +95,154 @@ class CourseRepository
             $stmt->bindValue(':track_id', $data['track_id']);
         }catch (PDOException $e){
             echo $e->getMessage();
+            exit();
         }
         return $success;
+
     }
+
+    public function getAll(): array
+    {
+        $result = [];
+        try {
+            $db = DBConnection::connect();
+            $stmt = $db->prepare("SELECT * from course");
+            $stmt->execute();
+            $stmt->setFetchMode(PDO::FETCH_CLASS, Course::class);
+            $result =$stmt->fetchAll();
+        }catch(PDOException $e){
+            echo $e->getMessage();
+            exit();
+        }
+        return $result;
+
+    }
+
+    /**
+     * get ids of a course with a specific track
+     * @param $trackid
+     * @return array of course_ids, instructor_ids, track_ids
+     *
+     */
+    public function getByTrack($trackId) {
+      $result = [];
+
+      try {
+          $db = DBConnection::connect();
+          $stmt = $db->prepare("SELECT course_id, instructor_id, track_id FROM course AS C, course_has_instructor AS CHI, instructor AS I WHERE CHI.course_id = C.id AND CHI.instructor_id = I.id AND C.track_id = :track_id;");
+          $stmt->bindValue(':track_id', $trackId);
+          $success = $stmt->execute();
+          $stmt->setFetchMode(PDO::FETCH_ASSOC);
+          $result = $stmt->fetchAll();
+
+      }
+      catch (PDOException $e){
+          echo $e->getMessage();
+          exit();
+      }
+      return $result;
+
+    }
+
+    /**
+     * get ids of a course with a specific instructor
+     * @param $instructorId
+     * @return array of course_ids, instructor_ids, track_ids
+     *
+     */
+    public function getByInstructor($instructorId) {
+      $result = [];
+
+      try {
+          $db = DBConnection::connect();
+          $stmt = $db->prepare("SELECT course_id, instructor_id, track_id FROM course AS C, course_has_instructor AS CHI, instructor AS I WHERE CHI.course_id = C.id AND CHI.instructor_id = I.id AND I.id = :instructorId;");
+          $stmt->bindValue(':instructorId', $instructorId);
+          $success = $stmt->execute();
+          $stmt->setFetchMode(PDO::FETCH_ASSOC);
+          $result = $stmt->fetchAll();
+
+      }
+      catch (PDOException $e){
+          echo $e->getMessage();
+          exit();
+      }
+      return $result;
+
+    }
+
+    /**
+     * get ids of a course enrolled by a specific student
+     * @param $studentId
+     * @return array of course_ids, instructor_ids, track_ids
+     *
+     */
+    public function getByStudent($studentId) {
+      $result = [];
+
+      try {
+          $db = DBConnection::connect();
+          $stmt = $db->prepare("SELECT course_id, instructor_id, track_id from course_has_instructor AS CHI, course, instructor, track
+            WHERE course.track_id = track.id AND course.id = CHI.course_id AND CHI.instructor_id = instructor.id AND course_id = ANY
+            (SELECT course_id FROM student_has_course AS SHC where SHC.student_id = :studentId);");
+          $stmt->bindValue(':studentId', $studentId);
+          $success = $stmt->execute();
+          $stmt->setFetchMode(PDO::FETCH_ASSOC);
+          $result = $stmt->fetchAll();
+
+      }
+      catch (PDOException $e){
+          echo $e->getMessage();
+          exit();
+      }
+      return $result;
+
+    }
+
+    /**
+     * return course by an assoc array
+     * @param $courseId
+     * @return array
+     */
+    public function getByIdAsoc($courseId)
+    {
+        $result = null;
+
+        try{
+            $db = DBConnection::connect();
+            $stmt = $db->prepare("SELECT * FROM course WHERE id=:id");
+            $stmt->bindValue(':id',$courseId);
+            $stmt->execute();
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);
+            $result = $stmt->fetch();
+        }
+        catch (PDOException $e){
+            echo $e->getMessage();
+            exit();
+        }
+        return $result;
+    }
+
+    /**
+     * return all course ids
+     * @return array
+     */
+    public function getAllId()
+    {
+        $result = null;
+
+        try{
+            $db = DBConnection::connect();
+            $stmt = $db->prepare("SELECT course_id, instructor_id, track_id FROM course AS C, course_has_instructor AS CHI, instructor AS I WHERE CHI.course_id = C.id AND CHI.instructor_id = I.id");
+            $stmt->execute();
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);
+            $result = $stmt->fetchAll();
+        }
+        catch (PDOException $e){
+            echo $e->getMessage();
+            exit();
+        }
+        return $result;
+    }
+
 
 }

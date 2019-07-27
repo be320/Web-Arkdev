@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang= "en">
+    <head>
+         <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/all.css">
+      
+        <title>New Student Form</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+	<header>
+
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark indigo">
+        <a class="navbar-brand" href="#"><strong>Welcome</strong></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+				<li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+         Admins
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="#">Create</a>
+          <a class="dropdown-item" href="#">Dashboard</a>
+        </div>
+				
+				<li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+         Instructors
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="#">Create</a>
+          <a class="dropdown-item" href="#">Dashboard</a>
+        </div>
+                
+				
+				<li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+         Students
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="#">Create</a>
+          <a class="dropdown-item" href="#">Dashboard</a>
+        </div>
+                
+				
+				<li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+         Courses
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="#">Create</a>
+          <a class="dropdown-item" href="#">Dashboard</a>
+        </div>
+				<li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+         Tracks
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="#">Create</a>
+          <a class="dropdown-item" href="#">Dashboard</a>
+        </div> 
+            </ul>
+			<ul class="nav navbar-nav navbar-right">
+      <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+    </ul>
+        </div>
+    </nav>
+
+</header>
+
+<body>
+
+       <div class="main">
+     
+	 <div class="main-img">
+        <img src="../images/books.jpg" class="banner" alt="banner"/>
+    </div>
+             <div class="container">
+              <div class="row justify-content-center align-items-center full-height">
+                   <div class="col-sm-6 align-self-center auth-wrapper">
+                        <div class="auth-intro">
+                            <h1 style="margin-top: 75px;" class="auth-title">Adding New Student Form</h1>
+            <form id="NewStudentForm" action="/../app/Controllers/createStudent.php" method="post" enctype="multipart/form-data">
+                 <div class="form-group">
+                     <i class="far fa-user"></i>
+                     <label for="name">Name:</label>
+                     <input id="Name" name="name" type="text" placeholder="Enter your full name" class="form-control" required>
+                 </div>
+                
+                <div class="form-group">
+                     <i class="far fa-envelope"></i>
+                     <label for="email">Email:</label>
+                     <input id="email" name="email" type="email" placeholder="Enter your email as emailname@...com" class="form-control" required>
+                 </div>
+                
+                 <div class="form-group">
+                     <i class="far fa-key"></i>
+                     <label for="password">Password:</label>
+                     <input id="password1" name="password" type="password" placeholder="Enter your password" class="form-control" required>
+                 </div>
+                
+                 <div class="form-group">
+                     <i class="far fa-key"></i>
+                     <label for="password">Reenter password:</label>
+                     <input id="password2" name="password2" type="password" placeholder="Reenter your Password" class="form-control" required>
+                 </div>
+				 
+				  <label for="level">Level: </label>
+                        <select class="form-control" name="level" id="level">
+                        <option value="0">.....</option>
+                        <option value="Freshmen">Freshman</option>
+                        <option value="Sophomore">Sophomore</option>
+                        <option value="Junior">Junior</option>
+                        <option value="Senior 1">Senior 1</option>
+                        <option value="Senior 2">Senior 2</option>
+                        </select>
+                
+				<div class="form-group">
+                     <label for="gpa">GPA:</label>
+                     <input id="gpa" name="gpa" type="gpa" placeholder="Enter your gpa" class="form-control" required>
+                 </div>
+				
+				<div class="form-group">
+				<label for="gender">Gender:</label>
+<<<<<<< HEAD
+
+                <input type="radio" name="gender" value="male"> Male    
+                <input type="radio" name="gender" value="female" > Female
+
+=======
+				
+                <input type="radio" name="gender" value="male"> Male    
+                <input type="radio" name="gender" value="female" > Female
+>>>>>>> 8ddde7a3a01ed77c353d5939db899bbc5928a46a
+
+				 </div>
+				
+				 
+				 <div class="form-group">
+<<<<<<< HEAD
+
+=======
+				 
+>>>>>>> 8ddde7a3a01ed77c353d5939db899bbc5928a46a
+				 <label for="pic">Profile Image:: </label>
+				 <input id="pic" type="file" name="image_path" accept="image/*" class="form-control">
+				
+<<<<<<< HEAD
+
+=======
+>>>>>>> 8ddde7a3a01ed77c353d5939db899bbc5928a46a
+				</div>
+				
+                 <div class="text-center submit-btn">
+                    <button type="submit" class="btn btn-primary" >Submit</button>
+                 </div>
+				 
+				  </form>
+                 </div>
+              </div>
+         </div>
+    </div>
+	</div>
+            
+<script src="../js/jquery-3.3.1.slim.min.js"></script>
+<script src="../js/popper.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/jquery.validate.js"></script>
+<script src="../js/main.js"></script>
+            
+</body>
+    </body>
+</html>
