@@ -233,13 +233,9 @@ table tr td:first-child::before {
 	padding-left:10px;
 }
 .full-height {
-<<<<<<< HEAD
     height: 109vh;
 }
-=======
-    height: 107vh;
 
-}
 
 .grid { 
 margin-top:20vh;
