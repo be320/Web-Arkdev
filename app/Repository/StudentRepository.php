@@ -145,8 +145,9 @@ class StudentRepository
         return $success;
     }
 
+
     public function login ($email, $password){
-        
+
         try {
             $db = DBConnection::connect();
             $stmt = $db->prepare("SELECT * FROM $this->table WHERE email=:email AND password=:password limit 1");
@@ -162,4 +163,52 @@ class StudentRepository
 
         return $result;
     }
+
+
+    /**
+     * getting student by email
+     * @param string $email
+     * @return student
+     */
+    public function getByEmail($email) {
+      $result = null;
+
+      try {
+          $db = DBConnection::connect();
+          $stmt = $db->prepare("SELECT * FROM $this->table where email = :email");
+          $stmt->bindValue(':email', $email);
+          $stmt->execute();
+          $stmt->setFetchMode(PDO::FETCH_CLASS, Student::class);
+          $result = $stmt->fetch();
+
+      } catch (PDOException $e) {
+          echo $e->getMessage();
+          exit();
+      }
+
+      return $result;
+    }
+
+    /**
+     * update image_Path by $email
+     * @param string $email
+     * @param string image_path
+     */
+    public function updateImagePath($email, $image_path) {
+      $success = false;
+
+      try {
+          $db = DBConnection::connect();
+          $stmt = $db->prepare("UPDATE $this->table set image_path=:image_path where email = :email");
+          $stmt->bindValue(':email', $email);
+          $stmt->bindValue(':image_path', $image_path);
+          $stmt->execute();
+      } catch (PDOException $e) {
+          echo $e->getMessage();
+          exit();
+      }
+
+      return;
+    }
+
 }

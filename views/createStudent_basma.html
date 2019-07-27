@@ -93,7 +93,7 @@
                    <div class="col-sm-6 align-self-center auth-wrapper">
                         <div class="auth-intro">
                             <h1 style="margin-top: 75px;" class="auth-title">Adding New Student Form</h1>
-            <form id="NewStudentForm">
+            <form id="NewStudentForm" action="/../app/Controllers/createStudent.php" method="post" enctype="multipart/form-data">
                  <div class="form-group">
                      <i class="far fa-user"></i>
                      <label for="name">Name:</label>
@@ -109,7 +109,7 @@
                  <div class="form-group">
                      <i class="far fa-key"></i>
                      <label for="password">Password:</label>
-                     <input id="password1" name="password1" type="password" placeholder="Enter your password" class="form-control" required>
+                     <input id="password1" name="password" type="password" placeholder="Enter your password" class="form-control" required>
                  </div>
                 
                  <div class="form-group">
@@ -121,11 +121,11 @@
 				  <label for="level">Level: </label>
                         <select class="form-control" name="level" id="level">
                         <option value="0">.....</option>
-                        <option value="1">Freshman</option>
-                        <option value="2">Sophomore</option>
-                        <option value="3">Junior</option>
-                        <option value="4">Senior 1</option>
-                        <option value="5">Senior 2</option>
+                        <option value="Freshmen">Freshman</option>
+                        <option value="Sophomore">Sophomore</option>
+                        <option value="Junior">Junior</option>
+                        <option value="Senior 1">Senior 1</option>
+                        <option value="Senior 2">Senior 2</option>
                         </select>
                 
 				<div class="form-group">
@@ -135,22 +135,31 @@
 				
 				<div class="form-group">
 				<label for="gender">Gender:</label>
-				
+
+
                 <input type="radio" name="gender" value="male"> Male    
                 <input type="radio" name="gender" value="female" > Female
+
+
 
 				 </div>
 				
 				 
 				 <div class="form-group">
+
+
+
 				 
+
 				 <label for="pic">Profile Image:: </label>
-				 <input id="pic" type="file" name="pic" accept="image/*" class="form-control">
+				 <input id="pic" type="file" name="image_path" accept="image/*" class="form-control">
 				
+
+
 				</div>
 				
                  <div class="text-center submit-btn">
-                    <button type="Submit" class="btn btn-primary" >Submit</button>
+                    <button type="submit" class="btn btn-primary" >Submit</button>
                  </div>
 				 
 				  </form>
@@ -167,4 +176,5 @@
 <script src="../js/main.js"></script>
             
 </body>
+    </body>
 </html>

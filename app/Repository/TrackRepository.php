@@ -6,7 +6,7 @@ require_once(__DIR__ . '/../Models/Track.php');
 class TrackRepository
 {
     protected $table = 'track';
-    
+
       public function __construct()
     {
     }
@@ -50,20 +50,23 @@ class TrackRepository
 
         return $result;
     }
-    public function deleteById($id):bool
-    {
-try{
-    $db = DBConnection:: connect();
-    $stmt = $db ->prepare("DELETE FROM $this ->table where id = :id");
-    $stmt ->bindValue(':id', $id);
-    $success = $stmt ->execute();
-    
-} catch (Exception $ex) {
-    echo $ex->getMessage();
-    exit();
-}
 
-return $success;
+
+    
+public function deleteById($id):bool
+{
+    
+    try{
+        $db = DBConnection:: connect();
+        $stmt = $db ->prepare("DELETE FROM $this ->table where id = :id");
+        $stmt ->bindValue(':id', $id);
+        $success = $stmt ->execute();
+    }catch (Exception $ex) {
+        echo $ex->getMessage();
+        exit();
+    }
+
+    return $success;
 }
 
 
@@ -85,6 +88,30 @@ public function update(Track $track): bool
 
         return $success;
     }
-    
+
+    /**
+     * return track by an assoc array
+     * @param $trackId
+     * @return array
+     */
+    public function getByIdAsoc($trackId)
+    {
+        $result = null;
+
+        try{
+            $db = DBConnection::connect();
+            $stmt = $db->prepare("SELECT * FROM $this->table WHERE id=:id");
+            $stmt->bindValue(':id',$trackId);
+            $stmt->execute();
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);
+            $result = $stmt->fetch();
+        }
+        catch (PDOException $e){
+            echo $e->getMessage();
+            exit();
+        }
+        return $result;
+    }
+
 
 }

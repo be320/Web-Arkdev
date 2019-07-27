@@ -109,6 +109,7 @@ class AdminRepository
             $stmt->bindValue(':email', $Admin->getEmail());
             $stmt->bindValue(':password', md5($Admin->getPassword()));
             $success = $stmt->execute();
+            echo('<br>operation executed');
         } catch (PDOException $e) {
             echo $e->getMessage();
             exit();
@@ -150,7 +151,6 @@ class AdminRepository
     public function login($email, $password)
     {
         $result = null;
-
         try {
             $db = DBConnection::connect();
             $stmt = $db->prepare("SELECT * FROM $this->table where email = :email and password = :password limit 1");
@@ -163,7 +163,6 @@ class AdminRepository
             echo $e->getMessage();
             exit();
         }
-
         return $result;
     }
 }
