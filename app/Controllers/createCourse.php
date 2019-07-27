@@ -3,6 +3,7 @@ require_once (__DIR__."/../Repository/CourseRepository.php");
 require_once (__DIR__."/../includes/uploadFile.php");
 
 $data = $_POST;
+$photo = $_FILES;
 $hasErrors = false;
 
 print_r($data);
@@ -21,12 +22,15 @@ if( !isset($data['track_id']) || empty($data['track_id']) ){
 $success = false;
 $successUpdate = false;
 
+var_dump($hasErrors);
+
 if($hasErrors === false){
     $courseRepo = new CourseRepository();
-    $success = $courseRepo->create($data);
+    $success = $courseRepo->create($data,$photo['image_path']);
 
+    print_r($success);
     if($success){
-       // $filePath=uploadFile();
+            $filePath=uploadFile();
         //todo: update is not finished yet
        // $successUpdate = $courseRepo->updateImagePath($filePath, $data);
 
@@ -35,7 +39,8 @@ if($hasErrors === false){
     }
 }
 if($success){
-    //uploadFile();
-    header('Location: /views/home.html');
+    echo '1';
+    uploadFile();
+    header('Location: /views/home_mm.html');
     exit();
 }

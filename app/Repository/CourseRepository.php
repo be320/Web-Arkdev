@@ -6,16 +6,17 @@ class CourseRepository
 {
     protected $table = 'course';
 
-    public function create($data): bool
+    public function create($data,array $photo): bool
     {
         $success = false;
 
         try {
             $db = DBConnection::connect();
-            $stmt = $db->prepare("INSERT INTO course (name, description, track_id) VALUES (:fname,:description,:track_id)");
+            $stmt = $db->prepare("INSERT INTO course (name, description, track_id, image_path) VALUES (:fname,:description,:track_id, :image_path)");
             $stmt->bindValue(':fname',$data['name']);
             $stmt->bindValue(':description',$data['description']);
             $stmt->bindValue(':track_id',$data['track_id']);
+            $stmt->bindValue(':image_path',$photo['name']);
 
             $success = $stmt->execute();
 

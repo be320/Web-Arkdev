@@ -3,6 +3,7 @@ require_once(__DIR__ . '/../app/Repository/AdminRepository.php');
 $adminRepo = new AdminRepository();
 $admins = $adminRepo->getAll();
 ?>
+
 <!doctype html>
 <html lang="en">
 <head>
