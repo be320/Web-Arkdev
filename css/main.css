@@ -190,7 +190,7 @@ table tr td:first-child::before {
     display: block;
     margin-top: 20px;
     width: 100%;
-    height: 30px;
+    height: 35px;
     background-color: dodgerblue;
 }
 
@@ -199,7 +199,7 @@ table tr td:first-child::before {
     margin-top: 7px;
     display: block;
     width: 100%;
-    height: 25px;
+    height: auto;
 }
 .submit-btn {
     display: block;
@@ -207,7 +207,8 @@ table tr td:first-child::before {
 
 .submit-btn .btn {
     display: block;
-    width: 100%;
+    width: 70%;
+    margin: auto;
 }
 
 #navbar{
@@ -233,9 +234,14 @@ table tr td:first-child::before {
 }
 .full-height {
 
+<<<<<<< HEAD
+    height: 110vh;
+}
+=======
     height: 109vh;
 }
 
+>>>>>>> 49fd24c8f52cd9f64b9e9f7766aadbb4609c154a
 
 
 .grid { 
