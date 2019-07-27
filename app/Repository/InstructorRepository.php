@@ -5,7 +5,7 @@ require_once(__DIR__ . '/../Models/Instructor.php');
 class InstructorRepository
 {
 
-    public function createInstructor($data): bool
+    public function createInstructor($data , $photo): bool
     {
         $success = false;
         try {
@@ -14,7 +14,7 @@ class InstructorRepository
             $stmt->bindValue(':Insname',$data['name']);
             $stmt->bindValue(':email',$data['email']);
             $stmt->bindValue(':bio',$data['bio']);
-            $stmt->bindValue(':image_path',"linknotinserted");
+            $stmt->bindValue(':image_path', $photo['name']);
             $success = $stmt->execute();
         }
         catch (PDOException $e){
@@ -35,6 +35,8 @@ class InstructorRepository
             $stmt->bindValue(':image_path', $data->getImagePath());
             $stmt->bindValue(':id', $data-> getInstructorId());
             $stmt->bindValue(':bio', $data->getBio());
+
+
             $success = $stmt->fetch();
         }
         catch (PDOException $e){
@@ -63,7 +65,7 @@ class InstructorRepository
      * @param $instructorId
      * @return array
      */
-    public function getByIdAsoc($instructorId)
+    public function getById($instructorId)
     {
         $result = null;
 

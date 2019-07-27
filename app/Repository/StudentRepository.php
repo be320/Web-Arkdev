@@ -106,11 +106,10 @@ class StudentRepository
         $success = false;
         try {
             $db = DBConnection::connect();
-            $stmt = $db->prepare("UPDATE $this->table set name=:name, email=:email,gender=:gender, level=:level, gpa=:gpa where id =:id");
+            $stmt = $db->prepare("UPDATE $this->table set name=:name, email=:email, level=:level, gpa=:gpa where id =:id");
             $stmt->bindValue(':id', $data['id']);
             $stmt->bindValue(':name', $data['name']);
             $stmt->bindValue(':email', $data['email']);
-            $stmt->bindValue(':gender', $data['gender']);
             $stmt->bindValue(':level', $data['level']);
             $stmt->bindValue(':gpa',$data['gpa']);
             $success = $stmt->execute();

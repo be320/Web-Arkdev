@@ -1,3 +1,27 @@
+<?php
+
+require_once(__DIR__ . '/../app/Repository/InstructorRepository.php');
+
+// Check if there are parameter in Get
+if (isset($_GET['id']) && !empty($_GET['id'])) {
+    $id = $_GET['id'];
+} else {
+    echo 'There is no parameter id in requested URL.';
+    exit();
+}
+
+$instructorRepository = new InstructorRepository();
+$instructor = $instructorRepository->getById($id);
+
+// Check if there are exist user with $user_id
+if (!$student) {
+    echo 'No Student with the selected ID';
+    exit();
+}
+?>
+
+
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -86,28 +110,33 @@
         <div class="row justify-content-center align-items-center full-height">
             <div class="col-sm-6 align-self-center auth-wrapper">
                 <div class="auth-intro">
-                    <h2 class="auth-title"> Edit Course Information </h2>
+                    <h2 class="auth-title"> Edit Instructor Information </h2>
                 </div>
-                <form id="courseForm">
+                <form id="Instructor_Form" action="/ArkDevProject2/app/Controllers/updateInstructor.php" method="post" enctype="multipart/form-data">
                     <div class="form-group">
-                    
+                        <i class="far fa-user"></i>
+                        <input type="hidden" name="id" value="<?php echo $instructor->getById(); ?>">
                         <label for="name">Name</label>
-                        <input id="name" type="name" placeholder="Edit Your Name" name="name" class="form-control" required/>
+                        <input id="name" type="name" placeholder="Edit Your Name" name="name" class="form-control" value="<?php echo $instructor->getName(); ?>" required/>
                     </div>
+             
                     <div class="form-group">
-                       
-                        <label for="name">Track</label>
-                        <input id="name" type="name" placeholder="Exist in which Track" name="name" class="form-control" required/>
+                        <i class="fa fa-envelope"></i>
+                        <label for="email">Email</label>
+                        <input id="email" type="email" placeholder="Edit Your Email" name="email"  class="form-control" value="<?php echo $instructor->getEmail(); ?>"required/>
                     </div>
+                    
                     <div class="form-group">
-                        <i class="fa fa-edit"></i>
-                        <label for="description">Description</label>
-                        <textarea id="description" placeholder="Add info..." name="description"  class="form-control" required></textarea>
+                        <i class="fa fa-pencil"></i>
+                        <label for="Bio">Bio</label>
+                        <textarea id="bio" placeholder="Add info..." name="bio"  class="form-control"  value="<?php echo $instructor->getBio();?> "required></textarea>
                     </div>
+                    
                     <div class="form-group">
                         <i class="fas fa-camera"></i>
                         <label for="image">add image</label>
-                        <input type="file" id="courseImage" name="image" class="form-control" accept="image/*">
+                        <input type="file" id="instructorImage" name="image" class="form-control" accept="image/*">
+
                             </div> 
                     <div class="text-center submit-btn">
                         <button type="submit" name="submit" class="btn btn-primary">Submit</button>

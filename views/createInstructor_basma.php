@@ -1,19 +1,21 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <!-- Required meta tags -->
+<!DOCTYPE html>
+<html lang= "en">
+    <head>
+         <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/all.css">
-    <link rel="stylesheet" href="../css/main.css">
-    <title>project | edit</title>
-</head>
-
-<body>
-    <header>
+      
+        <title>New Instructor Form</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+	<header>
 
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark indigo">
         <a class="navbar-brand" href="#"><strong>Welcome</strong></a>
@@ -78,60 +80,60 @@
     </nav>
 
 </header>
-<div class="main">
+
+<body>
+
+       <div class="main">
     <div class="main-img">
         <img src="../images/books.jpg" class="banner" alt="banner"/>
     </div>
-    <div class="container">
-        <div class="row justify-content-center align-items-center full-height">
-            <div class="col-sm-6 align-self-center auth-wrapper">
-                <div class="auth-intro">
-                    <h2 class="auth-title"> Edit Student Information </h2>
-                </div>
-                <form id="studentForm">
-                    <div class="form-group">
-                        
-                        <i class="fa fa-envelope"></i>
-                        <label for="email">Email</label>
-                        <input id="email" type="email" placeholder="Edit Your email" name="email" class="form-control" required/>
-                    </div>
+             <div class="container">
+              <div class="row justify-content-center align-items-center full-height">
+                   <div class="col-sm-6 align-self-center auth-wrapper">
+                        <div class="auth-intro">
+                            <h1 class="auth-title">Create Instructor Form</h1>
+                            <form action="/ArkDevProject2/app/Controllers/createInstructor.php" method="post" id="NewInstructorForm" enctype="multipart/form-data">
+                                <div class="form-group">
+                     <i class="far fa-user"></i>
+                     <label for="name">Name:</label>
+                     <input id="Name" name="name" type="text" placeholder="Enter your full name" class="form-control" required>
+                 </div>
                 
-                    <div class="form-group">
-                       
-                        <label for="gpa">GPA</label>
-                        <input id="gpa" type="gpa" placeholder="Edit Your GPA" name="gpa" class="form-control" required/>
-                    </div>
-                    
-                        
-                    <div class="form-group">
-                        <label for="level">Level</label>
-                        <select class="form-control" name="level" id="level">
-                        <option value="....">.....</option>
-                        <option  value="Freshman">Freshman</option>
-                        <option value="Sophomore">Sophomore</option>
-                        <option value="Junior">Junior</option>
-                        <option value="Senior1">Senior 1</option>
-                        <option value="Senior2">Senior 2</option>
-                        </select>
-                               
-                    </div>
-                    <div class="text-center submit-btn">
-                        <button type="submit" name="submit" class="btn btn-primary">Submit</button>
-                    </div>
-               
-            </div>
-        </div>
+                <div class="form-group">
+                     <i class="far fa-envelope"></i>
+                     <label for="email">Email:</label>
+                     <input id="email" name="email" type="email" placeholder="Enter your email as emailname@...com" class="form-control" required>
+                 </div>
+                
+                 <div class="form-group">
+                     <i class="far fa-key"></i>
+                     <label for="bio">Bio:</label>
+                     <input id="bio" name="bio" type="text" placeholder="Enter your bio" class="form-control" required style="height: 70px">
+                 </div>
+				
+				<div class="form-group">
+
+				 <label for="pic">Profile Image:: </label>
+				 <input id="pic" type="file" name="image_path" accept="image/*" class="form-control">
+				</div>
+
+				  <div class="text-center submit-btn">
+                    <button type="Submit" class="btn btn-primary" >Submit</button>
+                 </div>
+
+                 </form>
+                 </div>
+              </div>
+         </div>
     </div>
-</div>
-
-
-<!-- Optional JavaScript -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="js/jquery-3.3.1.slim.min.js"></script>
-<script src="js/popper.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/jquery.validate.js"></script>
-<script src="js/main.js"></script>
-
+	</div>
+            
+<script src="../js/jquery-3.3.1.slim.min.js"></script>
+<script src="../js/popper.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/jquery.validate.js"></script>
+<script src="../js/main.js"></script>
+            
 </body>
+    </body>
 </html>

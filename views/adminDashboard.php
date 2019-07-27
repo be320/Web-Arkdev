@@ -1,5 +1,8 @@
 <?php
 require_once(__DIR__ . '/../app/Repository/AdminRepository.php');
+require_once(__DIR__.'/../app/includes/sessionStart.php');
+require_once(__DIR__.'/../app/includes/sessionAuth.php');
+
 $adminRepo = new AdminRepository();
 $admins = $adminRepo->getAll();
 ?>
@@ -10,12 +13,6 @@ $admins = $adminRepo->getAll();
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/all.css">
-    <link rel="stylesheet" href="css/main.css">
-
     <title>Workshop | Dashboard</title>
 </head>
 <body>
@@ -36,7 +33,7 @@ $admins = $adminRepo->getAll();
                     <a class="nav-link" href="/login.php">Login</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/register.php">Register</a>
+                    <a class="nav-link" href="/app/Controllers/createAdmin.php">Register</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link active" href="/dashboard.php">Dashboard</a>
@@ -50,6 +47,16 @@ $admins = $adminRepo->getAll();
 </header>
 
 <article class="main container">
+<?php
+    require_once(__DIR__.'/../app/Models/Admin.php');
+    require_once(__DIR__.'/../app/includes/sessionStart.php');
+    if(isset($_SESSION['admin'])){
+        $admin = $_SESSION['admin'];
+        echo '<h2>Welcome back '.$admin->getname().'</h2>';
+    }else{
+        echo '<h2>please login to access home</h2>';  
+    }
+?>
     <section>
         <table class="table table-striped">
             <thead>
@@ -70,26 +77,16 @@ $admins = $adminRepo->getAll();
                 echo '<td>' . $admin->getEmail() . '</td>';
 
                 echo '<td>';
-                echo '<a class="btn btn-primary" href="/edit.php?id=' . $admin->getId() . '">Edit</a>';
-                echo '<a class="btn btn-danger m-lg-1" href="/app/Controllers/delete.php?id=' . $admin->getId() . '">Delete</a>';
+                echo '<a class="btn btn-primary" href="/views/adminEdit.php?id=' . $admin->getId() . '">Edit</a>';
+                echo '<a class="btn btn-danger m-lg-1" href="/../app/Controllers/deleteAdmin.php?id=' . $admin->getId() . '">Delete</a>';
                 echo '</td>';
 
                 echo '</tr>';
             }
             ?>
-
             </tbody>
         </table>
     </section>
 </article>
-
-<!-- Optional JavaScript -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="js/jquery-3.3.1.slim.min.js"></script>
-<script src="js/popper.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/jquery.validate.js"></script>
-<script src="js/main.js"></script>
-
 </body>
 </html>
