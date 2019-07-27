@@ -31,7 +31,7 @@ if ($hasErrors === false) {
     $success = $AdminRepo->create($data);
 
     if ($success) {
-        header('Location: /login.php');
+        header('Location: /views/index.html');
         exit();
     }
 }
