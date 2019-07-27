@@ -20,7 +20,7 @@ $admin = $adminRepo->login($data['email'], $data['password']);
 
 if ($admin) {
     $_SESSION['admin'] = $admin;
-    header('Location: /views/home.php');
+    header('Location: /views/adminDashboard.php');
     exit();
 
 } else {
