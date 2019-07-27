@@ -35,7 +35,7 @@ $admins = $adminRepo->getAll();
                     <a class="nav-link" href="/login.php">Login</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/register.php">Register</a>
+                    <a class="nav-link" href="/app/Controllers/createAdmin.php">Register</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link active" href="/dashboard.php">Dashboard</a>
@@ -49,6 +49,16 @@ $admins = $adminRepo->getAll();
 </header>
 
 <article class="main container">
+<?php
+    require_once(__DIR__.'/../app/Models/Admin.php');
+    require_once(__DIR__.'/../app/includes/sessionStart.php');
+    if(isset($_SESSION['admin'])){
+        $admin = $_SESSION['admin'];
+        echo '<h2>Welcome back '.$admin->getname().'</h2>';
+    }else{
+        echo '<h2>please login to access home</h2>';  
+    }
+?>
     <section>
         <table class="table table-striped">
             <thead>
@@ -69,14 +79,13 @@ $admins = $adminRepo->getAll();
                 echo '<td>' . $admin->getEmail() . '</td>';
 
                 echo '<td>';
-                echo '<a class="btn btn-primary" href="/edit.php?id=' . $admin->getId() . '">Edit</a>';
-                echo '<a class="btn btn-danger m-lg-1" href="/app/Controllers/delete.php?id=' . $admin->getId() . '">Delete</a>';
+                echo '<a class="btn btn-primary" href="/../app/Controller/updateAdmin.php?id=' . $admin->getId() . '">Edit</a>';
+                echo '<a class="btn btn-danger m-lg-1" href="/../app/Controllers/deleteAdmin.php?id=' . $admin->getId() . '">Delete</a>';
                 echo '</td>';
 
                 echo '</tr>';
             }
             ?>
-
             </tbody>
         </table>
     </section>
