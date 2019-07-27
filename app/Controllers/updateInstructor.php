@@ -7,7 +7,7 @@ require_once(__DIR__ . '/../Repository/InstructorRepository.php');
 session_start();
 
 
-
+$photo =$_FILES;
 $data = $_POST;
 
 //*** validate inputs ***//
@@ -31,16 +31,14 @@ $success = false;
 
 if ($hasErrors === false) {
 
+    $insRepo = new InstructorRepository();
+    $success = $insRepo->updateInstructor($data);
+}
 
 
-    $edit = new Instructor();
-    $edit->setId($data['id']);
-    $edit->setEmail($data['email']);
-    $edit->setBio($data['bio']);
-    $edit->setImagePath($data['image_path']);
-    $edit->setName($data['name']);
-    $userRepo = new InstructorRepository();
-    $success = $userRepo->updateInstructor($edit);
-
-
+//*** Handle redirection after saving ***//
+if ($success) {
+    $filePath = uploadFile();
+    header('Location: /views/studentDashboard_mm.php');
+    exit();
 }

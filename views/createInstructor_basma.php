@@ -92,8 +92,8 @@
                    <div class="col-sm-6 align-self-center auth-wrapper">
                         <div class="auth-intro">
                             <h1 class="auth-title">Create Instructor Form</h1>
-            <form id="NewInstructorForm">
-                 <div class="form-group">
+                            <form action="/ArkDevProject2/app/Controllers/createInstructor.php" method="post" id="NewInstructorForm" enctype="multipart/form-data">
+                                <div class="form-group">
                      <i class="far fa-user"></i>
                      <label for="name">Name:</label>
                      <input id="Name" name="name" type="text" placeholder="Enter your full name" class="form-control" required>
@@ -110,22 +110,17 @@
                      <label for="bio">Bio:</label>
                      <input id="bio" name="bio" type="text" placeholder="Enter your bio" class="form-control" required style="height: 70px">
                  </div>
-				 
 				
 				<div class="form-group">
-				 <form action="/action_page.php">
+
 				 <label for="pic">Profile Image:: </label>
-				 <input id="pic" type="file" name="pic" accept="image/*" class="form-control">
-				
-				 </form>
+				 <input id="pic" type="file" name="image_path" accept="image/*" class="form-control">
 				</div>
-				
-				
-				 
+
 				  <div class="text-center submit-btn">
                     <button type="Submit" class="btn btn-primary" >Submit</button>
                  </div>
-                
+
                  </form>
                  </div>
               </div>
@@ -140,4 +135,5 @@
 <script src="../js/main.js"></script>
             
 </body>
+    </body>
 </html>
