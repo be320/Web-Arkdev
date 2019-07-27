@@ -82,7 +82,7 @@ nav ul li.parent ul.child li a {
     background-color: rgba(0, 0, 0, 0.5);
     width: 98vw;
 
-    height: 150vh;
+    height: auto;
 
 }
 
@@ -207,8 +207,7 @@ table tr td:first-child::before {
 
 .submit-btn .btn {
     display: block;
-    width: 60%;
-    margin:auto;
+    width: 100%;
 }
 
 #navbar{
@@ -233,10 +232,6 @@ table tr td:first-child::before {
 	padding-left:10px;
 }
 .full-height {
-<<<<<<< HEAD
-    height: 109vh;
-}
-=======
     height: 107vh;
 
 }
@@ -272,4 +267,3 @@ margin-top:20vh;
 	  width: 30px;
 	  
   }
->>>>>>> 11f303e19dca7a68372f8a4c004b4a480b0c7991
