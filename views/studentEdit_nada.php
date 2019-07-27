@@ -109,9 +109,10 @@ exit();
                 <div class="auth-intro">
                     <h2 class="auth-title"> Edit Student Information </h2>
                 </div>
-                <form id="studentForm">
+                <form id="studentForm" method="post" action="../app/Controllers/updateStudent.php">
                     <div class="form-group">
                         <i class="far fa-user"></i>
+                        <input type="hidden" name="id" value="<?php echo $student->getId(); ?>">
                         <label for="name">Name</label>
                         <input id="name" type="name" placeholder="Edit Your Name" name="name" class="form-control" value="<?php echo $student->getName(); ?>" required/>
                     </div>
@@ -132,7 +133,7 @@ exit();
                     <div class="form-group">
                         <label for="level">Level</label>
                         <select class="form-control" name="level" id="level">
-                        <option value="<?php echo $student->getLevel(); ?>">.....</option>
+                        <option value="<?php echo $student->getLevel(); ?>"><?php echo $student->getLevel(); ?></option>
                         <option  value="Freshman">Freshman</option>
                         <option value="Sophomore">Sophomore</option>
                         <option value="Junior">Junior</option>
@@ -144,7 +145,7 @@ exit();
                     <div class="text-center submit-btn">
                         <button type="submit" name="submit" class="btn btn-primary">Submit</button>
                     </div>
-               
+                </form>
             </div>
         </div>
     </div>

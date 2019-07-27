@@ -127,7 +127,7 @@ background-color: #fff
 table td {
 	 background-color: #fff;
 }
-table tr: nth-child(even)
+table tr:nth-child(even)
  {
 	 background-color: #f2f2f2;
 }
@@ -232,12 +232,10 @@ table tr td:first-child::before {
 	padding-left:10px;
 }
 .full-height {
-<<<<<<< HEAD
+
     height: 109vh;
 }
-=======
-    height: 107vh;
->>>>>>> ff614c963d14851e2550a61103ed4644a5f32bd4
+
 
 
 .grid { 
