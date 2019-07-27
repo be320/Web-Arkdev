@@ -32,7 +32,7 @@ class CourseRepository
         $success = false;
         try{
             $db = DBConnection::connect();
-            $stmt = $db->prepare("DELETE FROM this->table WHERE id = :id");
+            $stmt = $db->prepare("DELETE FROM course WHERE id = :id");
             $success = $stmt->execute();
         }
         catch (PDOException $e){
@@ -45,19 +45,25 @@ class CourseRepository
     /**
      * @return string
      */
-    public function getById($id): Course
+    public function getById($id): course
     {
+        $result = null;
         try{
             $db = DBConnection::connect();
             $stmt = $db->prepare("SELECT * FROM course WHERE id=:id");
             $stmt->bindValue(':id',$id);
+            $stmt->execute();
             $stmt->setFetchMode(PDO::FETCH_CLASS, Course::class);
-            $result = $stmt->fetchAll();
+            $result = $stmt->fetch();
+            print_r($result);
+
+
         }
         catch (PDOException $e){
             echo $e->getMessage();
             exit();
         }
+        return $result;
     }
 
     public function update($course): bool
@@ -65,7 +71,7 @@ class CourseRepository
         $success = false;
         try {
             $db = DBConnection::connect();
-            $stmt = $db->prepare("UPDATE $this->table set name=:name, description=:description, image_path=:image_path, track_id=:track_id where id = :id");
+            $stmt = $db->prepare("UPDATE course set name=:name, description=:description, image_path=:image_path, track_id=:track_id where id = :id");
             $stmt->bindValue(':name', $course->getName());
             $stmt->bindValue(':description', $course->getDescription());
             $stmt->bindValue(':image_path', $course->getImagePath());
@@ -116,6 +122,15 @@ class CourseRepository
         }
         return $result;
 
+    }
+
+    public function checkExist($id): bool
+    {
+        $result = $this->getById($id);
+        if(empty($result)){
+            return false;
+        }
+        return true;
     }
 
 }

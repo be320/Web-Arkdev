@@ -52,7 +52,7 @@ class TrackRepository
         return $result;
     }
     public function deleteById($id):bool
-
+    {
 try{
     $db = DBConnection:: connect();
     $stmt = $db ->prepare("DELETE FROM $this ->table where id = :id");

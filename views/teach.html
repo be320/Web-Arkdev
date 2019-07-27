@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Assign Instructor to Course</title>
+</head>
+<body>
+
+<form action="/app/Controllers/teachAssign.php" method="post">
+    <input type="text" id="course_id_assign" name="course_id" placeholder="Course ID" required>
+    <input type="text" id="instructor_id_assign" name="instructor_id" placeholder="Instructor ID" required>
+    <button type="submit" name="submit" id="btn_assign">Assign</button>
+</form>
+<form action="/app/Controllers/teachUnassign.php" method="post">
+    <input type="text" id="course_id_unassign" name="course_id" placeholder="Course ID" required>
+    <input type="text" id="instructor_id_unassign" name="instructor_id" placeholder="Instructor ID" required>
+    <button type="submit" name="submit" id="btn_remove">Unassign</button>
+</form>
+<a href="courseDashboard.html" target="_blank"><button>Course Dashboard</button></a>
+<a href="instructorDashboard.html" target="_blank"><button>Instructor Dashboard</button></a>
+
+</body>
+</html>
