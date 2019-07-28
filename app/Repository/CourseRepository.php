@@ -6,16 +6,17 @@ class CourseRepository
 {
     protected $table = 'course';
 
-    public function create($data): bool
+    public function create($data,array $photo): bool
     {
         $success = false;
 
         try {
             $db = DBConnection::connect();
-            $stmt = $db->prepare("INSERT INTO course (name, description, track_id) VALUES (:fname,:description,:track_id)");
+            $stmt = $db->prepare("INSERT INTO course (name, description, track_id, image_path) VALUES (:fname,:description,:track_id, :image_path)");
             $stmt->bindValue(':fname',$data['name']);
             $stmt->bindValue(':description',$data['description']);
             $stmt->bindValue(':track_id',$data['track_id']);
+            $stmt->bindValue(':image_path',$photo['name']);
 
             $success = $stmt->execute();
 
@@ -33,6 +34,7 @@ class CourseRepository
         try{
             $db = DBConnection::connect();
             $stmt = $db->prepare("DELETE FROM course WHERE id = :id");
+            $stmt->bindValue(':id',$id);
             $success = $stmt->execute();
         }
         catch (PDOException $e){
@@ -55,9 +57,6 @@ class CourseRepository
             $stmt->execute();
             $stmt->setFetchMode(PDO::FETCH_CLASS, Course::class);
             $result = $stmt->fetch();
-            print_r($result);
-
-
         }
         catch (PDOException $e){
             echo $e->getMessage();
@@ -77,7 +76,9 @@ class CourseRepository
             $stmt->bindValue(':image_path', $course->getImagePath());
             $stmt->bindValue(':track_id', $course->getTrackId());
             $stmt->bindValue(':id', $course->getID());
-            $success = $stmt->fetch();
+            $success = $stmt->execute();
+            var_dump($success);
+            var_dump($stmt);
         }
         catch (PDOException $e){
             echo $e->getMessage();
@@ -87,9 +88,6 @@ class CourseRepository
         return $success;
     }
 
-    /**
-     * @return string
-     */
     public function updateImagePath($filePath, $data): bool
     {
         $success = false;

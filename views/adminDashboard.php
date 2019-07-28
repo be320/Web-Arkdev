@@ -6,6 +6,7 @@ require_once(__DIR__.'/../app/includes/sessionAuth.php');
 $adminRepo = new AdminRepository();
 $admins = $adminRepo->getAll();
 ?>
+
 <!doctype html>
 <html lang="en">
 <head>
