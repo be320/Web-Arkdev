@@ -12,15 +12,18 @@
  * }
  *  status -> 0 means user was created
  *  status -> 1 means couldn't insert user in database
- *  status -> 2 means email is already registered
- *  status -> 3 means paramters sent are invalid
+ *  status -> 2 means paramters sent are invalid
+ *  status -> 3 means email is already registered
  *
  */
 require_once(__DIR__ . '/../Repository/StudentRepository.php');
-require_once(__DIR__ . '/../includes/uploadFile.php');
+require_once(__DIR__ . '/../includes/uploadImage.php');
 
-$inputJSON = file_get_contents('php://input');
-$data = json_decode($inputJSON, true);
+// if input is json
+// $inputJSON = file_get_contents('php://input');
+// $data = json_decode($inputJSON, true);
+
+$data = $_POST;
 
 $hasErrors = false;
 
@@ -53,46 +56,53 @@ if (!isset($data['gender']) || empty($data['gender'])) {
     $hasErrors = true;
 }
 
+
 //validate that email doesn't exist in database
 $studentRepo = new StudentRepository();
 $check = $studentRepo->getByEmail($data['email']);
 
 if ($check != null) {
-    $response["status"] = 2;
+    $response["status"] = 3;
     $response["message"] = "email already registerd";
     echo json_encode($response);
     exit();
 }
 
+
+
 //*** Insert request data into DB ***//
-$success = false;
 
 $response = [];
 
-if ($hasErrors === false) {
-    $success = $studentRepo->create($data);
+if($hasErrors) {
+    $response["status"] = 2;
+    $response["message"] = "invalid or missing paramters";
+    echo json_encode($response);
+    exit();
+}
 
-    // Start upload user image if user created successfully
-    if ($success) {
-        $response["status"] = 0;
+$success = $studentRepo->create($data, $_FILES);
 
+// Start upload user image if user created successfully
+if ($success) {
+    $response["status"] = 0;
+    $response['message'] = "User created";
+
+    if(isset($_FILES['image_path'])) {
         $filePath = uploadFile();
+
         if ($filePath != false) {
             $studentRepo->updateImagePath($data['email'], $filePath);
-            $response['message'] = "User created and img was successfully uploaded";
+            $response['message'] = $response['message'] . " and img was successfully uploaded";
 
         } else {
-            $response['message'] = "User created but couldn't upload img";
-
+            $response['message'] = $response['message'] . " but couldn't upload img";
         }
-    } else {
-        $response["status"] = 1;
-        $response["message"] = "couldn't create user try again later";
-
     }
+
 } else {
-    $response["status"] = 3;
-    $response["message"] = "invalid or missing paramters";
+    $response["status"] = 1;
+    $response["message"] = "couldn't create user try again later";
 
 }
 
