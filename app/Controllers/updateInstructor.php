@@ -31,14 +31,19 @@ $success = false;
 
 if ($hasErrors === false) {
 
+
+    $instuctor = new Instructor();
+    $instuctor->setInstructorId($data['id']);
+    $instuctor->setBio($data['bio']);
+    $instuctor->setName($data['name']);
+    $instuctor->setEmail($data['email']);
     $insRepo = new InstructorRepository();
-    $success = $insRepo->updateInstructor($data);
-}
+    $success = $insRepo->updateInstructor($instuctor);
 
 
 //*** Handle redirection after saving ***//
-if ($success) {
-    $filePath = uploadFile();
-    header('Location: /views/studentDashboard_mm.php');
-    exit();
+    if ($success) {
+        header('Location: /ArkDevProject2/views/instructorDashboard_mm.php');
+        exit();
+    }
 }

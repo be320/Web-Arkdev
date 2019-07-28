@@ -1,27 +1,11 @@
 <?php
 
 require_once(__DIR__ . '/../app/Repository/InstructorRepository.php');
-
-// Check if there are parameter in Get
-if (isset($_GET['id']) && !empty($_GET['id'])) {
-    $id = $_GET['id'];
-} else {
-    echo 'There is no parameter id in requested URL.';
-
-    exit();
-}
-
-$instructorRepository = new InstructorRepository();
-$instructor = $instructorRepository->getById($id);
-
-// Check if there are exist user with $user_id
-if (!$instructor) {
-    echo 'No Student with the selected ID';
-    exit();
-}
+$instructorRepo = new InstructorRepository();
+$instructors = $instructorRepo->getAll();
+//print_r($instructors);
+//exit();
 ?>
-
-
 
 <!doctype html>
 <html lang="en">
@@ -34,11 +18,12 @@ if (!$instructor) {
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/all.css">
     <link rel="stylesheet" href="../css/main.css">
-    <title>project | edit</title>
+
+    <title>Instructor | Dashboard</title>
 </head>
 
 <body>
-    <header>
+<header>
 
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark indigo">
         <a class="navbar-brand" href="#"><strong>Welcome</strong></a>
@@ -103,56 +88,49 @@ if (!$instructor) {
     </nav>
 
 </header>
+
+<!------------------------------------------------------------------------------------------------------------------->
 <div class="main">
     <div class="main-img">
-        <img src="../images/books.jpg" class="banner" alt="banner"/>
+        <img style="height:190px"src="../images/books.jpg" class="banner" alt="banner"/>
     </div>
-    <div class="container">
-        <div class="row justify-content-center align-items-center full-height">
-            <div class="col-sm-6 align-self-center auth-wrapper">
-                <div class="auth-intro">
-                    <h2 class="auth-title"> Edit Instructor Information </h2>
-                </div>
-                <form id="Instructor_Form" action="/ArkDevProject2/app/Controllers/updateInstructor.php" method="post" enctype="multipart/form-data">
-                    <div class="form-group">
-                        <i class="far fa-user"></i>
-
-                        <input type="hidden" name="id" value="<?php echo $instructor->getInstructorId() ; ?>" >
+	<div style="padding-top:43px; padding-left:390px; marginbackground-color:none;" id="navbar">
+		<ul>
+		<li><input style="border:2px solid #6da17b" type="text" placeholder="Name"></li>
+		<li><input style="border:2px solid white; width:160px; background-color:#6da17b; color: white; text-align:center;" type="button" value="Search Instructor"></li>
+		</ul>
+	</div>
+<main class="grid">
 
 
-                        <label for="name">Name</label>
-                        <input id="name" type="name" placeholder="Edit Your Name" name="name" class="form-control" value="<?php echo $instructor->getName(); ?>" required/>
-                    </div>
-             
-                    <div class="form-group">
-                        <i class="fa fa-envelope"></i>
-                        <label for="email">Email</label>
-                        <input id="email" type="email" placeholder="Edit Your Email" name="email"  class="form-control" value="<?php echo $instructor->getEmail(); ?>"required/>
-                    </div>
-                    
-                    <div class="form-group">
-                        <i class="fa fa-pencil"></i>
-                        <label for="Bio">Bio</label>
-                        <textarea id="bio" placeholder="Add info..." name="bio"  class="form-control" required> <?php echo $instructor->getBio();?> </textarea>
-                    </div>
-                    
-                   <!-- <div class="form-group">
-                        <i class="fas fa-camera"></i>
-                        <label for="image">add image</label>
-                        <input type="file" id="instructorImage" name="image" class="form-control" accept="image/*">
+<?php
 
-                            </div> -->
 
-                    <div class="text-center submit-btn">
-                        <button type="submit" name="submit" class="btn btn-primary">Submit</button>
-                    </div>
-                
-            </div>
-        </div>
-    </div>
+
+foreach ($instructors as &$instructor) {
+
+  echo' <article>';
+  echo' <img style="height:190px" src="../images/'.$instructor->getImagePath().'"'.' alt="Sample photo">';
+  echo' <div class="text">';
+  echo'   <p>';
+  echo'	  <b style="display: block; text-decoration:underline">Name:</b><br>'.$instructor->getName().'<br>';
+  echo'	  <b style="display: block; text-decoration:underline">Email:</b><br>'.$instructor->getEmail().'<br>';
+  echo'	  <b style="display: block; text-decoration:underline">Bio: </b><br>'.$instructor->getBio().'<br>';
+
+  echo'  </p>';
+  echo' <a class="btn btn-primary m-lg-1" href="../views/instructorEdit_nada.php?id=' . $instructor->getInstructorId(). '">Edit</a> ';
+  echo' <a class="btn btn-danger m-lg-1" href="../app/Controllers/deleteInstructor.php?id=' . $instructor->getInstructorId(). '">Delete</a> ';
+    echo' </div>';
+  echo'</article>';
+}
+
+?>
+
+
+  
+
+</main>
 </div>
-
-
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="../js/jquery-3.3.1.slim.min.js"></script>
