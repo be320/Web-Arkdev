@@ -7,6 +7,7 @@ header
 }
 body{
 	background-color: white;
+	overflow:auto;
 }
 
 /* Main Navigation */
@@ -270,6 +271,7 @@ margin-top:20vh;
 }
 .grid > article img {
   max-width: 100%;
+  max-height: 300px;
 }
 .text {
   padding: 0 20px 20px;
