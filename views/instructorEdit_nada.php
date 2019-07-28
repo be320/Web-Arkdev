@@ -7,6 +7,7 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
     $id = $_GET['id'];
 } else {
     echo 'There is no parameter id in requested URL.';
+
     exit();
 }
 
@@ -14,7 +15,7 @@ $instructorRepository = new InstructorRepository();
 $instructor = $instructorRepository->getById($id);
 
 // Check if there are exist user with $user_id
-if (!$student) {
+if (!$instructor) {
     echo 'No Student with the selected ID';
     exit();
 }
@@ -119,7 +120,10 @@ if (!$student) {
                 <form id="Instructor_Form" action="/ArkDevProject2/app/Controllers/updateInstructor.php" method="post" enctype="multipart/form-data">
                     <div class="form-group">
                         <i class="far fa-user"></i>
-                        <input type="hidden" name="id" value="<?php echo $instructor->getById(); ?>">
+
+                        <input type="hidden" name="id" value="<?php echo $instructor->getInstructorId() ; ?>" >
+
+
                         <label for="name">Name</label>
                         <input id="name" type="name" placeholder="Edit Your Name" name="name" class="form-control" value="<?php echo $instructor->getName(); ?>" required/>
                     </div>
@@ -133,15 +137,16 @@ if (!$student) {
                     <div class="form-group">
                         <i class="fa fa-pencil"></i>
                         <label for="Bio">Bio</label>
-                        <textarea id="bio" placeholder="Add info..." name="bio"  class="form-control"  value="<?php echo $instructor->getBio();?> "required></textarea>
+                        <textarea id="bio" placeholder="Add info..." name="bio"  class="form-control" required> <?php echo $instructor->getBio();?> </textarea>
                     </div>
                     
-                    <div class="form-group">
+                   <!-- <div class="form-group">
                         <i class="fas fa-camera"></i>
                         <label for="image">add image</label>
                         <input type="file" id="instructorImage" name="image" class="form-control" accept="image/*">
 
-                            </div> 
+                            </div> -->
+
                     <div class="text-center submit-btn">
                         <button type="submit" name="submit" class="btn btn-primary">Submit</button>
                     </div>

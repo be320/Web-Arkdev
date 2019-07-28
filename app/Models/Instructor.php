@@ -4,7 +4,7 @@
 class Instructor
 {
 
-    protected $instructor_id;
+    protected $id;
     protected $name;
     protected $email;
     protected $bio;
@@ -23,7 +23,7 @@ class Instructor
      */
     public function setInstructorId($instructor_id)
     {
-        $this->instructor_id = $instructor_id;
+        $this->id = $instructor_id;
     }
 
     /**
@@ -63,7 +63,7 @@ class Instructor
      */
     public function getInstructorId()
     {
-        return $this->instructor_id;
+        return $this->id;
     }
 
     /**

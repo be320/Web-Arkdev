@@ -7,7 +7,7 @@ class InstructorRepository
 
     public function createInstructor($data , $photo): bool
     {
-        $success = false;
+
         try {
             $db = DBConnection::connect();
             $stmt = $db->prepare("INSERT INTO instructor (name, email, bio ,image_path) VALUES (:Insname,:email,:bio,:image_path)");
@@ -26,18 +26,16 @@ class InstructorRepository
 
     public function updateInstructor( $data ): bool
     {
-        $success = false;
+
         try {
             $db = DBConnection::connect();
-            $stmt = $db->prepare("UPDATE  instructor set name=:name, email=:email, image_path=:image_path, bio=:bio where id = :id");
+            $stmt = $db->prepare("UPDATE  instructor set name=:name, email=:email, bio=:bio  where id =:id");
             $stmt->bindValue(':name', $data->getName());
             $stmt->bindValue(':email', $data->getEmail());
-            $stmt->bindValue(':image_path', $data->getImagePath());
-            $stmt->bindValue(':id', $data-> getInstructorId());
+            $stmt->bindValue(':id', $data->getInstructorId());
             $stmt->bindValue(':bio', $data->getBio());
+            $success = $stmt->execute();
 
-
-            $success = $stmt->fetch();
         }
         catch (PDOException $e){
             echo $e->getMessage();
@@ -50,8 +48,10 @@ class InstructorRepository
     {
         $success = false;
         try{
+
             $db = DBConnection::connect();
-            $stmt = $db->prepare("DELETE FROM this->table WHERE id = :id");
+            $stmt = $db->prepare("DELETE FROM instructor WHERE id = :id");
+            $stmt->bindValue(':id',$id );
             $success = $stmt->execute();
         }
         catch (PDOException $e){
@@ -74,7 +74,7 @@ class InstructorRepository
             $stmt = $db->prepare("SELECT * FROM instructor WHERE id=:id");
             $stmt->bindValue(':id',$instructorId);
             $stmt->execute();
-            $stmt->setFetchMode(PDO::FETCH_ASSOC);
+            $stmt->setFetchMode(PDO::FETCH_CLASS, Instructor::class);
             $result = $stmt->fetch();
         }
         catch (PDOException $e){
@@ -83,5 +83,22 @@ class InstructorRepository
         }
         return $result;
     }
+
+    public  function getAll(){
+
+        try {
+            $db = DBConnection::connect();
+            $stmt = $db->prepare("SELECT * FROM instructor");
+            $stmt->execute();
+            $stmt->setFetchMode(PDO::FETCH_CLASS, Instructor::class);
+            $result = $stmt->fetchAll();
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+            exit();
+        }
+
+        return $result;
+    }
+
 
 }
