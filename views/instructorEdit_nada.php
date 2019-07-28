@@ -141,12 +141,11 @@ if (!$instructor) {
                         <textarea id="bio" placeholder="Add info..." name="bio"  class="form-control" required> <?php echo $instructor->getBio();?> </textarea>
                     </div>
                     
-                   <!-- <div class="form-group">
+                   <div class="form-group">
                         <i class="fas fa-camera"></i>
                         <label for="image">add image</label>
-                        <input type="file" id="instructorImage" name="image" class="form-control" accept="image/*">
-
-                            </div> -->
+                        <input type="file" id="instructorImage"  name="image_path" class="form-control" accept="image/*">
+                            </div>
 
                     <div class="text-center submit-btn">
                         <button type="submit" name="submit" class="btn btn-primary">Submit</button>
