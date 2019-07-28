@@ -1,3 +1,8 @@
+<?php
+require_once(__DIR__ . '/../app/Repository/CourseRepository.php');
+$courseRepo = new CourseRepository();
+$courses = $courseRepo->getAll();
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -10,7 +15,7 @@
     <link rel="stylesheet" href="../css/all.css">
     <link rel="stylesheet" href="../css/main.css">
 
-    <title>Instructor | Dashboard</title>
+    <title>Course | Dashboard</title>
 </head>
 
 <body>
@@ -27,7 +32,7 @@
                     <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
                 </li>
 				<li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
          Admins
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -36,7 +41,7 @@
         </div>
 				
 				<li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
          Instructors
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -46,7 +51,7 @@
                 
 				
 				<li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
          Students
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -56,15 +61,15 @@
                 
 				
 				<li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
          Courses
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="#">Create</a>
-          <a class="dropdown-item" href="#">Dashboard</a>
+          <a class="dropdown-item" href="createCourse_basma.php">Create</a>
+          <a class="dropdown-item" href="courseDashboard_mm.php">Dashboard</a>
         </div>
 				<li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
          Tracks
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -85,32 +90,42 @@
     <div class="main-img">
         <img src="../images/books.jpg" class="banner" alt="banner"/>
     </div>
-	<div style="padding-top:43px; padding-left:390px; marginbackground-color:none;" id="navbar">
+    <form method="get" action="">
+	<div style="padding-top:43px; padding-left:210px; marginbackground-color:none;" id="navbar">
 		<ul>
 		<li><input style="border:2px solid #6da17b" type="text" placeholder="Name"></li>
-		<li><input style="border:2px solid white; width:160px; background-color:#6da17b; color: white; text-align:center;" type="button" value="Search Instructor"></li>
+		<li>
+		<select style="font-weight:bold;border:2px solid #6da17b;margin-left:4px; height:30px">
+			<option style="color:#6da17b;font-weight:bold;">Track:</option>
+			<option>Computer</option>
+			<option>Communication</option>
+			<option>Building</option>
+		</select>
+		</li>
+		<li><input style="border:2px solid #6da17b" type="text" placeholder="Instructors"></li>
+		<li><input style="border:2px solid white; width:130px; background-color:#6da17b; color: white; text-align:center;" type="button" value="Search Course"></li>
 		</ul>
 	</div>
-	
+    </form>
 <main class="grid">
-  
-  <article>
-    <img src="../images/books.jpg" alt="Sample photo">
-	
-    <div class="text">
-      <p>
-	  <b style="text-decoration:underline">Name:</b><br>Jack<br>
-	  <b style="text-decoration:underline">Email:</b><br>jack@gmail.com<br>
-	  <b style="text-decoration:underline">Bio: </b><br> Remember, not every element 
-	  needs to appear in the same order as this list, and some may be skipped (when, who, why),
-	  depending on story content or the editor’s inclination.<br>
-	  </p>
-      <a class="btn btn-primary m-lg-1" href="#">Edit</a>
-      <a class="btn btn-danger m-lg-1" href="#">Delete</a>
-    </div>
-  </article>
-  
 
+    <?php
+    foreach ($courses as $course){
+        echo '<article>';
+        echo '<img src="../images/'.$course->getImagePath().'" alt="Sample photo">';
+        echo '<div class="text">';
+        echo '<p>';
+        echo '<b style="text-decoration:underline">Name:</b><br>'. $course->getName() .'<br>';
+        echo '<b style="text-decoration:underline">ID:</b><br>'. $course->getId() .'<br>';
+        echo '<b style="text-decoration:underline">Description:</b><br>'.$course->getDescription().'<br>';
+        echo '<b style="text-decoration:underline">Track:</b><br>'.$course->getTrackId(). '</b>';
+        echo '</p>';
+        echo '<a class="btn btn-primary m-lg-1" href="/views/courseEdit_nada.php?id='  . $course->getId() .  '">Edit</a>';
+        echo '<a class="btn btn-danger m-lg-1" href="/app/Controllers/deleteCourse.php?id='  .  $course->getId().  '">Delete</a>';
+        echo'</div> ';
+        echo '</article>';
+    }
+    ?>
 
 </main>
 </div>

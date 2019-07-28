@@ -1,20 +1,29 @@
-<!doctype html>
-<html lang="en">
+<?php
+require_once(__DIR__.'/../app/Repository/TrackRepository.php');
+require_once(__DIR__.'/../app/Models/Track.php');
+$trackRepo = new TrackRepository();
+$tracks = $trackRepo->getAll();
+
+?>
+<!DOCTYPE html>
+<html lang= "en">
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/all.css">
-    <link rel="stylesheet" href="../css/main.css">
 
-    <title>Assign Instructor to Course</title>
+    <title>New Course Form</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-
 <body>
 <header>
+
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark indigo">
         <a class="navbar-brand" href="#"><strong>Welcome</strong></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -59,8 +68,8 @@
                         Courses
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="#">Create</a>
-                        <a class="dropdown-item" href="#">Dashboard</a>
+                        <a class="dropdown-item" href="createCourse_basma.php">Create</a>
+                        <a class="dropdown-item" href="courseDashboard_mm.php">Dashboard</a>
                     </div>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -79,44 +88,52 @@
 
 </header>
 
-<!------------------------------------------------------------------------------------------------------------------->
+<body>
+
 <div class="main">
     <div class="main-img">
-        <img style="height:190px"src="../images/books.jpg" class="banner" alt="banner"/>
+        <img src="../images/books.jpg" class="banner" alt="banner"/>
     </div>
-    <br>
-    <br>
-    <br>
-    <br>
     <div class="container">
-        <div class="row justify-content-center align-items-center">
+        <div class="row justify-content-center align-items-center full-height">
             <div class="col-sm-6 align-self-center auth-wrapper">
                 <div class="auth-intro">
-                    <h1 class="auth-title">Assign Instructor Form</h1>
+                    <h1 class="auth-title">Adding New Courses form</h1>
+                    <form id="NewCourseForm" method="post" action="\app\Controllers\createCourse.php" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label for="name">CourseName:</label>
+                            <input id="Name" name="name" type="text" placeholder="Enter course name" class="form-control" required>
+                        </div>
 
 
-                    <form id="assignInstructor">
-                        <input type="text" id="course_id_assign" class="form-control d-block w-100 mb-1" name="course_id" placeholder="Course ID" required>
-                        <input type="text" id="instructor_id_assign" class="form-control d-block w-100 mb-1" name="instructor_id" placeholder="Instructor ID" required>
-                        <button type="submit" name="assign" id="btn_assign" class="form-control d-block w-100 btn btn-primary">Assign</button>
-                        <hr>
-                        <input type="text" id="course_id_unassign" class="form-control d-block w-100 mb-1" name="course_id" placeholder="Course ID" required>
-                        <input type="text" id="instructor_id_unassign" class="form-control d-block w-100 mb-1" name="instructor_id" placeholder="Instructor ID" required>
-                        <button type="submit" name="unassign" id="btn_remove" class="form-control d-block w-100 btn btn-danger">Unassign</button>
+                        <div class="form-group">
+                            <label for="trackName">Track Name:</label>
+                            <input id="track" name="track_id" type="text" placeholder="Enter Track ID" class="form-control" required>
+
+                        </div>
+
+                        <div class="form-group">
+                            <label for="description">Description:</label>
+                            <input id="description" name="description" type="text" placeholder="Enter course description" class="form-control" required style="height: 70px">
+                        </div>
+
+                        <div class="form-group">
+                                <label for="pic">Course Image: </label>
+                                <input id="pic" type="file" name="image_path" accept="image/*" class="form-control">
+                        </div>
+
+
+                        <div class="text-center submit-btn">
+                            <button type="Submit" class="btn btn-primary" >Submit</button>
+                        </div>
+
                     </form>
-                    <br>
-                    <div class="text-center">
-                        <a href="courseDashboard.html" target="_blank"><button class="btn btn-secondary mb-1">Course Dashboard</button></a>
-                        <a href="instructorDashboard.html" target="_blank"><button class="btn btn-secondary mb-1">Instructor Dashboard</button></a>
-                    </div>
                 </div>
             </div>
         </div>
     </div>
-
 </div>
-<!-- Optional JavaScript -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
 <script src="../js/jquery-3.3.1.slim.min.js"></script>
 <script src="../js/popper.min.js"></script>
 <script src="../js/bootstrap.min.js"></script>
@@ -125,3 +142,5 @@
 
 </body>
 </html>
+
+

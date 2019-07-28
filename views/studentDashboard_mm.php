@@ -1,5 +1,5 @@
 <?php
-require_once(__DIR__ . '/../app/Repository/StudentRepository.php');
+require_once(__DIR__ . '../app/Repository/StudentRepository.php');
 $studentRepo = new StudentRepository();
 $students = $studentRepo->getAll();
 ?>
@@ -135,17 +135,13 @@ foreach ($students as $student)
 	  echo'<b style="text-decoration:underline">Level:</b><br>'.$student->getLevel().'<br>';
 
 	   echo'</p> ';
-      echo' <a class="btn btn-primary m-lg-1" href="/views/studentEdit_nada.html?id=' . $student->getId() . '">Edit</a> ';
+      echo' <a class="btn btn-primary m-lg-1" href="/views/studentEdit_nada.php?id=' . $student->getId() . '">Edit</a> ';
       echo' <a class="btn btn-danger m-lg-1" href="/app/Controllers/deleteStudent.php?id=' . $student->getId() . '">Delete</a> ';
      echo'</div> ';
    echo'</article> ';
 
 }
 
-function imageToShow()
-{
-
-}
   
  ?>
 

@@ -1,21 +1,29 @@
-<!DOCTYPE html>
-<html lang= "en">
-    <head>
-         <!-- Required meta tags -->
+<?php
+require_once(__DIR__ . '/../app/Repository/AdminRepository.php');
+require_once(__DIR__.'/../app/includes/sessionStart.php');
+require_once(__DIR__.'/../app/includes/sessionAuth.php');
+
+$adminRepo = new AdminRepository();
+$admins = $adminRepo->getAll();
+?>
+
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/all.css">
-      
-        <title>New Course Form</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-	<header>
+    <link rel="stylesheet" href="../css/main.css">
+
+    <title>Student | Dashboard</title>
+</head>
+
+<body>
+<header>
 
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark indigo">
         <a class="navbar-brand" href="#"><strong>Welcome</strong></a>
@@ -81,68 +89,54 @@
 
 </header>
 
-<body>
-
-       <div class="main">
+<!------------------------------------------------------------------------------------------------------------------->
+<div class="main">
     <div class="main-img">
         <img src="../images/books.jpg" class="banner" alt="banner"/>
     </div>
-             <div class="container">
-              <div class="row justify-content-center align-items-center full-height">
-                   <div class="col-sm-6 align-self-center auth-wrapper">
-                        <div class="auth-intro">
-                            <h1 class="auth-title">Adding New Courses form</h1>
-            <form id="NewCourseForm">
-                 <div class="form-group">
-                     <label for="name">CourseName:</label>
-                     <input id="Name" name="name" type="text" placeholder="Enter course name" class="form-control" required>
-                 </div>
-				 
-				
-				 <div class="form-group">
-                 <label for="trackName">Track Name:</label>
-				  <select class="form-control" name="track" id="track">
-				 <option value= "0">...</option>
-				 <option value= "1">Computer</option>
-				 <option value= "2">Mechatronics</option>
-				 <option value= "3">Landscape</option>
-				 <option value= "3">Communication</option>
-				 <option value= "4">Building</option>
-				 <option value= "5">Materials</option>
-				 <option value= "6">Manufacturing</option>
-				 </select>
-				 </div>
-				 
-				 <div class="form-group">
-                     <label for="description">Description:</label>
-                     <input id="description" name="description" type="text" placeholder="Enter course description" class="form-control" required style="height: 70px">
-                 </div>
-				 
-				<div class="form-group">
-				 <form action="/action_page.php">
-				 <label for="pic">Course Image: </label>
-				 <input id="pic" type="file" name="pic" accept="image/*" class="form-control">
-				
-				 </form>
-				</div>
-				
-				 
-				  <div class="text-center submit-btn">
-                    <button type="Submit" class="btn btn-primary" >Submit</button>
-                 </div>
-                
-                 </form>
-                 </div>
-              </div>
-         </div>
-    </div>
+	<div id="navbar">
+		<ul>
+		<li><input style="border:2px solid black" type="text" placeholder="Name"></li>
+		<li><input style="width:70px; text-align:left;" type="button" value="Search"></li>
+		</ul>
 	</div>
-            
+<article class="main container">
+    <section>
+	<div>
+	<table  class="table table-striped">
+		<thead>
+            <tr  class="table-info">
+                <th style="text-align:center; border-bottom:2px solid black; border-right:1px solid black;" scope="col">ID</th>
+                <th style="text-align:center; border-bottom:2px solid black;border-right:1px solid black;" scope="col">Name</th>
+                <th style="text-align:center; border-bottom:2px solid black; border-right:2px solid black; " scope="col">Email</th>
+                <th style="text-align:center; border-bottom:2px solid black; padding-left:10px" colspan="2" scope="col">Actions</th>
+            </tr>
+		</thead>
+		<tbody> 
+      <?php
+      foreach ($admins as $admin){
+        echo('<tr>');
+        echo('<td>'.$admin->getId() .'</td>');
+        echo('<td>'.$admin->getName().'</td>'); 
+        echo('<td style="border-right:2px solid black;">' . $admin->getEmail() . '</td>'); 
+        echo('<td style="text-align:center;"><button style="background-color:BLUE; font-weight:bold; color:white; border:2px solid black;" type="button">Edit</button></td>'); 
+        echo('<td style="text-align:center;"><button style="background-color:RED; font-weight:bold; color:white; border:2px solid black;" type="button">Delete</button></td>');   
+        echo('</tr>');
+      }
+      ?>   
+		</tbody>
+	</table>
+		</div>
+    </section>
+</article>
+</div>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="../js/jquery-3.3.1.slim.min.js"></script>
 <script src="../js/popper.min.js"></script>
 <script src="../js/bootstrap.min.js"></script>
 <script src="../js/jquery.validate.js"></script>
 <script src="../js/main.js"></script>
-            
+
 </body>
 </html>

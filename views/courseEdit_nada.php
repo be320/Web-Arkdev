@@ -1,3 +1,18 @@
+<?php
+require_once(__DIR__.'/../app/Repository/CourseRepository.php');
+require_once(__DIR__.'/../app/Models/Course.php');
+
+$data = $_GET;
+if(!isset($data['id']) || empty($data['id'])){
+    echo 'Error in this Request';
+    exit();
+}
+else {
+    $courseRepo = new CourseRepository();
+    $course = $courseRepo->getById($data['id']);
+}
+?>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -9,12 +24,12 @@
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/all.css">
     <link rel="stylesheet" href="../css/main.css">
-
-    <title>Assign Instructor to Course</title>
+    <title>project | edit</title>
 </head>
 
 <body>
 <header>
+
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark indigo">
         <a class="navbar-brand" href="#"><strong>Welcome</strong></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -78,43 +93,45 @@
     </nav>
 
 </header>
-
-<!------------------------------------------------------------------------------------------------------------------->
 <div class="main">
     <div class="main-img">
-        <img style="height:190px"src="../images/books.jpg" class="banner" alt="banner"/>
+        <img src="../images/books.jpg" class="banner" alt="banner"/>
     </div>
-    <br>
-    <br>
-    <br>
-    <br>
     <div class="container">
-        <div class="row justify-content-center align-items-center">
+        <div class="row justify-content-center align-items-center full-height">
             <div class="col-sm-6 align-self-center auth-wrapper">
                 <div class="auth-intro">
-                    <h1 class="auth-title">Assign Instructor Form</h1>
-
-
-                    <form id="assignInstructor">
-                        <input type="text" id="course_id_assign" class="form-control d-block w-100 mb-1" name="course_id" placeholder="Course ID" required>
-                        <input type="text" id="instructor_id_assign" class="form-control d-block w-100 mb-1" name="instructor_id" placeholder="Instructor ID" required>
-                        <button type="submit" name="assign" id="btn_assign" class="form-control d-block w-100 btn btn-primary">Assign</button>
-                        <hr>
-                        <input type="text" id="course_id_unassign" class="form-control d-block w-100 mb-1" name="course_id" placeholder="Course ID" required>
-                        <input type="text" id="instructor_id_unassign" class="form-control d-block w-100 mb-1" name="instructor_id" placeholder="Instructor ID" required>
-                        <button type="submit" name="unassign" id="btn_remove" class="form-control d-block w-100 btn btn-danger">Unassign</button>
-                    </form>
-                    <br>
-                    <div class="text-center">
-                        <a href="courseDashboard.html" target="_blank"><button class="btn btn-secondary mb-1">Course Dashboard</button></a>
-                        <a href="instructorDashboard.html" target="_blank"><button class="btn btn-secondary mb-1">Instructor Dashboard</button></a>
-                    </div>
+                    <h2 class="auth-title"> Edit Course Information </h2>
                 </div>
+                <form id="courseForm" method="post" action="\app\Controllers\updateCourse.php">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input id="name" type="name" placeholder="Edit Your Name" name="name" class="form-control" value="<?php echo $course->getName(); ?>" required/>
+                    </div>
+                    <div class="form-group">
+                        <label for="name">ID</label>
+                        <input id="id" type="name" placeholder="Course ID" name="id" class="form-control" value="<?php echo $course->getId(); ?>" required/>
+                    </div>
+                    <div class="form-group">
+                        <label for="name">Track</label>
+                        <input id="name" type="name" placeholder="Exist in which Track" name="track_id" class="form-control" value="<?php echo $course->getTrackId(); ?>" required/>
+                    </div>
+                    <div class="form-group">
+                        <i class="fa fa-edit"></i>
+                        <label for="description">Description</label>
+                        <textarea id="description" placeholder="Add info..." name="description"  class="form-control" required><?php echo $course->getDescription(); ?></textarea>
+                    </div>
+
+                    <div class="text-center submit-btn">
+                        <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+                    </div>
+
             </div>
         </div>
     </div>
-
 </div>
+
+
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="../js/jquery-3.3.1.slim.min.js"></script>

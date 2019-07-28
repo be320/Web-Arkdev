@@ -29,9 +29,6 @@ if (!isset($data['level']) || empty($data['level'])) {
     $hasErrors = true;
 }
 
-if (!isset($data['gender']) || empty($data['gender'])) {
-    $hasErrors = true;
-}
 
 
 
@@ -48,6 +45,6 @@ if ($hasErrors === false) {
 
 //*** Handle redirection after saving ***//
 if ($success) {
-   // header('Location: /views/index.html');
-   // exit();
+    header('Location: /views/studentDashboard_mm.php');
+    exit();
 }
