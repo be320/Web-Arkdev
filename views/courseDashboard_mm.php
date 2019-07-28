@@ -94,23 +94,31 @@ $courses = $courseRepo->getAll();
     <div class="main-img">
         <img src="../images/books.jpg" class="banner" alt="banner"/>
     </div>
-    <form method="get" action="">
-	<div style="padding-top:43px; padding-left:210px; marginbackground-color:none;" id="navbar">
-		<ul>
-		<li><input style="border:2px solid #6da17b" type="text" placeholder="Name"></li>
-		<li>
+	
+	 <br><br><br><br>
+	<div class="container">
+        <div class="row justify- align-items-center ">
+<div class="col-sm-12 align-self-center auth-wrapper" style="background-color: rgb(0,0,0,0);border: 0;box-shadow: 0 0 12px 3px black;">	
+  <form method="get" action="" class="form-inline"style="align-items: center;justify-content: center;" >
+ <input style="border:2px solid #6da17b" type="text" placeholder="Name">
+
+		
 		<select style="font-weight:bold;border:2px solid #6da17b;margin-left:4px; height:30px">
 			<option style="color:#6da17b;font-weight:bold;">Track:</option>
 			<option>Computer</option>
 			<option>Communication</option>
 			<option>Building</option>
 		</select>
-		</li>
-		<li><input style="border:2px solid #6da17b" type="text" placeholder="Instructors"></li>
-		<li><input style="border:2px solid white; width:130px; background-color:#6da17b; color: white; text-align:center;" type="button" value="Search Course"></li>
-		</ul>
-	</div>
-    </form>
+		<input style="border:2px solid #6da17b" type="text" placeholder="Instructors name">
+		<input style="border:2px solid white; width:130px; background-color:#6da17b; color: white; text-align:center;" type="button" value="Search">     
+	 </form>
+	  </div>
+	  </div>
+	  </div>
+  
+		
+		
+	
 <main class="grid">
 
     <?php

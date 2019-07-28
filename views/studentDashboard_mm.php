@@ -95,11 +95,14 @@ $students = $studentRepo->getAll();
     <div class="main-img">
         <img src="../images/books.jpg" class="banner" alt="banner"/>
     </div>
-	<div style="padding-top:43px; padding-left:180px; marginbackground-color:none;" id="navbar">
-		<ul>
-		<li><input style="border:2px solid #6da17b" type="text" placeholder="Name"></li>
-		<li><input style="border:2px solid #6da17b" type="select" placeholder="GPA"></li>
-		<li>
+<br><br><br><br>
+	<div class="container">
+        <div class="row justify- align-items-center ">
+<div class="col-sm-12 align-self-center auth-wrapper" style="background-color: rgb(0,0,0,0);border: 0;box-shadow: 0 0 12px 3px black;">	  <form class="form-inline"style="align-items: center;justify-content: center;" >
+        <input style="border:2px solid #6da17b" type="text" placeholder="Name">
+        <input style="border:2px solid #6da17b" type="text" placeholder="GPA">
+    
+      
 		<select style="font-weight:bold;border:2px solid #6da17b;margin-left:4px; height:30px">
 			<option style="color:#6da17b;font-weight:bold;">Gender:</option>
 			<option>Male</option>
@@ -120,7 +123,10 @@ $students = $studentRepo->getAll();
 		</li>
 		<li><input style="border:2px solid white; width:160px; background-color:#6da17b; color: white; text-align:center;" type="button" value="Search Student"></li>
 		</ul>
-	</div>
+	</form>
+	  </div>
+	  </div>
+	  </div>
 <main class="grid">
     <?php
 

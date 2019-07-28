@@ -94,12 +94,16 @@ $tracks = $trackRepo->getAll();
             <div class="main-img">
                 <img src="../images/books.jpg" class="banner" alt="banner"/>
             </div>
-            <div id="navbar">
-                <ul>
-                    <li><input style="border:2px solid blue" type="text" placeholder="Name"></li>
-                    <li><input style="width:70px; text-align:left;" type="button" value="Search"></li>
-                </ul>
-            </div>
+            <br><br><br><br>
+	<div class="container">
+        <div class="row justify- align-items-center ">
+<div class="col-sm-12 align-self-center auth-wrapper" style="background-color: rgb(0,0,0,0);border: 0;box-shadow: 0 0 12px 3px black;">	  <form class="form-inline"style="align-items: center;justify-content: center;" >
+        <input style="border:2px solid #6da17b" type="text" placeholder="Name">
+		<input style="border:2px solid white; width:160px; background-color:#6da17b; color: white; text-align:center;" type="button" value="Search">
+      </form>
+	  </div>
+	  </div>
+	  </div>
             <article class="main container">
                 <section>
                     <div id="1">
