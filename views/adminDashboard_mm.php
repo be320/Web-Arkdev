@@ -103,7 +103,7 @@ $admins = $adminRepo->getAll();
 <article class="main container">
     <section>
 	<div>
-	<table border="1" class="table table-striped">
+	<table  class="table table-striped">
 		<thead>
             <tr  class="table-info">
                 <th style="text-align:center; border-bottom:2px solid black; border-right:1px solid black;" scope="col">ID</th>

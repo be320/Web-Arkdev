@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="../css/all.css">
     <link rel="stylesheet" href="../css/main.css">
 
-    <title>Track | Dashboard</title>
+    <title>Instructor | Dashboard</title>
 </head>
 
 <body>
@@ -85,51 +85,34 @@
     <div class="main-img">
         <img src="../images/books.jpg" class="banner" alt="banner"/>
     </div>
-	<div id="navbar">
+	<div style="padding-top:43px; padding-left:390px; marginbackground-color:none;" id="navbar">
 		<ul>
-		<li><input style="border:2px solid blue" type="text" placeholder="Name"></li>
-		<li><input style="width:70px; text-align:left;" type="button" value="Search"></li>
+		<li><input style="border:2px solid #6da17b" type="text" placeholder="Name"></li>
+		<li><input style="border:2px solid white; width:160px; background-color:#6da17b; color: white; text-align:center;" type="button" value="Search Instructor"></li>
 		</ul>
 	</div>
-<article class="main container">
-    <section>
-	<div id="1">
-	<table border="1" class="table table-striped">  <!--to auto increment # coln-->
-		<thead>
-            <tr  class="table-info">
-                <th style="text-align:center; border-bottom:2px solid black; border-right:1px solid black;" scope="col">#</th>
-                <th style="text-align:center; border-bottom:2px solid black;border-right:1px solid black;" scope="col">Track Name</th>
-                <th style="text-align:center; border-bottom:2px solid black; padding-left:10px" colspan="2" scope="col">Actions</th>
-            </tr>
-		</thead>
-		<tbody> 
-			<!--example-->
-			 <tr>
-			 <td></td> <!--numbered 1 as border-->
-			  <td>Communication</td>
-			  <td style="text-align:center;"><button style="background-color:BLUE; font-weight:bold; color:white; border:2px solid black;" type="button">Edit</button></td>
-			  <td style="text-align:center;"><button style="background-color:RED; font-weight:bold; color:white; border:2px solid black;" type="button">Delete</button></td>
-			  
-			  
-			</tr>
-			<tr>
-			  <td></td> <!--numbered 2-->
-			  <td>Computer</td>
-			  <td style="text-align:center;"><button style="text-align:center; background-color:BLUE; font-weight:bold; color:white; border:2px solid black;" type="button">Edit</button></td>
-			  <td style="text-align:center;"><button style="text-align:center; background-color:RED; font-weight:bold; color:white; border:2px solid black;" type="button">Delete</button></td>
-			</tr>
-			<td></td> <!--numbered 3-->
-			 
-			  <td>Building</td>
-			  <td style="text-align:center;"><button style="background-color:BLUE; font-weight:bold; color:white; border:2px solid black;" type="button">Edit</button></td>
-			  <td style="text-align:center;"><button style="align:center; background-color:RED; font-weight:bold; color:white; border:2px solid black;" type="button">Delete</button></td>
-			</tr>
-			   
-		</tbody>
-	</table>
-		</div>
-    </section>
-</article>
+	
+<main class="grid">
+  
+  <article>
+    <img src="../images/books.jpg" alt="Sample photo">
+	
+    <div class="text">
+      <p>
+	  <b style="text-decoration:underline">Name:</b><br>Jack<br>
+	  <b style="text-decoration:underline">Email:</b><br>jack@gmail.com<br>
+	  <b style="text-decoration:underline">Bio: </b><br> Remember, not every element 
+	  needs to appear in the same order as this list, and some may be skipped (when, who, why),
+	  depending on story content or the editor’s inclination.<br>
+	  </p>
+      <a class="btn btn-primary m-lg-1" href="#">Edit</a>
+      <a class="btn btn-danger m-lg-1" href="#">Delete</a>
+    </div>
+  </article>
+  
+
+
+</main>
 </div>
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->

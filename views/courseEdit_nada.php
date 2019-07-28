@@ -11,7 +11,6 @@ else {
     $courseRepo = new CourseRepository();
     $course = $courseRepo->getById($data['id']);
 }
-
 ?>
 
 <!doctype html>
@@ -122,11 +121,7 @@ else {
                         <label for="description">Description</label>
                         <textarea id="description" placeholder="Add info..." name="description"  class="form-control" required><?php echo $course->getDescription(); ?></textarea>
                     </div>
-                    <div class="form-group">
-                        <i class="fas fa-camera"></i>
-                        <label for="image">add image</label>
-                        <input type="file" id="courseImage" name="image_path" class="form-control" accept="image/* value="<?php echo $course->getImagePath(); ?>">
-                    </div>
+
                     <div class="text-center submit-btn">
                         <button type="submit" name="submit" class="btn btn-primary">Submit</button>
                     </div>
