@@ -158,15 +158,7 @@ table tr:nth-child(even)
  {
 	 background-color: #f2f2f2;
 }
-tr {
-    counter-increment: rowNumber;
-}
 
-table tr td:first-child::before {
-    content: counter(rowNumber);
-    min-width: 1em;
-    margin-right: 0.5em;
-}
 
 
 .auth-wrapper {
