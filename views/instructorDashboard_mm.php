@@ -126,9 +126,6 @@ foreach ($instructors as &$instructor) {
 
 ?>
 
-
-  
-
 </main>
 </div>
 <!-- Optional JavaScript -->
