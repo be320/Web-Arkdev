@@ -1,4 +1,10 @@
-<!doctype html>
+<?php
+$data = $_GET;
+require_once(__DIR__ . '/../app/Repository/TrackRepository.php');
+$trackRepo = new TrackRepository();
+$track = $trackRepo->getById($data['id']);
+?>
+
 <html lang="en">
 <head>
     <!-- Required meta tags -->
@@ -9,12 +15,11 @@
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/all.css">
     <link rel="stylesheet" href="../css/main.css">
-
-    <title>Track | Dashboard</title>
+    <title>project | edit</title>
 </head>
 
 <body>
-<header>
+    <header>
 
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark indigo">
         <a class="navbar-brand" href="#"><strong>Welcome</strong></a>
@@ -79,65 +84,41 @@
     </nav>
 
 </header>
-
-<!------------------------------------------------------------------------------------------------------------------->
 <div class="main">
     <div class="main-img">
         <img src="../images/books.jpg" class="banner" alt="banner"/>
     </div>
-	<div id="navbar">
-		<ul>
-		<li><input style="border:2px solid blue" type="text" placeholder="Name"></li>
-		<li><input style="width:70px; text-align:left;" type="button" value="Search"></li>
-		</ul>
-	</div>
-<article class="main container">
-    <section>
-	<div id="1">
-	<table border="1" class="table table-striped">  <!--to auto increment # coln-->
-		<thead>
-            <tr  class="table-info">
-                <th style="text-align:center; border-bottom:2px solid black; border-right:1px solid black;" scope="col">#</th>
-                <th style="text-align:center; border-bottom:2px solid black;border-right:1px solid black;" scope="col">Track Name</th>
-                <th style="text-align:center; border-bottom:2px solid black; padding-left:10px" colspan="2" scope="col">Actions</th>
-            </tr>
-		</thead>
-		<tbody> 
-			<!--example-->
-			 <tr>
-			 <td></td> <!--numbered 1 as border-->
-			  <td>Communication</td>
-			  <td style="text-align:center;"><button style="background-color:BLUE; font-weight:bold; color:white; border:2px solid black;" type="button">Edit</button></td>
-			  <td style="text-align:center;"><button style="background-color:RED; font-weight:bold; color:white; border:2px solid black;" type="button">Delete</button></td>
-			  
-			  
-			</tr>
-			<tr>
-			  <td></td> <!--numbered 2-->
-			  <td>Computer</td>
-			  <td style="text-align:center;"><button style="text-align:center; background-color:BLUE; font-weight:bold; color:white; border:2px solid black;" type="button">Edit</button></td>
-			  <td style="text-align:center;"><button style="text-align:center; background-color:RED; font-weight:bold; color:white; border:2px solid black;" type="button">Delete</button></td>
-			</tr>
-			<td></td> <!--numbered 3-->
-			 
-			  <td>Building</td>
-			  <td style="text-align:center;"><button style="background-color:BLUE; font-weight:bold; color:white; border:2px solid black;" type="button">Edit</button></td>
-			  <td style="text-align:center;"><button style="align:center; background-color:RED; font-weight:bold; color:white; border:2px solid black;" type="button">Delete</button></td>
-			</tr>
-			   
-		</tbody>
-	</table>
-		</div>
-    </section>
-</article>
+    <div class="container">
+        <div class="row justify-content-center align-items-center full-height">
+            <div class="col-sm-6 align-self-center auth-wrapper">
+                <div class="auth-intro">
+                    <h2 class="auth-title"> Edit Tracks Information </h2>
+                </div>
+                <form id="Track_Form" method="post" action="/app/Controllers/updateTrack.php">
+                    <div class="form-group">
+                       
+                        <input type="hidden" name="id" value="<?php echo $track->getId() ?>"> 
+                        <label for="name">Name</label>
+                        <input id="name" type="name" placeholder="Edit Track's Name" name="name" class="form-control" required value="<?php echo $track->getName() ;?>"/>
+
+                    </div>
+                    <div class="text-center submit-btn">
+                        <button type="submit" name="submit" class="btn btn-primary ">Submit</button>
+                    </div>
+                
+            </div>
+        </div>
+    </div>
 </div>
+
+
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="../js/jquery-3.3.1.slim.min.js"></script>
-<script src="../js/popper.min.js"></script>
-<script src="../js/bootstrap.min.js"></script>
-<script src="../js/jquery.validate.js"></script>
-<script src="../js/main.js"></script>
+<script src="js/jquery-3.3.1.slim.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.validate.js"></script>
+<script src="js/main.js"></script>
 
 </body>
 </html>

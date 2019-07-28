@@ -1,23 +1,23 @@
 <?php
 
-require_once(__DIR__ . '/../Repository/UserRepository.php');
+require_once(__DIR__ . '/../Repository/TrackRepository.php');
 
 $data = $_GET;
 
 $hasErrors = false;
 
 
-if (!isset($data['name']) || empty($data['name'])) {
+if (!isset($data['id']) || empty($data['id'])) {
     $hasErrors = true;
 }
 $success = false;
 
 if ($hasErrors === false) {
     $trackRepo = new TrackRepository();
-    $success = $trackRepo->deleteById($_data['id']);
+    $success = $trackRepo->deleteById($data['id']);
 }
 
 if ($success) {
-    header('Location: /home.php');
+    header('Location: /views/index_mm.html');
     exit();
 }
