@@ -1,6 +1,7 @@
 html,
 body,
 header
+
 .view {
     height: 100%;
 }
@@ -67,6 +68,32 @@ nav ul li.parent ul.child li a {
 }
 
 
+
+.main-img img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    max-height: 100vh;
+    width: 100vw;
+    object-fit: cover;
+    z-index: 0;
+	/* Set rules to fill background */
+  min-height: 100%;
+  min-width: 1024px;
+	
+  /* Set up proportionate scaling */
+  width: 100%;
+  height: auto;
+	
+  /* Set up positioning */
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+
 .main-img {
     position: relative;
     z-index: -1;
@@ -80,9 +107,8 @@ nav ul li.parent ul.child li a {
     content: '';
     position: absolute;
     background-color: rgba(0, 0, 0, 0.5);
-    width: 98vw;
-
-    height: auto;
+    width: 100vw;
+    height: 100vh;
 
 }
 
@@ -111,6 +137,7 @@ nav ul li.parent ul.child li a {
 }
 
 
+
 .table{
 	margin-top:75px;
  justify-content: center;
@@ -131,15 +158,7 @@ table tr:nth-child(even)
  {
 	 background-color: #f2f2f2;
 }
-tr {
-    counter-increment: rowNumber;
-}
 
-table tr td:first-child::before {
-    content: counter(rowNumber);
-    min-width: 1em;
-    margin-right: 0.5em;
-}
 
 
 .auth-wrapper {
@@ -147,6 +166,7 @@ table tr td:first-child::before {
     border-radius: 5px;
     background-color: #fff;
     box-shadow: 0px 0px 5px 1px #ccc;
+	
 }
 
 .full-height {
@@ -232,14 +252,6 @@ table tr td:first-child::before {
 	width:190px;
 	padding-left:10px;
 }
-.full-height {
-
-    height: 110vh;
-
-
-    height: 109vh;
-}
-
 
 
 .grid { 
