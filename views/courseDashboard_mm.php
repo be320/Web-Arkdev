@@ -90,6 +90,7 @@ $courses = $courseRepo->getAll();
     <div class="main-img">
         <img src="../images/books.jpg" class="banner" alt="banner"/>
     </div>
+    <form method="get" action="">
 	<div style="padding-top:43px; padding-left:210px; marginbackground-color:none;" id="navbar">
 		<ul>
 		<li><input style="border:2px solid #6da17b" type="text" placeholder="Name"></li>
@@ -105,6 +106,7 @@ $courses = $courseRepo->getAll();
 		<li><input style="border:2px solid white; width:130px; background-color:#6da17b; color: white; text-align:center;" type="button" value="Search Course"></li>
 		</ul>
 	</div>
+    </form>
 <main class="grid">
 
     <?php
@@ -118,8 +120,8 @@ $courses = $courseRepo->getAll();
         echo '<b style="text-decoration:underline">Description:</b><br>'.$course->getDescription().'<br>';
         echo '<b style="text-decoration:underline">Track:</b><br>'.$course->getTrackId(). '</b>';
         echo '</p>';
-        echo '<a class="btn btn-primary m-lg-1" href="\views\courseEdit_nada.php?id='  . $course->getId() .  '">Edit</a>';
-        echo '<a class="btn btn-danger m-lg-1" href="\app\Controllers\deleteCourse.php?id='  .  $course->getId().  '">Delete</a>';
+        echo '<a class="btn btn-primary m-lg-1" href="/views/courseEdit_nada.php?id='  . $course->getId() .  '">Edit</a>';
+        echo '<a class="btn btn-danger m-lg-1" href="/app/Controllers/deleteCourse.php?id='  .  $course->getId().  '">Delete</a>';
         echo'</div> ';
         echo '</article>';
     }

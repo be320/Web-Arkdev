@@ -70,15 +70,12 @@ class CourseRepository
         $success = false;
         try {
             $db = DBConnection::connect();
-            $stmt = $db->prepare("UPDATE course set name=:name, description=:description, image_path=:image_path, track_id=:track_id where id = :id");
+            $stmt = $db->prepare("UPDATE course set name=:name, description=:description, track_id=:track_id where id = :id");
             $stmt->bindValue(':name', $course->getName());
             $stmt->bindValue(':description', $course->getDescription());
-            $stmt->bindValue(':image_path', $course->getImagePath());
             $stmt->bindValue(':track_id', $course->getTrackId());
             $stmt->bindValue(':id', $course->getID());
             $success = $stmt->execute();
-            var_dump($success);
-            var_dump($stmt);
         }
         catch (PDOException $e){
             echo $e->getMessage();
