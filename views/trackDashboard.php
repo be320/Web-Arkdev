@@ -65,8 +65,8 @@ $tracks = $trackRepo->getAll();
             foreach ($tracks as $track) {
                 echo '<tr>';
                 echo '<th scope="row">' . $track->getId() . '</th>';
-                echo '<td>' . $track->getFname() . '</td>';
-                echo '<td>' . $track->getEmail() . '</td>';
+                echo '<td>' . $track->getName() . '</td>';
+                
 
                 echo '<td>';
                 echo '<a class="btn btn-primary" href="/edit.php?id=' . $track->getId() . '">Edit</a>';
