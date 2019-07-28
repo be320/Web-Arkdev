@@ -110,7 +110,7 @@ $courses = $courseRepo->getAll();
     <?php
     foreach ($courses as $course){
         echo '<article>';
-        echo '<img src="../images/'.$course->getImagePath().' alt="Sample photo">';
+        echo '<img src="../images/'.$course->getImagePath().'" alt="Sample photo">';
         echo '<div class="text">';
         echo '<p>';
         echo '<b style="text-decoration:underline">Name:</b><br>'. $course->getName() .'<br>';
@@ -118,12 +118,11 @@ $courses = $courseRepo->getAll();
         echo '<b style="text-decoration:underline">Description:</b><br>'.$course->getDescription().'<br>';
         echo '<b style="text-decoration:underline">Track:</b><br>'.$course->getTrackId(). '</b>';
         echo '</p>';
-        echo '<a class="btn btn-primary m-lg-1" href="\views\courseEdit_nada.html?id='  . $course->getId() .  '">Edit</a>';
+        echo '<a class="btn btn-primary m-lg-1" href="\views\courseEdit_nada.php?id='  . $course->getId() .  '">Edit</a>';
         echo '<a class="btn btn-danger m-lg-1" href="\app\Controllers\deleteCourse.php?id='  .  $course->getId().  '">Delete</a>';
+        echo'</div> ';
         echo '</article>';
-
     }
-
     ?>
 
 </main>

@@ -4,6 +4,8 @@ require_once(__DIR__.'/../Repository/CourseRepository.php');
 $data = $_GET;
 $hasErrors = false;
 
+var_dump($data);
+
 if( !isset($data['id']) || empty($data['id']) ){
     $hasErrors = true;
 }
@@ -13,6 +15,6 @@ if($hasErrors === false){
     $success = $courseRepo->deleteById($data['id']);
 }
 if($success){
-    header("Location: /views/courseDashboard");
+    header("Location: /views/courseDashboard_mm.php");
     exit();
 }

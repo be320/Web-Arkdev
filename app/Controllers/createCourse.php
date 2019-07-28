@@ -41,6 +41,6 @@ if($hasErrors === false){
 if($success){
     echo '1';
     uploadFile();
-    header('Location: /views/home_mm.html');
+    header('Location: /views/courseDashboard_mm.php');
     exit();
 }
