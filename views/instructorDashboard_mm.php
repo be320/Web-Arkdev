@@ -1,3 +1,12 @@
+<?php
+
+require_once(__DIR__ . '/../app/Repository/InstructorRepository.php');
+$instructorRepo = new InstructorRepository();
+$instructors = $instructorRepo->getAll();
+//print_r($instructors);
+//exit();
+?>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -9,11 +18,12 @@
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/all.css">
     <link rel="stylesheet" href="../css/main.css">
-    <title>project | edit</title>
+
+    <title>Instructor | Dashboard</title>
 </head>
 
 <body>
-    <header>
+<header>
 
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark indigo">
         <a class="navbar-brand" href="#"><strong>Welcome</strong></a>
@@ -78,38 +88,51 @@
     </nav>
 
 </header>
+
+<!------------------------------------------------------------------------------------------------------------------->
 <div class="main">
     <div class="main-img">
-        <img src="../images/books.jpg" class="banner" alt="banner"/>
+        <img style="height:190px"src="../images/books.jpg" class="banner" alt="banner"/>
     </div>
-    <div class="container">
-        <div class="row justify-content-center align-items-center full-height">
-            <div class="col-sm-6 align-self-center auth-wrapper">
-                <div class="auth-intro">
-                    <h2 class="auth-title"> Edit Admin Information </h2>
-                </div>
-                <form id="admin_Form">
-                    <div class="form-group">
-                        <i class="far fa-user"></i>
-                        <label for="name">Name</label>
-                        <input id="name" type="name" placeholder="Edit Your Name" name="name" class="form-control" required/>
-                    </div>
-                
-                    <div class="form-group">
-                       <i class="fa fa-envelope"></i>
-                        <label for="email">Email</label>
-                        <input id="email" type="email" placeholder="Edit Your Email" name="email" class="form-control" required/>
-                    </div>
-                    <div class="text-center submit-btn">
-                        <button type="submit" name="submit" class="btn btn-primary">Submit</button>
-                    </div>
-               
-            </div>
-        </div>
-    </div>
+	 <br><br><br><br>
+	<div class="container">
+        <div class="row justify- align-items-center ">
+<div class="col-sm-12 align-self-center auth-wrapper" style="background-color: rgb(0,0,0,0);border: 0;box-shadow: 0 0 12px 3px black;">	
+  <form class="form-inline"style="align-items: center;justify-content: center;" >
+        <input style="border:2px solid #6da17b" type="text" placeholder="Name">
+		<input style="border:2px solid white; width:160px; background-color:#6da17b; color: white; text-align:center;" type="button" value="Search">
+      </form>
+	  </div>
+	  </div>
+	  </div>
+<main class="grid">
+
+
+<?php
+
+
+
+foreach ($instructors as &$instructor) {
+
+  echo' <article>';
+  echo' <img style="height:190px" src="../images/'.$instructor->getImagePath().'"'.' alt="Sample photo">';
+  echo' <div class="text">';
+  echo'   <p>';
+  echo'	  <b style="display: block; text-decoration:underline">Name:</b><br>'.$instructor->getName().'<br>';
+  echo'	  <b style="display: block; text-decoration:underline">Email:</b><br>'.$instructor->getEmail().'<br>';
+  echo'	  <b style="display: block; text-decoration:underline">Bio: </b><br>'.$instructor->getBio().'<br>';
+
+  echo'  </p>';
+  echo' <a class="btn btn-primary m-lg-1" href="../views/instructorEdit_nada.php?id=' . $instructor->getInstructorId(). '">Edit</a> ';
+  echo' <a class="btn btn-danger m-lg-1" href="../app/Controllers/deleteInstructor.php?id=' . $instructor->getInstructorId(). '">Delete</a> ';
+    echo' </div>';
+  echo'</article>';
+}
+
+?>
+
+</main>
 </div>
-
-
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="../js/jquery-3.3.1.slim.min.js"></script>

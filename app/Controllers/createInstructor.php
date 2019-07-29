@@ -37,7 +37,6 @@ if ($hasErrors === false) {
 
     if ($success) {
         $filePath = uploadFile();
-
         // todo: do not miss to update the created user with the upload file path
     }
 

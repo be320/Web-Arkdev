@@ -10,6 +10,7 @@ session_start();
 $photo =$_FILES;
 $data = $_POST;
 
+
 //*** validate inputs ***//
 $hasErrors = false;
 
@@ -31,14 +32,26 @@ $success = false;
 
 if ($hasErrors === false) {
 
+
+    $instuctor = new Instructor();
+    $instuctor->setInstructorId($data['id']);
+    $instuctor->setBio($data['bio']);
+    $instuctor->setName($data['name']);
+    $instuctor->setEmail($data['email']);
+    if($photo['image_path']['name'] !=""){
+
+
+        $instuctor->setImagePath($photo['image_path']);
+
+    }
     $insRepo = new InstructorRepository();
-    $success = $insRepo->updateInstructor($data);
-}
+    $success = $insRepo->updateInstructor($instuctor);
 
 
 //*** Handle redirection after saving ***//
-if ($success) {
-    $filePath = uploadFile();
-    header('Location: /views/studentDashboard_mm.php');
-    exit();
+    if ($success) {
+        $filePath = uploadFile();
+        header('Location: ../../views/instructorDashboard_mm.php');
+        exit();
+    }
 }

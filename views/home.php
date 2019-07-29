@@ -5,8 +5,8 @@
     <title>Home</title>
 </head>
 <body>
-<a class="nav-link" href="/app/Controllers/logout.php"><button type='button'>logout</button></a>
-<a class="nav-link" href="/views/adminEdit.html"><button type='button'>edit account</button></a>
+<a class="nav-link" href="../app/Controllers/logout.php"><button type='button'>logout</button></a>
+<a class="nav-link" href="../views/adminEdit.html"><button type='button'>edit account</button></a>
 <h1>hello Welcome Back :D</h1>
 <?php
     require_once(__DIR__.'/../app/Models/Admin.php');

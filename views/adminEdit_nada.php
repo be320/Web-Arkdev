@@ -1,28 +1,43 @@
 <?php
-require_once(__DIR__.'/../app/Repository/TrackRepository.php');
-require_once(__DIR__.'/../app/Models/Track.php');
-$trackRepo = new TrackRepository();
-$tracks = $trackRepo->getAll();
+require_once(__DIR__.'/../app/includes/sessionStart.php');
+require_once(__DIR__.'/../app/includes/sessionAuth.php');
+require_once(__DIR__ . '/../app/Repository/AdminRepository.php');
 
+// Check if there are parameter in Get
+if (isset($_GET['id']) && !empty($_GET['id'])) {
+    $id = $_GET['id'];
+} else {
+    echo 'There is no parameter id in requested URL.';
+    exit();
+}
+
+// select and get the Admin from DB with $id
+$AdminRepository = new AdminRepository();
+$Admin = $AdminRepository->getById($id);
+
+// Check if there are exist Admin with $id
+if (!$Admin) {
+    echo 'No Admin with the selected ID';
+    exit();
+}
 ?>
-<!DOCTYPE html>
-<html lang= "en">
+
+<!doctype html>
+<html lang="en">
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/all.css">
-
-    <title>New Course Form</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/main.css">
+    <title>Admin edit</title>
 </head>
+
 <body>
-<header>
+    <header>
  
 <nav class="navbar fixed-top navbar-expand-lg navbar-dark indigo">
         <a href="home_mm.html" class="navbar-brand" style="color: #a2a2a2"><strong>Welcome</strong></a>
@@ -91,9 +106,6 @@ $tracks = $trackRepo->getAll();
     </nav>
 	
 </header>
-
-<body>
-
 <div class="main">
     <div class="main-img">
         <img src="../images/books.jpg" class="banner" alt="banner"/>
@@ -103,42 +115,43 @@ $tracks = $trackRepo->getAll();
         <div class="row justify-content-center align-items-center">
             <div class="col-sm-6 align-self-center auth-wrapper">
                 <div class="auth-intro">
-                    <h1 class="auth-title">Adding New Courses form</h1>
-                    <form id="NewCourseForm" method="post" action="\app\Controllers\createCourse.php" enctype="multipart/form-data">
-                        <div class="form-group">
-                            <label for="name">CourseName:</label>
-                            <input id="Name" name="name" type="text" placeholder="Enter course name" class="form-control" required>
-                        </div>
-
-
-                        <div class="form-group">
-                            <label for="trackName">Track Name:</label>
-                            <input id="track" name="track_id" type="text" placeholder="Enter Track ID" class="form-control" required>
-
-                        </div>
-
-                        <div class="form-group">
-                            <label for="description">Description:</label>
-                            <input id="description" name="description" type="text" placeholder="Enter course description" class="form-control" required style="height: 70px">
-                        </div>
-
-                        <div class="form-group">
-                                <label for="pic">Course Image: </label>
-                                <input id="pic" type="file" name="image_path" accept="image/*" class="form-control">
-                        </div>
-
-
-                        <div class="text-center submit-btn">
-                            <button type="Submit" class="btn btn-primary" >Submit</button>
-                        </div>
-
-                    </form>
+                    <h2 class="auth-title">Update</h2>
                 </div>
+                <form id="admin_Form" method="post" action="/app/Controllers/updateAdmin.php">
+                  
+                <input type="hidden" name="id" value="<?php echo $Admin->getId(); ?>">
+
+                    <div class="form-group">
+                        <i class="far fa-user"></i>
+                        <label for="name">Name</label>
+                        <input id="firstName" value="<?php echo $Admin->getname(); ?>" name="name" type="text"
+                   placeholder="First Name" class="form-control"
+                   required/>
+                    </div>
+                
+                    <div class="form-group">
+                       <i class="fa fa-envelope"></i>
+                        <label for="email">Email</label>
+                        <input id="email" name="email" value="<?php echo $Admin->getEmail(); ?>" type="text" placeholder="Email" class="form-control" required/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="pass" hidden>Password</label>
+                        <input id="pass" type="password" name="password" value="<?php echo $Admin->getPassword(); ?>" class="form-control" disabled required hidden/>
+                    </div>
+
+                    <div class="text-center submit-btn">
+                        <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+                    </div>
+               
             </div>
         </div>
     </div>
 </div>
 
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="../js/jquery-3.3.1.slim.min.js"></script>
 <script src="../js/popper.min.js"></script>
 <script src="../js/bootstrap.min.js"></script>
@@ -147,5 +160,3 @@ $tracks = $trackRepo->getAll();
 
 </body>
 </html>
-
-

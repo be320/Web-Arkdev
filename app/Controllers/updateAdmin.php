@@ -36,7 +36,7 @@ if ($hasErrors === false) {
 
 //*** Handle redirection after saving ***//
 if ($success) {
-    header('Location: /views/adminDashboard.php');
+    header('Location: /views/adminDashboard_mm.php');
     echo('<br>relocated');
     exit();
 }

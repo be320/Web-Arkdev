@@ -9,75 +9,79 @@
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/all.css">
     <link rel="stylesheet" href="../css/main.css">
-
     <title>Track | Dashboard</title>
+	
 </head>
 
 <body>
 <header>
-
-    <nav class="navbar fixed-top navbar-expand-lg navbar-dark indigo">
-        <a class="navbar-brand" href="#"><strong>Welcome</strong></a>
+ 
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark indigo">
+        <a href="home_mm.html" class="navbar-brand" style="color: #a2a2a2"><strong>Welcome</strong></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                </li>
+                
 				<li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
          Admins
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="#">Create</a>
-          <a class="dropdown-item" href="#">Dashboard</a>
+          <a class="dropdown-item" href="createAdmin_basma.html">Create</a>
+          <a class="dropdown-item" href="adminDashboard_mm.php">Dashboard</a>
         </div>
 				
 				<li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
          Instructors
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="#">Create</a>
-          <a class="dropdown-item" href="#">Dashboard</a>
+          <a class="dropdown-item" href="createInstructor_basma.php">Create</a>
+          <a class="dropdown-item" href="instructorDashboard_mm.html">Dashboard</a>
         </div>
                 
 				
 				<li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle"  role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
          Students
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="#">Create</a>
-          <a class="dropdown-item" href="#">Dashboard</a>
+          <a class="dropdown-item" href="createStudent_basma.html">Create</a>
+          <a class="dropdown-item" href="studentDashboard_mm.php">Dashboard</a>
         </div>
                 
 				
 				<li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle"  role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
          Courses
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="#">Create</a>
-          <a class="dropdown-item" href="#">Dashboard</a>
+          <a class="dropdown-item" href="createCourse_basma.php">Create</a>
+          <a class="dropdown-item" href="courseDashboard_mm.php">Dashboard</a>
         </div>
 				<li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle"  role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
          Tracks
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="#">Create</a>
-          <a class="dropdown-item" href="#">Dashboard</a>
+          <a class="dropdown-item" href="createTrack_basma.html">Create</a>
+          <a class="dropdown-item" href="trackDashboard_mm.html">Dashboard</a>
+		  
         </div> 
+		
+			<li class="nav-item dropdown">
+			<a role="button" href="teach.html" class="navbar" style="color: #a2a2a2">Teach</a>
+       
+		
             </ul>
 			<ul class="nav navbar-nav navbar-right">
       <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
     </ul>
         </div>
     </nav>
-
+	
 </header>
 
 <!------------------------------------------------------------------------------------------------------------------->
@@ -85,27 +89,33 @@
     <div class="main-img">
         <img src="../images/books.jpg" class="banner" alt="banner"/>
     </div>
-	<div id="navbar">
-		<ul>
-		<li><input style="border:2px solid blue" type="text" placeholder="Name"></li>
-		<li><input style="width:70px; text-align:left;" type="button" value="Search"></li>
-		</ul>
-	</div>
+	<br><br><br><br>
+	<div class="container">
+        <div class="row justify- align-items-center ">
+<div class="col-sm-12 align-self-center auth-wrapper" style="background-color: rgb(0,0,0,0);border: 0;box-shadow: 0 0 12px 3px black;">	  <form class="form-inline"style="align-items: center;justify-content: center;" >
+        <input style="border:2px solid #6da17b" type="text" placeholder="Name">
+		<input style="border:2px solid white; width:160px; background-color:#6da17b; color: white; text-align:center;" type="button" value="Search Instructor">
+      </form>
+	  </div>
+	  </div>
+	  </div>
+	
 <article class="main container">
     <section>
-	<div id="1">
-	<table border="1" class="table table-striped">  <!--to auto increment # coln-->
+	<div >
+	<table class="table table-bordered table-striped">  <!--to auto increment # coln-->
 		<thead>
-            <tr  class="table-info">
-                <th style="text-align:center; border-bottom:2px solid black; border-right:1px solid black;" scope="col">#</th>
+           
+                <th style="text-align:center; border-bottom:2px solid black; border-right:1px solid black;" scope="col">ID</th>
                 <th style="text-align:center; border-bottom:2px solid black;border-right:1px solid black;" scope="col">Track Name</th>
                 <th style="text-align:center; border-bottom:2px solid black; padding-left:10px" colspan="2" scope="col">Actions</th>
-            </tr>
+           
 		</thead>
+		
 		<tbody> 
 			<!--example-->
 			 <tr>
-			 <td></td> <!--numbered 1 as border-->
+				<td>ID no</td>
 			  <td>Communication</td>
 			  <td style="text-align:center;"><button style="background-color:BLUE; font-weight:bold; color:white; border:2px solid black;" type="button">Edit</button></td>
 			  <td style="text-align:center;"><button style="background-color:RED; font-weight:bold; color:white; border:2px solid black;" type="button">Delete</button></td>
@@ -113,13 +123,13 @@
 			  
 			</tr>
 			<tr>
-			  <td></td> <!--numbered 2-->
+				<td>ID no</td>
 			  <td>Computer</td>
 			  <td style="text-align:center;"><button style="text-align:center; background-color:BLUE; font-weight:bold; color:white; border:2px solid black;" type="button">Edit</button></td>
 			  <td style="text-align:center;"><button style="text-align:center; background-color:RED; font-weight:bold; color:white; border:2px solid black;" type="button">Delete</button></td>
-			</tr>
-			<td></td> <!--numbered 3-->
-			 
+		</tr>
+		<tr>
+			 	<td>ID no</td>
 			  <td>Building</td>
 			  <td style="text-align:center;"><button style="background-color:BLUE; font-weight:bold; color:white; border:2px solid black;" type="button">Edit</button></td>
 			  <td style="text-align:center;"><button style="align:center; background-color:RED; font-weight:bold; color:white; border:2px solid black;" type="button">Delete</button></td>

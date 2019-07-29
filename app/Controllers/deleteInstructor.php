@@ -1,5 +1,5 @@
 <?php
-require_once(__DIR__.'/../Repository/InstructorRepository.php.php');
+require_once(__DIR__.'/../Repository/InstructorRepository.php');
 
 $data = $_GET;
 $hasErrors = false;
@@ -13,6 +13,6 @@ if($hasErrors === false){
     $success = $InstructorRepo->deleteById($data['id']);
 }
 if($success){
-    header("Location: /views/courseDashboard");
+    header("Location: ../../views/instructorDashboard_mm.php");
     exit();
 }

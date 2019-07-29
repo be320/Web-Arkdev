@@ -1,9 +1,9 @@
 <?php
-// in order to use this api >>> you send a 
+// in order to use this api >>> you send a
 // student 'email'
-// student 'password' 
+// student 'password'
 
-// @return 
+// @return
 // 'id' (-1) if fails , the student id if succeeded
 // it return 'status' (0) if success , (1) if failed, (2) if the inputs are incorrect
 // and a 'message with the description'
@@ -38,7 +38,7 @@ if ($hasErrors === false) {
         $response['id'] = -1;
         $response['status'] = 1;
         $response['message'] = "Invalid Email or Password";
-        session_destroy();
+        // session_destroy();
     }
     else{
         // $_SESSION['student'] = $result;
@@ -51,7 +51,7 @@ else{
     $response['id'] = -1;
     $response['status'] = 2;
     $response['message'] = "Data format is worng or there is an empty paramenter";
-    session_destroy();
+    // session_destroy();
 }
 
 

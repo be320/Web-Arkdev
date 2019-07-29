@@ -23,7 +23,8 @@ class TrackRepository
         } catch (PDOException $e) {
             echo $e->getMessage();
             exit();
-        }
+        }            echo $e->getMessage();
+
 
         return $success;
     }
@@ -58,7 +59,7 @@ public function deleteById($id):bool
     
     try{
         $db = DBConnection:: connect();
-        $stmt = $db ->prepare("DELETE FROM $this ->table where id = :id");
+        $stmt = $db ->prepare("DELETE FROM $this->table where id = :id");
         $stmt ->bindValue(':id', $id);
         $success = $stmt ->execute();
     }catch (Exception $ex) {
@@ -87,6 +88,25 @@ public function update(Track $track): bool
         }
 
         return $success;
+    }
+    
+     public function getById($id)
+    {
+        $result = null;
+
+        try {
+            $db = DBConnection::connect();
+            $stmt = $db->prepare("SELECT * FROM $this->table where id = :id");
+            $stmt->bindValue(':id', $id);
+            $stmt->execute();
+            $stmt->setFetchMode(PDO::FETCH_CLASS, Track::class);
+            $result = $stmt->fetch();
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+            exit();
+        }
+
+        return $result;
     }
 
     /**

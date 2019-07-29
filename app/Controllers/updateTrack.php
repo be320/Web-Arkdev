@@ -3,6 +3,7 @@ require_once(__DIR__ . '/../Repository/TrackRepository.php');
 
 
 $data = $_POST;
+var_dump($data);
 
 $hasErrors = false;
 
@@ -15,6 +16,7 @@ if (!isset($data['id']) || empty($data['id'])) {
 if (!isset($data['name']) || empty($data['name'])) {
     $hasErrors = true;
 }
+var_dump($hasErrors);
 
 
 $success = false;
@@ -32,6 +34,6 @@ if ($hasErrors === false) {
 
 //*** Handle redirection after saving ***//
 if ($success) {
-    header('Location: /index.html');
+    header('Location: /views/trackDashboard_mm.php');
     exit();
 }
