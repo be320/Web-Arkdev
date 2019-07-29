@@ -8,7 +8,6 @@
  * "gpa": "3.5",
  * "level": "junior",
  * "gender": "m",
- * "img_path": "optional"
  * }
  *  status -> 0 means user was created
  *  status -> 1 means couldn't insert user in database
@@ -19,11 +18,10 @@
 require_once(__DIR__ . '/../Repository/StudentRepository.php');
 require_once(__DIR__ . '/../includes/uploadImage.php');
 
-// if input is json
-// $inputJSON = file_get_contents('php://input');
-// $data = json_decode($inputJSON, true);
 
-$data = $_POST;
+$inputJSON = file_get_contents('php://input');
+$data = json_decode($inputJSON, true);
+
 
 $hasErrors = false;
 
@@ -88,17 +86,17 @@ if ($success) {
     $response["status"] = 0;
     $response['message'] = "User created";
 
-    if(isset($_FILES['image_path'])) {
-        $filePath = uploadFile();
-
-        if ($filePath != false) {
-            $studentRepo->updateImagePath($data['email'], $filePath);
-            $response['message'] = $response['message'] . " and img was successfully uploaded";
-
-        } else {
-            $response['message'] = $response['message'] . " but couldn't upload img";
-        }
-    }
+    // if(isset($_FILES['image_path'])) {
+    //     $filePath = uploadFile();
+    //
+    //     if ($filePath != false) {
+    //         $studentRepo->updateImagePath($data['email'], $filePath);
+    //         $response['message'] = $response['message'] . " and img was successfully uploaded";
+    //
+    //     } else {
+    //         $response['message'] = $response['message'] . " but couldn't upload img";
+    //     }
+    // }
 
 } else {
     $response["status"] = 1;

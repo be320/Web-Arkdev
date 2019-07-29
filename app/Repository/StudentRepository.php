@@ -101,11 +101,11 @@ class StudentRepository
 
         try {
             $db = DBConnection::connect();
-            $stmt = $db->prepare("SELECT * FROM $this->table where name like '%{:name}%'");
-            $stmt->bindValue(':name', $name);
+            $stmt = $db->prepare("SELECT * FROM $this->table where name like :name");
+            $stmt->bindValue(':name',"%$name%");
             $stmt->execute();
             $stmt->setFetchMode(PDO::FETCH_CLASS, Student::class);
-            $result = $stmt->fetch();
+            $result = $stmt->fetchAll();
         } catch (PDOException $e) {
             echo $e->getMessage();
             exit();
@@ -113,6 +113,46 @@ class StudentRepository
 
         return $result;
     }
+
+    public function getByGender($gender)
+    {
+        $result = [];
+
+        try {
+            $db = DBConnection::connect();
+            $stmt = $db->prepare("SELECT * FROM $this->table where gender = :gender");
+            $stmt->bindValue(':gender',$gender);
+            $stmt->execute();
+            $stmt->setFetchMode(PDO::FETCH_CLASS, Student::class);
+            $result = $stmt->fetchAll();
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+            exit();
+        }
+
+        return $result;
+    }
+
+    public function getByLevel($level)
+    {
+        $result = [];
+
+        try {
+            $db = DBConnection::connect();
+            $stmt = $db->prepare("SELECT * FROM $this->table where level = :level");
+            $stmt->bindValue(':level',$level);
+            $stmt->execute();
+            $stmt->setFetchMode(PDO::FETCH_CLASS, Student::class);
+            $result = $stmt->fetchAll();
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+            exit();
+        }
+
+        return $result;
+    }
+
+
 
     /**
      * Update student
@@ -189,7 +229,7 @@ class StudentRepository
      * @return student
      */
     public function getByEmail($email) {
-      $result = null;
+      $result = [];
 
       try {
           $db = DBConnection::connect();
@@ -197,7 +237,7 @@ class StudentRepository
           $stmt->bindValue(':email', $email);
           $stmt->execute();
           $stmt->setFetchMode(PDO::FETCH_CLASS, Student::class);
-          $result = $stmt->fetch();
+          $result = $stmt->fetchAll();
 
       } catch (PDOException $e) {
           echo $e->getMessage();

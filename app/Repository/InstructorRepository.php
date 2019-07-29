@@ -29,12 +29,28 @@ class InstructorRepository
 
         try {
             $db = DBConnection::connect();
-            $stmt = $db->prepare("UPDATE  instructor set name=:name, email=:email, bio=:bio  where id =:id");
-            $stmt->bindValue(':name', $data->getName());
-            $stmt->bindValue(':email', $data->getEmail());
-            $stmt->bindValue(':id', $data->getInstructorId());
-            $stmt->bindValue(':bio', $data->getBio());
-            $success = $stmt->execute();
+            if ($data->getImagePath()==null){
+                $stmt = $db->prepare("UPDATE  instructor set name=:name, email=:email, bio=:bio  where id =:id");
+                $stmt->bindValue(':name', $data->getName());
+                $stmt->bindValue(':email', $data->getEmail());
+                $stmt->bindValue(':id', $data->getInstructorId());
+                $stmt->bindValue(':bio', $data->getBio());
+                $success = $stmt->execute();
+            }
+            else{
+
+                $inst=self::getById($data->getInstructorId());
+                $myFile = "../../images/".$inst->getImagePath();
+                unlink($myFile);
+                $stmt = $db->prepare("UPDATE  instructor set name=:name, email=:email, bio=:bio , image_path=:image_path  where id =:id");
+                $stmt->bindValue(':name', $data->getName());
+                $stmt->bindValue(':email', $data->getEmail());
+                $stmt->bindValue(':id', $data->getInstructorId());
+                $stmt->bindValue(':bio', $data->getBio());
+                $stmt->bindValue(':image_path',  $data->getImagePath()['name']);
+                $success = $stmt->execute();
+            }
+
 
         }
         catch (PDOException $e){
@@ -60,11 +76,7 @@ class InstructorRepository
         return $success;
     }
 
-    /**
-     * return instructor by an assoc array
-     * @param $instructorId
-     * @return array
-     */
+
     public function getById($instructorId)
     {
         $result = null;
@@ -97,6 +109,30 @@ class InstructorRepository
             exit();
         }
 
+        return $result;
+    }
+
+    /**
+     * return instructor by an assoc array
+     * @param $instructorId
+     * @return array
+     */
+    public function getByIdAsoc($instructorId)
+    {
+        $result = null;
+
+        try{
+            $db = DBConnection::connect();
+            $stmt = $db->prepare("SELECT * FROM instructor WHERE id=:id");
+            $stmt->bindValue(':id',$instructorId);
+            $stmt->execute();
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);
+            $result = $stmt->fetch();
+        }
+        catch (PDOException $e){
+            echo $e->getMessage();
+            exit();
+        }
         return $result;
     }
 

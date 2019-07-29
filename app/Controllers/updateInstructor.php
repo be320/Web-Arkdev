@@ -10,6 +10,7 @@ session_start();
 $photo =$_FILES;
 $data = $_POST;
 
+
 //*** validate inputs ***//
 $hasErrors = false;
 
@@ -37,13 +38,20 @@ if ($hasErrors === false) {
     $instuctor->setBio($data['bio']);
     $instuctor->setName($data['name']);
     $instuctor->setEmail($data['email']);
+    if($photo['image_path']['name'] !=""){
+
+
+        $instuctor->setImagePath($photo['image_path']);
+
+    }
     $insRepo = new InstructorRepository();
     $success = $insRepo->updateInstructor($instuctor);
 
 
 //*** Handle redirection after saving ***//
     if ($success) {
-        header('Location: /ArkDevProject2/views/instructorDashboard_mm.php');
+        $filePath = uploadFile();
+        header('Location: ../../views/instructorDashboard_mm.php');
         exit();
     }
 }

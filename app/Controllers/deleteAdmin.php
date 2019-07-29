@@ -10,7 +10,7 @@ $success = $AdminRepo->deleteById($data['id']);
 
 //*** Handle redirection after saving ***//
 if ($success) {
-    header('Location: /views/adminDashboard.php');
+    header('Location: /views/adminDashboard_mm.php');
     exit();
 }else {
     echo("delete error check delete admin");

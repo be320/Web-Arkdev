@@ -1,6 +1,7 @@
 <?php
 global $dbServerName, $dbPassword, $dbName, $dbUserName;
 
+
 $dbServerName = 'bahaa.local';
 $dbUserName = 'root';
 $dbPassword = '';

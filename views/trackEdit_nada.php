@@ -92,8 +92,9 @@ $track = $trackRepo->getById($data['id']);
     <div class="main-img">
         <img src="../images/books.jpg" class="banner" alt="banner"/>
     </div>
+	<br><br><br>
     <div class="container">
-        <div class="row justify-content-center align-items-center full-height">
+        <div class="row justify-content-center align-items-center ">
             <div class="col-sm-6 align-self-center auth-wrapper">
                 <div class="auth-intro">
                     <h2 class="auth-title"> Edit Tracks Information </h2>

@@ -101,8 +101,9 @@ else {
     <div class="main-img">
         <img src="../images/books.jpg" class="banner" alt="banner"/>
     </div>
+	<br><br><br>
     <div class="container">
-        <div class="row justify-content-center align-items-center full-height">
+        <div class="row justify-content-center align-items-center ">
             <div class="col-sm-6 align-self-center auth-wrapper">
                 <div class="auth-intro">
                     <h2 class="auth-title"> Edit Course Information </h2>
@@ -114,7 +115,7 @@ else {
                     </div>
                     <div class="form-group">
                         <label for="name">ID</label>
-                        <input id="id" type="name" placeholder="Course ID" name="id" class="form-control" value="<?php echo $course->getId(); ?>" required/>
+                        <input id="id" type="name" placeholder="Course ID" name="id" class="form-control" value="<?php echo $course->getId(); ?>" required disabled/>
                     </div>
                     <div class="form-group">
                         <label for="name">Track</label>

@@ -111,8 +111,9 @@ if (!$instructor) {
     <div class="main-img">
         <img src="../images/books.jpg" class="banner" alt="banner"/>
     </div>
+	<br><br><br>
     <div class="container">
-        <div class="row justify-content-center align-items-center full-height">
+        <div class="row justify-content-center align-items-center ">
             <div class="col-sm-6 align-self-center auth-wrapper">
                 <div class="auth-intro">
                     <h2 class="auth-title"> Edit Instructor Information </h2>
@@ -140,12 +141,11 @@ if (!$instructor) {
                         <textarea id="bio" placeholder="Add info..." name="bio"  class="form-control" required> <?php echo $instructor->getBio();?> </textarea>
                     </div>
                     
-                   <!-- <div class="form-group">
+                   <div class="form-group">
                         <i class="fas fa-camera"></i>
                         <label for="image">add image</label>
-                        <input type="file" id="instructorImage" name="image" class="form-control" accept="image/*">
-
-                            </div> -->
+                        <input type="file" id="instructorImage"  name="image_path" class="form-control" accept="image/*">
+                            </div>
 
                     <div class="text-center submit-btn">
                         <button type="submit" name="submit" class="btn btn-primary">Submit</button>

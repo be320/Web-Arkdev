@@ -48,7 +48,7 @@ function sendJSON($ids) {
   foreach ($ids as $row) {
 
     $tmpCourse = $courseRepo->getByIdAsoc($row['course_id']);
-    $tmpInstructor = $instructorRepo->getById($row['instructor_id']);
+    $tmpInstructor = $instructorRepo->getByIdAsoc($row['instructor_id']);
     $tmpTrack = $trackRepo->getByIdAsoc($row['track_id']);
 
 
