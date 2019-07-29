@@ -112,5 +112,29 @@ class InstructorRepository
         return $result;
     }
 
+    /**
+     * return instructor by an assoc array
+     * @param $instructorId
+     * @return array
+     */
+    public function getByIdAsoc($instructorId)
+    {
+        $result = null;
+
+        try{
+            $db = DBConnection::connect();
+            $stmt = $db->prepare("SELECT * FROM instructor WHERE id=:id");
+            $stmt->bindValue(':id',$instructorId);
+            $stmt->execute();
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);
+            $result = $stmt->fetch();
+        }
+        catch (PDOException $e){
+            echo $e->getMessage();
+            exit();
+        }
+        return $result;
+    }
+
 
 }
