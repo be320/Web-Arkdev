@@ -31,7 +31,7 @@ if ($hasErrors === false) {
     $success = $AdminRepo->create($data);
 
     if ($success) {
-        header('Location: /views/index.html');
+        header('Location: /views/index_mm.html');
         exit();
     }
 }

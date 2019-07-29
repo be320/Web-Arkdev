@@ -127,13 +127,27 @@ $admins = $adminRepo->getAll();
 		</thead>
 		<tbody> 
       <?php
+      function makeSure($admin):string
+      {
+        require_once(__DIR__.'/../app/Models/Admin.php');
+        require_once(__DIR__.'/../app/includes/sessionStart.php');
+        if(isset($_SESSION['admin'])){
+          $x = $_SESSION['admin'];
+          $id=$x->getid();
+        }
+        
+        if($admin->getId()===$id){
+          return ' disabled ';
+        }
+        return '';
+      }
       foreach ($admins as $admin){
         echo('<tr>');
-        echo('<td>'.$admin->getId() .'</td>');
+        echo('<th>'.$admin->getId() .'</td>');
         echo('<td>'.$admin->getName().'</td>'); 
         echo('<td style="border-right:2px solid black;">' . $admin->getEmail() . '</td>'); 
-        echo('<td style="text-align:center;"><button style="background-color:BLUE; font-weight:bold; color:white; border:2px solid black;" type="button">Edit</button></td>'); 
-        echo('<td style="text-align:center;"><button style="background-color:RED; font-weight:bold; color:white; border:2px solid black;" type="button">Delete</button></td>');   
+        echo('<td style="text-align:center;"><a href="/views/adminEdit_nada.php?id=' . $admin->getId() . '"><button type="button" class="btn btn-primary">Edit</button></a></td>'); 
+        echo('<td style="text-align:center;"><a href="/../app/Controllers/deleteAdmin.php?id=' . $admin->getId() . '"><button '.makeSure($admin).'type="button" class="btn btn-danger">Delete</button></a></td>');   
         echo('</tr>');
       }
       ?>   

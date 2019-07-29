@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/all.css">
       
-        <title>New Admin Form</title>
+        <title>Register</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
@@ -106,7 +106,7 @@
       return false;
     }
     re = /^\w+$/;
-   <!-- if(!re.test(form.name.value)) {
+    if(!re.test(form.name.value)) {
       alert("Error: name must contain only letters, numbers and underscores!");
       form.name.focus();
       return false;
@@ -141,9 +141,8 @@
         form.password.focus();
         return false;
       }
-    }
-	-->
-	else {
+    } 
+  else {
       alert("Error: Please check that you've entered and confirmed your password!");
       form.password.focus();
       return false;
@@ -164,7 +163,7 @@
                 <div class="form-group">
                      <i class="far fa-envelope"></i>
                      <label for="email">Email:</label>
-                     <input id="email" name="email" type="email" placeholder="Enter your email as emailname@...com" class="form-control" required>
+                     <input id="email" name="email" type="email" placeholder="Enter your email" class="form-control" required>
                  </div>
                 
                  <div class="form-group">
