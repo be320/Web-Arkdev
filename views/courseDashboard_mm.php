@@ -1,7 +1,38 @@
 <?php
 require_once(__DIR__ . '/../app/Repository/CourseRepository.php');
 $courseRepo = new CourseRepository();
-$courses = $courseRepo->getAll();
+$courses = [];
+$data = $_GET;
+if( isset($data['filter']) && !empty($data['filter']) ){
+if( (isset($data['courseName']) && !empty($data['courseName'])) && (isset($data['instructorName']) && empty($data['instructorName'])) && (isset($data['trackName']) && empty($data['trackName'])) ){
+    $courses = $courseRepo->getByCourseName($data['courseName']);
+}
+elseif ((isset($data['courseName']) && empty($data['courseName'])) && (isset($data['instructorName']) && !empty($data['instructorName'])) && (isset($data['trackName']) && empty($data['trackName']))){
+    $courses = $courseRepo->getByInstructorName($data['instructorName']);
+}
+elseif ((isset($data['courseName']) && empty($data['courseName'])) && (isset($data['instructorName']) && empty($data['instructorName'])) && (isset($data['trackName']) && !empty($data['trackName']))){
+    $courses = $courseRepo->getByTrackName($data['trackName']);
+}
+elseif ((isset($data['courseName']) && !empty($data['courseName'])) && (isset($data['instructorName']) && empty($data['instructorName'])) && (isset($data['trackName']) && !empty($data['trackName']))){
+    $courses = $courseRepo->getByCourseNameAndTrackName($data['courseName'], $data['trackName']);
+}
+elseif ((isset($data['courseName']) && !empty($data['courseName'])) && (isset($data['instructorName']) && !empty($data['instructorName'])) && (isset($data['trackName']) && empty($data['trackName']))){
+    $courses = $courseRepo->getByCourseNameAndInstructorName($data['courseName'], $data['instructorName']);
+}
+elseif ((isset($data['courseName']) && empty($data['courseName'])) && (isset($data['instructorName']) && !empty($data['instructorName'])) && (isset($data['trackName']) && !empty($data['trackName']))){
+    $courses = $courseRepo->getByInstructorNameAndTrackName($data['instructorName'], $data['trackName']);
+}
+elseif ((isset($data['courseName']) && !empty($data['courseName'])) && (isset($data['instructorName']) && !empty($data['instructorName'])) && (isset($data['trackName']) && !empty($data['trackName']))){
+    $courses = $courseRepo->getByCourseNameAndInstructorNameAndTrackName($data['courseName'], $data['instructorName'], $data['trackName']);
+}
+}
+else {
+    $courses = $courseRepo->getAll();
+}/*
+if(empty($courses)){
+    echo'<div class="alert alert-warning">
+  <strong>Warning!</strong> Indicates a warning that might need attention.</div>';
+}*/
 ?>
 <!doctype html>
 <html lang="en">
@@ -90,26 +121,22 @@ $courses = $courseRepo->getAll();
     <div class="main-img">
         <img src="../images/books.jpg" class="banner" alt="banner"/>
     </div>
-    <form method="get" action="">
+    <form method="get" action="/views/courseDashboard_mm.php">
 	<div style="padding-top:43px; padding-left:210px; marginbackground-color:none;" id="navbar">
 		<ul>
-		<li><input style="border:2px solid #6da17b" type="text" placeholder="Name"></li>
-		<li>
-		<select style="font-weight:bold;border:2px solid #6da17b;margin-left:4px; height:30px">
-			<option style="color:#6da17b;font-weight:bold;">Track:</option>
-			<option>Computer</option>
-			<option>Communication</option>
-			<option>Building</option>
-		</select>
-		</li>
-		<li><input style="border:2px solid #6da17b" type="text" placeholder="Instructors"></li>
-		<li><input style="border:2px solid white; width:130px; background-color:#6da17b; color: white; text-align:center;" type="button" value="Search Course"></li>
+		<li><input style="border:2px solid #6da17b" type="text" name="courseName" placeholder="Course Name"></li>
+        <li><input style="border:2px solid #6da17b" type="text" name="trackName" placeholder="Track Name"></li>
+
+		<li><input style="border:2px solid #6da17b" type="text" name="instructorName" placeholder="Instructor Name"></li>
+		<li><input style="border:2px solid white; width:130px; background-color:#6da17b; color: white; text-align:center;" type="submit" value="Filter" name="filter"></li>
 		</ul>
 	</div>
     </form>
+
 <main class="grid">
 
     <?php
+
     foreach ($courses as $course){
         echo '<article>';
         echo '<img src="../images/'.$course->getImagePath().'" alt="Sample photo">';
@@ -124,10 +151,20 @@ $courses = $courseRepo->getAll();
         echo '<a class="btn btn-danger m-lg-1" href="/app/Controllers/deleteCourse.php?id='  .  $course->getId().  '">Delete</a>';
         echo'</div> ';
         echo '</article>';
+        $course = null;
     }
+
     ?>
 
 </main>
+    <?php
+    //To show a message box incase of no results
+    if(empty($courses)){
+        echo'<div class="alert alert-warning alert-dismissible">
+  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>NOTE!</strong> No Courses with such properties.</div>';
+    }
+    ?>
+
 </div>
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->

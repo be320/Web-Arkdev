@@ -1,8 +1,7 @@
 <?php
 global $dbServerName, $dbPassword, $dbName, $dbUserName;
 
-$dbServerName = '192.168.64.2';
 $dbServerName = 'localhost';
 $dbUserName = 'root';
-$dbPassword = 'root';
+$dbPassword = '';
 $dbName = 'training_management_system';

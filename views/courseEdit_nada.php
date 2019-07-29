@@ -110,7 +110,7 @@ else {
                     </div>
                     <div class="form-group">
                         <label for="name">ID</label>
-                        <input id="id" type="name" placeholder="Course ID" name="id" class="form-control" value="<?php echo $course->getId(); ?>" required/>
+                        <input id="id" type="name" placeholder="Course ID" name="id" class="form-control" value="<?php echo $course->getId(); ?>" required disabled/>
                     </div>
                     <div class="form-group">
                         <label for="name">Track</label>
