@@ -95,6 +95,25 @@ class StudentRepository
         return $result;
     }
 
+    public function getByName($name)
+    {
+        $result = [];
+
+        try {
+            $db = DBConnection::connect();
+            $stmt = $db->prepare("SELECT * FROM $this->table where name like '%{:name}%'");
+            $stmt->bindValue(':name', $name);
+            $stmt->execute();
+            $stmt->setFetchMode(PDO::FETCH_CLASS, Student::class);
+            $result = $stmt->fetch();
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+            exit();
+        }
+
+        return $result;
+    }
+
     /**
      * Update student
      *

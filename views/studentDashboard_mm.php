@@ -1,5 +1,5 @@
 <?php
-require_once(__DIR__ . '../app/Repository/StudentRepository.php');
+require_once(__DIR__ . '/../app/Repository/StudentRepository.php');
 $studentRepo = new StudentRepository();
 $students = $studentRepo->getAll();
 ?>
@@ -95,12 +95,13 @@ $students = $studentRepo->getAll();
     <div class="main-img">
         <img src="../images/books.jpg" class="banner" alt="banner"/>
     </div>
+    <form id="SearchStudentForm" action="/../app/Controllers/searchStudent.php" method="post">
 	<div style="padding-top:43px; padding-left:180px; marginbackground-color:none;" id="navbar">
 		<ul>
-		<li><input style="border:2px solid #6da17b" type="text" placeholder="Name"></li>
-		<li><input style="border:2px solid #6da17b" type="select" placeholder="GPA"></li>
+		<li><input style="border:2px solid #6da17b" type="text" placeholder="Name" name="name"></li>
+		<li><input style="border:2px solid #6da17b" type="select" placeholder="Email" name="email"></li>
 		<li>
-		<select style="font-weight:bold;border:2px solid #6da17b;margin-left:4px; height:30px">
+		<select style="font-weight:bold;border:2px solid #6da17b;margin-left:4px; height:30px" name="gender">
 			<option style="color:#6da17b;font-weight:bold;">Gender:</option>
 			<option>Male</option>
 			<option>Female</option>
@@ -108,7 +109,7 @@ $students = $studentRepo->getAll();
 		 </select>
 		</li>
 		<li>
-		<select style="font-weight:bold;border:2px solid #6da17b;margin-left:4px; height:30px">
+		<select style="font-weight:bold;border:2px solid #6da17b;margin-left:4px; height:30px" name="level">
 			<option style="color:#6da17b;font-weight:bold;">Level:</option>
 			<option>Freshman</option>
 			<option>Sophomore</option>
@@ -118,9 +119,10 @@ $students = $studentRepo->getAll();
 			
 		 </select>
 		</li>
-		<li><input style="border:2px solid white; width:160px; background-color:#6da17b; color: white; text-align:center;" type="button" value="Search Student"></li>
+		<li><input style="border:2px solid white; width:160px; background-color:#6da17b; color: white; text-align:center;" type="submit" name="submit" value="Search Student"></li>
 		</ul>
 	</div>
+    </form>
 <main class="grid">
     <?php
 
