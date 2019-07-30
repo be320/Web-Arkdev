@@ -136,9 +136,6 @@ nav ul li.parent ul.child li a {
   top: 0;
   left: 0;
 }
-
-
-
 .table{
     margin-top:75px;
     justify-content: center;
@@ -245,8 +242,7 @@ table tr td:first-child::before {
 	padding-left:10px;
 }
 .full-height {
-    height: 110vh;
-    height: 109vh;
+    height: auto;
 }
 .grid { 
         margin-top:20vh;

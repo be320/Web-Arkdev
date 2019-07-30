@@ -111,7 +111,7 @@ if(isset($_POST['filter'])){
     <form action="adminDashboard_mm.php" method="post">
       <ul>
 		    <li><input style="border:2px solid black" type="text" name="search" placeholder="Name..."></li>
-		    <li><input style="width:70px; text-align:left;" type="submit" value="Filter" name="filter"></li>
+		    <li><input style="width:70px; text-align:left;" class="btn btn-primary" type="submit" value="Filter" name="filter"></li>
 		  </ul>
 	  </div>
 	  </div>
