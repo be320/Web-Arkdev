@@ -2,7 +2,9 @@
 require_once(__DIR__ . '/../app/Repository/CourseRepository.php');
 $courseRepo = new CourseRepository();
 $courses = [];
+$flag = 0;
 $data = $_GET;
+//Conditions depending on search combinatoins entered by the user
 if( isset($data['filter']) && !empty($data['filter']) ){
 if( (isset($data['courseName']) && !empty($data['courseName'])) && (isset($data['instructorName']) && empty($data['instructorName'])) && (isset($data['trackName']) && empty($data['trackName'])) ){
     $courses = $courseRepo->getByCourseName($data['courseName']);
@@ -25,10 +27,19 @@ elseif ((isset($data['courseName']) && empty($data['courseName'])) && (isset($da
 elseif ((isset($data['courseName']) && !empty($data['courseName'])) && (isset($data['instructorName']) && !empty($data['instructorName'])) && (isset($data['trackName']) && !empty($data['trackName']))){
     $courses = $courseRepo->getByCourseNameAndInstructorNameAndTrackName($data['courseName'], $data['instructorName'], $data['trackName']);
 }
+elseif($data['state'] === 'courseAdded'){
+    $flag = 1;
+}
 }
 else {
     $courses = $courseRepo->getAll();
 }
+//to show a success message when a course is added
+/*$state = $_GET;
+$flag = 0;
+if($data['state'] === 'courseAdded'){
+    $flag = 1;
+}*/
 ?>
 <!doctype html>
 <html lang="en">
@@ -47,7 +58,7 @@ else {
 
 <body>
 <header>
- 
+
 <nav class="navbar fixed-top navbar-expand-lg navbar-dark indigo">
         <a href="home_mm.html" class="navbar-brand" style="color: #a2a2a2"><strong>Welcome</strong></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -55,7 +66,7 @@ else {
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                
+
 				<li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
          Admins
@@ -64,7 +75,7 @@ else {
           <a class="dropdown-item" href="createAdmin_basma.html">Create</a>
           <a class="dropdown-item" href="adminDashboard_mm.php">Dashboard</a>
         </div>
-				
+
 				<li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
          Instructors
@@ -73,8 +84,8 @@ else {
           <a class="dropdown-item" href="createInstructor_basma.php">Create</a>
           <a class="dropdown-item" href="instructorDashboard_mm.html">Dashboard</a>
         </div>
-                
-				
+
+
 				<li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle"  role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
          Students
@@ -83,8 +94,8 @@ else {
           <a class="dropdown-item" href="createStudent_basma.html">Create</a>
           <a class="dropdown-item" href="studentDashboard_mm.php">Dashboard</a>
         </div>
-                
-				
+
+
 				<li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle"  role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
          Courses
@@ -100,20 +111,20 @@ else {
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
           <a class="dropdown-item" href="createTrack_basma.html">Create</a>
           <a class="dropdown-item" href="trackDashboard_mm.html">Dashboard</a>
-		  
-        </div> 
-		
+
+        </div>
+
 			<li class="nav-item dropdown">
 			<a role="button" href="teach.html" class="navbar" style="color: #a2a2a2">Teach</a>
-       
-		
+
+
             </ul>
 			<ul class="nav navbar-nav navbar-right">
       <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
     </ul>
         </div>
     </nav>
-	
+
 </header>
 
 <!------------------------------------------------------------------------------------------------------------------->
@@ -134,12 +145,12 @@ else {
 	</div>
     </form>
 
-
-
-  
-		
-		
-
+    <?php
+    if($flag === 1){
+    echo '<div class="alert alert-success alert-dismissible" >
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>CONGRATS!</strong> Course added Successfully</div>';
+    }
+    ?>
 <main class="grid">
 
     <?php
@@ -164,6 +175,7 @@ else {
     ?>
 
 </main>
+
     <?php
     //To show a message box incase of no results
     if(empty($courses)){
