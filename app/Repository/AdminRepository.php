@@ -97,17 +97,16 @@ class AdminRepository
      */
     public function getByName($name)
     {
-        $result = null;
+        $result = [];
         try {
             $db = DBConnection::connect();
-            $stmt = $db->prepare("SELECT * FROM $this->table where name LIKE :name");
-            $stmt->bindValue(':name', $name);
+            $stmt = $db->prepare('SELECT * FROM admin WHERE name like :name');
+            $stmt->bindValue(':name', "%$name%");
             $stmt->execute();
             $stmt->setFetchMode(PDO::FETCH_CLASS, Admin::class);
-            $result = $stmt->fetch();
+            $result = $stmt->fetchAll();
         } catch (PDOException $e) {
             echo $e->getMessage();
-            exit();
         }
         return $result;
     }
