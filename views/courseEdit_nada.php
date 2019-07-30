@@ -1,6 +1,7 @@
 <?php
 require_once(__DIR__.'/../app/Repository/CourseRepository.php');
 require_once(__DIR__.'/../app/Models/Course.php');
+require_once(__DIR__.'/../app/Repository/TrackRepository.php');
 
 $data = $_GET;
 if(!isset($data['id']) || empty($data['id'])){
@@ -10,7 +11,20 @@ if(!isset($data['id']) || empty($data['id'])){
 else {
     $courseRepo = new CourseRepository();
     $course = $courseRepo->getById($data['id']);
+    $trackRepo = new TrackRepository();
+    $tracks = $trackRepo->getAll();
 }
+
+/*
+foreach ($tracks as $track){
+    //var_dump($track);
+    $trackID =$course->getTrackId();
+    var_dump($trackRepo->getById($trackID));
+    $trackObj = $trackRepo->getById($trackID);
+    var_dump($trackObj->getName());
+    exit();
+}
+*/
 ?>
 
 <!doctype html>
@@ -120,6 +134,8 @@ else {
                     <div class="form-group">
                         <label for="name">Track</label>
                         <input id="name" type="name" placeholder="Exist in which Track" name="track_id" class="form-control" value="<?php echo $course->getTrackId(); ?>" required/>
+
+
                     </div>
                     <div class="form-group">
                         <i class="fa fa-edit"></i>

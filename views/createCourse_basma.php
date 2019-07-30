@@ -1,8 +1,7 @@
 <?php
 require_once(__DIR__.'/../app/Repository/TrackRepository.php');
 require_once(__DIR__.'/../app/Models/Track.php');
-$trackRepo = new TrackRepository();
-$tracks = $trackRepo->getAll();
+require_once(__DIR__.'/../app/Controllers/createCourse.php');
 //for checking if exists a course with such name or not
 $data = $_GET;
 $flag = 0;
@@ -142,7 +141,12 @@ if(isset($data['error']) && !empty($data['error'])){
 
                         <div class="form-group">
                             <label for="trackName">Track ID:</label>
-                            <input id="track" name="track_id" type="text" placeholder="Enter Track ID" class="form-control" required>
+<!--                            <input id="track" name="track_id" type="selec" placeholder="Enter Track ID" class="form-control" required>-->
+                            <select name='track_id'>
+                                <?php foreach ($tracks as $track): ?>
+                                    <option value="<?php echo $track->getId() ?> "><?php echo $track->getName() ?> </option>
+                                <?php endforeach ?>
+                            </select>
 
                         </div>
 
@@ -158,7 +162,7 @@ if(isset($data['error']) && !empty($data['error'])){
 
 
                         <div class="text-center submit-btn">
-                            <button type="Submit" class="btn btn-primary" >Submit</button>
+                            <button type="Submit" name="create_course" class="btn btn-primary" >Submit</button>
                         </div>
 
                     </form>
