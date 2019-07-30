@@ -2,9 +2,18 @@
 require_once(__DIR__ . '/../app/Repository/AdminRepository.php');
 require_once(__DIR__.'/../app/includes/sessionStart.php');
 require_once(__DIR__.'/../app/includes/sessionAuth.php');
+require_once(__DIR__ . '/../app/Models/Admin.php');
 
-$adminRepo = new AdminRepository();
-$admins = $adminRepo->getAll();
+//collect search
+if(isset($_POST['search'])){
+  $name = $_POST['search'];
+  $adminRepo = new AdminRepository();
+  $admins = $adminRepo->getByName($name);
+  unset($_POST); 
+}else {    
+    $adminRepo = new AdminRepository();
+    $admins = $adminRepo->getAll(); 
+}
 ?>
 
 <!doctype html>
@@ -19,7 +28,7 @@ $admins = $adminRepo->getAll();
     <link rel="stylesheet" href="../css/all.css">
     <link rel="stylesheet" href="../css/main.css">
 
-    <title>Student | Dashboard</title>
+    <title>Admin Dashboard</title>
 </head>
 
 <body>
@@ -86,7 +95,7 @@ $admins = $adminRepo->getAll();
 		
             </ul>
 			<ul class="nav navbar-nav navbar-right">
-      <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+      <li><a href="/app/Controllers/logout.php"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
     </ul>
         </div>
     </nav>
@@ -99,11 +108,12 @@ $admins = $adminRepo->getAll();
         <img src="../images/books.jpg" class="banner" alt="banner"/>
     </div>
 	<div id="navbar">
-		<ul>
-		<li><input style="border:2px solid black" type="text" placeholder="Name"></li>
-		<li><input style="width:70px; text-align:left;" type="button" value="Search"></li>
-		</ul>
-	 <br><br><br><br>
+    <form action="adminDashboard_mm.php" method="post">
+      <ul>
+		    <li><input style="border:2px solid black" type="text" name="search" placeholder="Name..."></li>
+		    <li><input style="width:70px; text-align:left;" type="submit" value="Search"></li>
+		  </ul>
+    </form>
 	<div class="container">
         <div class="row justify- align-items-center ">
 <div class="col-sm-12 align-self-center auth-wrapper" style="background-color: rgb(0,0,0,0);border: 0;box-shadow: 0 0 12px 3px black;">	  <form class="form-inline"style="align-items: center;justify-content: center;" >
@@ -141,14 +151,18 @@ $admins = $adminRepo->getAll();
         }
         return '';
       }
-      foreach ($admins as $admin){
-        echo('<tr>');
-        echo('<th>'.$admin->getId() .'</td>');
-        echo('<td>'.$admin->getName().'</td>'); 
-        echo('<td style="border-right:2px solid black;">' . $admin->getEmail() . '</td>'); 
-        echo('<td style="text-align:center;"><a href="/views/adminEdit_nada.php?id=' . $admin->getId() . '"><button type="button" class="btn btn-primary">Edit</button></a></td>'); 
-        echo('<td style="text-align:center;"><a href="/../app/Controllers/deleteAdmin.php?id=' . $admin->getId() . '"><button '.makeSure($admin).'type="button" class="btn btn-danger">Delete</button></a></td>');   
-        echo('</tr>');
+      try{
+        foreach ($admins as $admin){
+          echo('<tr>');
+          echo('<th>'.$admin->getId() .'</td>');
+          echo('<td>'.$admin->getName().'</td>'); 
+          echo('<td style="border-right:2px solid black;">' . $admin->getEmail() . '</td>'); 
+          echo('<td style="text-align:center;"><a href="/views/adminEdit_nada.php?id=' . $admin->getId() . '"><button type="button" class="btn btn-primary">Edit</button></a></td>'); 
+          echo('<td style="text-align:center;"><a href="/../app/Controllers/deleteAdmin.php?id=' . $admin->getId() . '"><button '.makeSure($admin).'type="button" class="btn btn-danger">Delete</button></a></td>');   
+          echo('</tr>');
+        }
+      }catch(Exception $e){
+        echo($e->error_log);
       }
       ?>   
 		</tbody>

@@ -3,6 +3,22 @@ require_once(__DIR__.'/../app/Repository/TrackRepository.php');
 require_once(__DIR__.'/../app/Models/Track.php');
 $trackRepo = new TrackRepository();
 $tracks = $trackRepo->getAll();
+//for checking if exists a course with such name or not
+$data = $_GET;
+$flag = 0;
+
+//To show a message box incase of an error
+if(isset($data['error']) && !empty($data['error'])){
+    //incase of existence of such Course Name
+    if($data['error'] === 'errorNameExists'){
+    $flag = 1;
+    }
+    //incase of no Track with such ID
+    elseif ($data['error'] === 'errorTrackNotExist'){
+        $flag = 2;
+    }
+}
+
 
 ?>
 <!DOCTYPE html>
@@ -95,10 +111,23 @@ $tracks = $trackRepo->getAll();
 <body>
 
 <div class="main">
+
     <div class="main-img">
         <img src="../images/books.jpg" class="banner" alt="banner"/>
     </div>
+
 	<br><br><br>
+
+    <?php
+    if($flag === 1){
+    echo '<div class="alert alert-danger alert-dismissible">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>WARNING!</strong> There is a course with such Name. Kindly Choose another Name</div>';
+    }
+    elseif ($flag === 2){
+        echo '<div class="alert alert-danger alert-dismissible">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>WARNING!</strong> There is no track with such ID</div>';
+    }
+    ?>
     <div class="container">
         <div class="row justify-content-center align-items-center">
             <div class="col-sm-6 align-self-center auth-wrapper">
@@ -112,7 +141,7 @@ $tracks = $trackRepo->getAll();
 
 
                         <div class="form-group">
-                            <label for="trackName">Track Name:</label>
+                            <label for="trackName">Track ID:</label>
                             <input id="track" name="track_id" type="text" placeholder="Enter Track ID" class="form-control" required>
 
                         </div>
@@ -124,7 +153,7 @@ $tracks = $trackRepo->getAll();
 
                         <div class="form-group">
                                 <label for="pic">Course Image: </label>
-                                <input id="pic" type="file" name="image_path" accept="image/*" class="form-control">
+                                <input id="pic" type="file" name="image_path" accept="image/*" class="form-control" required>
                         </div>
 
 

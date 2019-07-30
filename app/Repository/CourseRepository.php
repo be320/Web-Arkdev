@@ -378,6 +378,50 @@ class CourseRepository
         return $result;
     }
 
+    public function checkCourseNameExists($name): bool
+    {
+        $result=[];
+        try{
+            $db = DBConnection::connect();
+            $stmt = $db->prepare('SELECT * FROM course WHERE name = :name');
+            $stmt->bindValue(':name', $name);
+            $stmt->execute();
+            $stmt->setFetchMode(PDO::FETCH_CLASS, Course::class);
+            $result = $stmt->fetchAll();
+        }
+        catch (PDOException $e){
+            echo $e->getMessage();
+        }
+        if(empty($result)){
+            return false;
+        }
+        return true;
+    }
+
+    public function checkTrackIdExists($id):bool
+    {
+        $result=[];
+        try{
+            echo '1';
+            $db = DBConnection::connect();
+            $stmt = $db->prepare('SELECT * FROM track WHERE id = :id');
+            $stmt->bindValue(':id', $id);
+            $stmt->execute();
+            $stmt->setFetchMode(PDO::FETCH_CLASS, Track::class);
+            $result = $stmt->fetchAll();
+            var_dump($stmt);
+            var_dump($result);
+        }
+        catch (PDOException $e){
+            echo $e->getMessage();
+        }
+        if(empty($result)){
+            return true;
+        }
+        return false;
+
+    }
+
 
 
 

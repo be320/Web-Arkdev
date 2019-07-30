@@ -90,6 +90,27 @@ class AdminRepository
 
         return $result;
     }
+    /**
+     * Get Admin by name
+     * @param string name
+     * @return Admin
+     */
+    public function getByName($name)
+    {
+        $result = null;
+        try {
+            $db = DBConnection::connect();
+            $stmt = $db->prepare("SELECT * FROM $this->table where name LIKE :name");
+            $stmt->bindValue(':name', $name);
+            $stmt->execute();
+            $stmt->setFetchMode(PDO::FETCH_CLASS, Admin::class);
+            $result = $stmt->fetch();
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+            exit();
+        }
+        return $result;
+    }
 
     /**
      * Update Admin
