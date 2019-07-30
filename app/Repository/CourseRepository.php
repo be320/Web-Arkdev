@@ -257,6 +257,173 @@ class CourseRepository
         return $result;
     }
 
+    public function getByCourseName($courseName): array
+    {
+        $result = [];
+        try{
+            $db = DBConnection::connect();
+            $stmt = $db->prepare('SELECT * FROM course WHERE name LIKE :courseName');
+            $stmt->bindValue(':courseName',"%$courseName%");
+            $stmt->execute();
+            $stmt->setFetchMode(PDO::FETCH_CLASS,Course::class);
+            $result = $stmt->fetchAll();
+        }
+        catch (PDOException $e){
+            echo $e->getMessage();
+        }
+        return $result;
+    }
+
+    public function getByInstructorName($instructorName): array
+    {
+        $result = [];
+        try{
+            $db = DBConnection::connect();
+            $stmt = $db->prepare('SELECT * from course WHERE id IN(SELECT course_id FROM course_has_instructor WHERE instructor_id IN (SELECT id FROM instructor WHERE name LIKE :instructorName ))');
+            $stmt->bindValue(':instructorName',"%$instructorName%");
+            $stmt->execute();
+            $stmt->setFetchMode(PDO::FETCH_CLASS,Course::class);
+            $result = $stmt->fetchAll();
+        }
+        catch (PDOException $e){
+            echo $e->getMessage();
+        }
+        return $result;
+    }
+
+    public function getByTrackName($trackName): array
+    {
+        $result = [];
+        try{
+            $db = DBConnection::connect();
+            $stmt = $db->prepare('SELECT * FROM course WHERE track_id IN(SELECT id FROM track WHERE name LIKE :trackName)');
+            $stmt->bindValue(':trackName',"%$trackName%");
+            $stmt->execute();
+            $stmt->setFetchMode(PDO::FETCH_CLASS,Course::class);
+            $result = $stmt->fetchAll();
+        }
+        catch (PDOException $e){
+            echo $e->getMessage();
+        }
+        return $result;
+    }
+
+    public function getByCourseNameAndTrackName($courseName, $trackName): array
+    {
+        $result = [];
+        try {
+            $db = DBConnection::connect();
+            $stmt = $db->prepare('SELECT * from course WHERE name LIKE :courseName AND track_id IN(SELECT id FROM track WHERE name LIKE :trackName)');
+            $stmt->bindValue(':courseName', "%$courseName%");
+            $stmt->bindValue(':trackName', "%$trackName%");
+            $stmt->execute();
+            $stmt->setFetchMode(PDO::FETCH_CLASS, Course::class);
+            $result = $stmt->fetchAll();
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+        return $result;
+    }
+
+
+    public function getByCourseNameAndInstructorName($courseName, $instructorName): array
+    {
+        $result = [];
+        try {
+            $db = DBConnection::connect();
+            $stmt = $db->prepare('SELECT * FROM course WHERE name LIKE :courseName AND id IN(SELECT course_id from course_has_instructor WHERE instructor_id IN(SELECT id FROM instructor WHERE name LIKE :instructorName))');
+            $stmt->bindValue(':courseName', "%$courseName%");
+            $stmt->bindValue(':instructorName', "%$instructorName%");
+            $stmt->execute();
+            $stmt->setFetchMode(PDO::FETCH_CLASS, Course::class);
+            $result = $stmt->fetchAll();
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+        return $result;
+    }
+
+    public function getByInstructorNameAndTrackName($instructorName, $trackName): array
+    {
+        $result = [];
+        try {
+            $db = DBConnection::connect();
+            $stmt = $db->prepare('SELECT * FROM course WHERE track_id IN(SELECT id from track WHERE name LIKE :trackName) AND id IN(SELECT course_id FROM course_has_instructor WHERE instructor_id IN(SELECT id FROM instructor WHERE name LIKE :instructorName))');
+            $stmt->bindValue(':trackName', "%$trackName%");
+            $stmt->bindValue(':instructorName', "%$instructorName%");
+            $stmt->execute();
+            $stmt->setFetchMode(PDO::FETCH_CLASS, Course::class);
+            $result = $stmt->fetchAll();
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+        return $result;
+    }
+
+    public function getByCourseNameAndInstructorNameAndTrackName($courseName, $instructorName, $trackName): array
+    {
+        $result = [];
+        try {
+            $db = DBConnection::connect();
+            $stmt = $db->prepare('SELECT * FROM course WHERE name LIKE :courseName AND id IN(SELECT course_id FROM course_has_instructor WHERE instructor_id IN(SELECT id FROM instructor WHERE name LIKE :instructorName)) AND track_id IN(SELECT id FROM track WHERE name LIKE :trackName)');
+            $stmt->bindValue(':courseName', "%$courseName%");
+            $stmt->bindValue(':trackName', "%$trackName%");
+            $stmt->bindValue(':instructorName', "%$instructorName%");
+            $stmt->execute();
+            $stmt->setFetchMode(PDO::FETCH_CLASS, Course::class);
+            $result = $stmt->fetchAll();
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+        return $result;
+    }
+
+    public function checkCourseNameExists($name): bool
+    {
+        $result=[];
+        try{
+            $db = DBConnection::connect();
+            $stmt = $db->prepare('SELECT * FROM course WHERE name = :name');
+            $stmt->bindValue(':name', $name);
+            $stmt->execute();
+            $stmt->setFetchMode(PDO::FETCH_CLASS, Course::class);
+            $result = $stmt->fetchAll();
+        }
+        catch (PDOException $e){
+            echo $e->getMessage();
+        }
+        if(empty($result)){
+            return false;
+        }
+        return true;
+    }
+
+    public function checkTrackIdExists($id):bool
+    {
+        $result=[];
+        try{
+            echo '1';
+            $db = DBConnection::connect();
+            $stmt = $db->prepare('SELECT * FROM track WHERE id = :id');
+            $stmt->bindValue(':id', $id);
+            $stmt->execute();
+            $stmt->setFetchMode(PDO::FETCH_CLASS, Track::class);
+            $result = $stmt->fetchAll();
+            var_dump($stmt);
+            var_dump($result);
+        }
+        catch (PDOException $e){
+            echo $e->getMessage();
+        }
+        if(empty($result)){
+            return true;
+        }
+        return false;
+
+    }
+
+
+
 
 }
 
