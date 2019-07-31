@@ -17,16 +17,6 @@ else {
     $tracks = $trackRepo->getAll();
 }
 
-/*
-foreach ($tracks as $track){
-    //var_dump($track);
-    $trackID =$course->getTrackId();
-    var_dump($trackRepo->getById($trackID));
-    $trackObj = $trackRepo->getById($trackID);
-    var_dump($trackObj->getName());
-    exit();
-}
-*/
 ?>
 
 <!doctype html>
@@ -68,8 +58,13 @@ require_once(__DIR__.'/layout/header.php');
                         <input id="id" type="name" placeholder="Course ID" name="id" class="form-control" value="<?php echo $course->getId(); ?>" required readonly/>
                     </div>
                     <div class="form-group">
-                        <label for="name">Track</label>
-                        <input id="name" type="name" placeholder="Exist in which Track" name="track_id" class="form-control" value="<?php echo $course->getTrackId(); ?>" required/>
+                        <label for="trackName">Track Name:</label>
+                        <select name='track_id' class="form-control" value>
+                            <option value="<?php echo $course->getTrackId() ?>"><?php echo ($trackRepo->getById($course->getTrackId()))->getName() ?></option>
+                            <?php foreach ($tracks as $track): ?>
+                                <option value="<?php echo $track->getId() ?>""><?php echo $track->getName() ?> </option>
+                            <?php endforeach ?>
+                        </select>
                     </div>
                     <div class="form-group">
                         <i class="fa fa-edit"></i>

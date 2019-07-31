@@ -233,8 +233,8 @@ class StudentRepository
 
       try {
           $db = DBConnection::connect();
-          $stmt = $db->prepare("SELECT * FROM $this->table where email = :email");
-          $stmt->bindValue(':email', $email);
+          $stmt = $db->prepare("SELECT * FROM $this->table where email like :email");
+          $stmt->bindValue(':email', "%$email%");
           $stmt->execute();
           $stmt->setFetchMode(PDO::FETCH_CLASS, Student::class);
           $result = $stmt->fetchAll();

@@ -68,50 +68,6 @@ nav ul li.parent ul.child li a {
     display: block;
 }
 
-
-
-.main-img img {
-    position: relative;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    max-height: 100vh;
-    width: 100vw;
-    object-fit: cover;
-    z-index: 0;
-	/* Set rules to fill background */
-  min-height: 100%;
-  min-width: 1024px;
-	
-  /* Set up proportionate scaling */
-  width: 100%;
-  height: auto;
-	
-  /* Set up positioning */
-  position: fixed;
-  top: 0;
-  left: 0;
-}
-
-
-.main-img {
-    position: relative;
-    z-index: -1;
-	  height: 100%;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-.main-img:after {
-    content: '';
-    position: absolute;
-    background-color: rgba(0, 0, 0, 0.5);
-    width: 100vw;
-    height: 800vh;
-}
-
 .main-img img {
     position: relative;
     top: 0;
@@ -135,6 +91,26 @@ nav ul li.parent ul.child li a {
   top: 0;
   left: 0;
 }
+
+
+.main-img {
+    position: relative;
+    z-index: -1;
+	  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.main-img:after {
+    content: '';
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100vw;
+    height: auto-fill;
+}
+
+
 .table{
     margin-top:75px;
     justify-content: center;

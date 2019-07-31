@@ -7,13 +7,13 @@ $hasErrors = false;
 var_dump($data);
 if( !isset($data['course_id']) || empty($data['course_id']) ){
     $hasErrors = true;
-    $error = 'chooseCourseId';
+    $error = 'chooseCourseName';
     header('Location: /views/teach.php?error='.$error.'');
     exit();
 }
 if( !isset($data['instructor_id']) || empty($data['instructor_id']) ){
     $hasErrors = true;
-    $error = 'chooseInstructorId';
+    $error = 'chooseInstructorName';
     header('Location: /views/teach.php?error='.$error.'');
     exit();
 }

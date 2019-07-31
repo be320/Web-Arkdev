@@ -22,13 +22,11 @@ if (isset($_POST['create_course'])){
     }
     if( !isset($data['track_id']) || empty($data['track_id']) ){
         $hasErrors = true;
-    }
-//checks if there is a track with such ID or not
-    if($courseRepo->checkTrackIdExists($data['track_id'])){
-        $error = 'errorTrackNotExist';
-        header('Location: /views/createCourse.php?error='.$error.$data['name'].'&description='.$data['description'].'');
+        $error = 'chooseTrackName';
+        header('Location: /views/createCourse.php?error='.$error.'&name='.$data['name'].'&description='.$data['description'].'');
         exit();
     }
+
 
     $success = false;
     if($hasErrors === false){
@@ -37,9 +35,6 @@ if (isset($_POST['create_course'])){
             $filePath=uploadFile();
             //todo: update is not finished yet
             // $successUpdate = $courseRepo->updateImagePath($filePath, $data);
-
-
-
         }
     }
     if($success){
