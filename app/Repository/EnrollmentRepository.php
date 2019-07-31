@@ -34,12 +34,31 @@ class EnrollmentRepository
             $db = DBConnection::connect();
             $stmt = $db->prepare("DELETE FROM $this->table WHERE student_id=:student AND course_id=:course");
             $stmt->bindValue(':student',$student);
-            $stmt->bindValue(':course',$course);            
+            $stmt->bindValue(':course',$course);
             $success = $stmt->execute();
         }
         catch (PDOException $e){
             echo $e->getMessage();
         }
         return $success;
+    }
+
+    public function getEnrollment($student, $course)
+    {
+        $result = null;
+
+        try{
+            $db = DBConnection::connect();
+            $stmt = $db->prepare("SELECT count(*) FROM $this->table WHERE course_id = :cid AND student_id =:sid");
+            $stmt->bindValue(':sid',$student);
+            $stmt->bindValue(':cid',$course);
+            $stmt->execute();
+            $result = $stmt->fetchColumn();
+        }
+        catch (PDOException $e){
+            echo $e->getMessage();
+            exit();
+        }
+        return $result;
     }
 }

@@ -38,20 +38,20 @@ if ($hasErrors === false) {
         $response['id'] = -1;
         $response['status'] = 1;
         $response['message'] = "Invalid Email or Password";
-        // session_destroy();
+
     }
     else{
-        // $_SESSION['student'] = $result;
+
         $response['id'] = $result->getId();
         $response['status'] = 0;
-        $response['message'] = "Successfully loged in";
+        $response['message'] = "Successfully logged in";
     }
 }
 else{
     $response['id'] = -1;
     $response['status'] = 2;
-    $response['message'] = "Data format is worng or there is an empty paramenter";
-    // session_destroy();
+    $response['message'] = "invalid or missing parameters";
+
 }
 
 

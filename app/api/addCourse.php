@@ -1,47 +1,68 @@
 <?php
-// in order to use this api >>> you send a 
-// student_id
-// course_id 
-// then it will add the course if the student isn't enrolled in it
-
-// @return 
-// it return 'status' (0) if success , (1) if failed or if the student already is enrolled, (2) if the inputs are incorrect
-// and a 'message' with the description.
 require_once(__DIR__ . '/../Repository/EnrollmentRepository.php');
+require_once(__DIR__ . '/../Repository/StudentRepository.php');
+require_once(__DIR__ . '/../Repository/CourseRepository.php');
 
 $inputJSON = file_get_contents('php://input');
 $input = json_decode($inputJSON, true);
 
 $hasErrors = false;
 
-$course = $input['course_id'];
-$student = $input['student_id'];
+$courseID = $input['course_id'];
+$studentID = $input['student_id'];
 
-if (!isset($course) || empty($course))
+if (!isset($courseID) || empty($courseID))
     $hasErrors = true;
-else if (!isset($student) || empty($student))
+else if (!isset($studentID) || empty($studentID))
     $hasErrors = true;
 
+if($hasErrors === true) {
+    $response['status'] = 2;
+    $response['message'] = "a parameter is empty";
+    echo json_encode($response);
+    exit();
+}
 
-if ($hasErrors === false) {
-    $studentRepo = new EnrollmentRepository();
-    $result = $studentRepo->addCourse($student, $course);
 
-    if (!$result){
-        $response['status'] = 1;
-        $response['message'] = "Failed to add Course or IDs don't exist or course already added";
-    }
-    else{
+$enrollRepo = new EnrollmentRepository();
+$studentRepo = new StudentRepository();
+$courseRepo = new CourseRepository();
+
+
+$student = $studentRepo->getById($studentID);
+//course getbyid has a problem when quering non existing course
+$course = $courseRepo->getByIdAsoc($courseID);
+$enrollment = $enrollRepo->getEnrollment($studentID, $courseID);
+
+
+if(!$student) {
+    $response['status'] = 1;
+    $response['message'] = "student doesn't exist";
+    echo json_encode($response);
+    exit();
+}
+else if(!$course) {
+    $response['status'] = 2;
+    $response['message'] = "course doesn't exist";
+    echo json_encode($response);
+    exit();
+}
+else if($enrollment) {
+    $response['status'] = 3;
+    $response['message'] = "student already enrolled in course";
+    echo json_encode($response);
+    exit();
+}
+else {
+    $result = $enrollRepo->addCourse($studentID, $courseID);
+    if($result) {
         $response['status'] = 0;
         $response['message'] = "Successfully added the course";
     }
-}
-else{
-    $response['status'] = 2;
-    $response['message'] = "a parameter is empty";
-}
+    else {
+        $response['status'] = 4;
+        $response['message'] = "couldn't add course try again later";
+    }
 
-$response = json_encode($response);
-
-echo $response;
-exit();
+    echo json_encode($response);
+}
