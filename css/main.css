@@ -110,7 +110,6 @@ nav ul li.parent ul.child li a {
     background-color: rgba(0, 0, 0, 0.5);
     width: 100vw;
     height: 800vh;
-
 }
 
 .main-img img {
@@ -141,17 +140,16 @@ nav ul li.parent ul.child li a {
     justify-content: center;
     border-collapse: collapse;
     border-spacing: 0;
-    width: 100%;
-    border:3px solid black; 
+    width: 100%; 
 }
 table th{	
-    background-color: #FFFFFF	
+    background-color:aliceblue;	
 }
 table td{
-	background-color: #FFFFFF;
+	background-color: aliceblue;
 }
 table tr:nth-child(even){
-	background-color: #f2f2f2;
+	background-color:antiquewhite;
 }
 tr{
     counter-increment: rowNumber;
@@ -164,12 +162,12 @@ table tr td:first-child::before {
 .auth-wrapper{
     padding: 30px;
     border-radius: 5px;
-    background-color: #fff;
-    box-shadow: 0px 0px 5px 1px #ccc;
+    background-color: azure;
+    box-shadow: beige;
 	
 }
 .full-height {
-    height: 100vh;
+    height: auto;
 }
 .error {
     color: #f00;

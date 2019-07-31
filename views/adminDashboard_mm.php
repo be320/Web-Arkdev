@@ -120,11 +120,11 @@ if(isset($_POST['filter'])){
 	<div>
 	<table  class="table table-striped">
 		<thead>
-            <tr  class="table-info">
-                <th style="text-align:center; border-bottom:2px solid black; border-right:1px solid black;" scope="col">ID</th>
-                <th style="text-align:center; border-bottom:2px solid black;border-right:1px solid black;" scope="col">Name</th>
-                <th style="text-align:center; border-bottom:2px solid black; border-right:2px solid black; " scope="col">Email</th>
-                <th style="text-align:center; border-bottom:2px solid black; padding-left:10px" colspan="2" scope="col">Actions</th>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th colspan="2" scope="col">Actions</th>
             </tr>
 		</thead>
 		<tbody> 
