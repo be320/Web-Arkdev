@@ -143,13 +143,13 @@ nav ul li.parent ul.child li a {
     width: 100%; 
 }
 table th{	
-    background-color:aliceblue;	
+    background-color:azure;	
 }
 table td{
-	background-color: aliceblue;
+	background-color: azure;
 }
 table tr:nth-child(even){
-	background-color:antiquewhite;
+	background-color:azure;
 }
 tr{
     counter-increment: rowNumber;

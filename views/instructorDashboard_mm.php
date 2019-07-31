@@ -1,9 +1,6 @@
 <?php
-
 require_once(__DIR__ . '/../app/Repository/InstructorRepository.php');
 require_once(__DIR__ . '/../app/Controllers/getInstructors.php');
-
-
 ?>
 
 <!doctype html>
@@ -24,69 +21,9 @@ require_once(__DIR__ . '/../app/Controllers/getInstructors.php');
 <body>
 <header>
 
-    <nav class="navbar fixed-top navbar-expand-lg navbar-dark indigo">
-        <a class="navbar-brand" href="#"><strong>Welcome</strong></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                </li>
-				<li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-         Admins
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="#">Create</a>
-          <a class="dropdown-item" href="#">Dashboard</a>
-        </div>
-				
-				<li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-         Instructors
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="#">Create</a>
-          <a class="dropdown-item" href="#">Dashboard</a>
-        </div>
-                
-				
-				<li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-         Students
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="#">Create</a>
-          <a class="dropdown-item" href="#">Dashboard</a>
-        </div>
-                
-				
-				<li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-         Courses
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="#">Create</a>
-          <a class="dropdown-item" href="#">Dashboard</a>
-        </div>
-				<li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-         Tracks
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="#">Create</a>
-          <a class="dropdown-item" href="#">Dashboard</a>
-        </div> 
-            </ul>
-			<ul class="nav navbar-nav navbar-right">
-      <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
-    </ul>
-        </div>
-    </nav>
-
-</header>
+<?php
+require_once(__DIR__.'/../app/Controllers/header.php');
+?>
 
 <!------------------------------------------------------------------------------------------------------------------->
 <div class="main">
@@ -102,28 +39,23 @@ require_once(__DIR__ . '/../app/Controllers/getInstructors.php');
     </form>
 <main class="grid">
 
-
 <?php
+    foreach ($instructors as &$instructor) {
 
+    echo ' <article>';
+    echo ' <img style="height:190px" src="../images/'.$instructor->getImagePath().'"'.' alt="Sample photo">';
+    echo ' <div class="text">';
+    echo '<p>';
+    echo '<b style="text-decoration:underline">Name:</b><br>'.$instructor->getName().'<br>';
+    echo '<b style="text-decoration:underline">Email:</b><br>'.$instructor->getEmail().'<br>';
+    echo '<b style="text-decoration:underline">Bio: </b><br>'.$instructor->getBio().'<br>';
 
-
-foreach ($instructors as &$instructor) {
-
-  echo ' <article>';
-  echo ' <img style="height:190px" src="../images/'.$instructor->getImagePath().'"'.' alt="Sample photo">';
-  echo ' <div class="text">';
-  echo '<p>';
-  echo '<b style="text-decoration:underline">Name:</b><br>'.$instructor->getName().'<br>';
-  echo '<b style="text-decoration:underline">Email:</b><br>'.$instructor->getEmail().'<br>';
-  echo '<b style="text-decoration:underline">Bio: </b><br>'.$instructor->getBio().'<br>';
-
-  echo'  </p>';
-  echo' <a class="btn btn-primary m-lg-1" href="../views/instructorEdit_nada.php?id=' . $instructor->getInstructorId(). '">Edit</a> ';
-  echo' <a class="btn btn-danger m-lg-1" href="../app/Controllers/deleteInstructor.php?id=' . $instructor->getInstructorId(). '">Delete</a> ';
+    echo'  </p>';
+    echo' <a class="btn btn-primary m-lg-1" href="../views/instructorEdit_nada.php?id=' . $instructor->getInstructorId(). '">Edit</a> ';
+    echo' <a class="btn btn-danger m-lg-1" href="../app/Controllers/deleteInstructor.php?id=' . $instructor->getInstructorId(). '">Delete</a> ';
     echo' </div>';
-  echo'</article>';
-}
-
+    echo'</article>';
+    }
 ?>
 
 </main>
