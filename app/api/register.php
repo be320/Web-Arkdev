@@ -61,7 +61,7 @@ $check = $studentRepo->getByEmail($data['email']);
 
 if ($check != null) {
     $response["status"] = 3;
-    $response["message"] = "email already registerd";
+    $response["message"] = "email already registered";
     echo json_encode($response);
     exit();
 }
@@ -74,7 +74,7 @@ $response = [];
 
 if($hasErrors) {
     $response["status"] = 2;
-    $response["message"] = "invalid or missing paramters";
+    $response["message"] = "invalid or missing parameters";
     echo json_encode($response);
     exit();
 }
