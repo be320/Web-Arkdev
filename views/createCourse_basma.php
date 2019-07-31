@@ -1,25 +1,20 @@
 <?php
 require_once(__DIR__.'/../app/Repository/TrackRepository.php');
 require_once(__DIR__.'/../app/Models/Track.php');
-$trackRepo = new TrackRepository();
-$tracks = $trackRepo->getAll();
-//for checking if exists a course with such name or not
+require_once(__DIR__.'/../app/Controllers/createCourse.php');
 $data = $_GET;
 $flag = 0;
-
 //To show a message box incase of an error
 if(isset($data['error']) && !empty($data['error'])){
-    //incase of existence of such Course Name
+    //in case of existence of such Course Name
     if($data['error'] === 'errorNameExists'){
-    $flag = 1;
+        $flag = 1;
     }
-    //incase of no Track with such ID
-    elseif ($data['error'] === 'errorTrackNotExist'){
+    //in case of no Track with such ID
+    elseif ($data['error'] === 'chooseTrackName'){
         $flag = 2;
     }
 }
-
-
 ?>
 <!DOCTYPE html>
 <html lang= "en">
@@ -33,80 +28,16 @@ if(isset($data['error']) && !empty($data['error'])){
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/all.css">
 
-    <title>New Course Form</title>
+    <title>New Course</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
 <header>
  
-<nav class="navbar fixed-top navbar-expand-lg navbar-dark indigo">
-        <a href="home_mm.html" class="navbar-brand" style="color: #a2a2a2"><strong>Welcome</strong></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                
-				<li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-         Admins
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="createAdmin_basma.html">Create</a>
-          <a class="dropdown-item" href="adminDashboard_mm.php">Dashboard</a>
-        </div>
-				
-				<li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-         Instructors
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="createInstructor_basma.php">Create</a>
-          <a class="dropdown-item" href="instructorDashboard_mm.html">Dashboard</a>
-        </div>
-                
-				
-				<li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle"  role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-         Students
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="createStudent_basma.html">Create</a>
-          <a class="dropdown-item" href="studentDashboard_mm.php">Dashboard</a>
-        </div>
-                
-				
-				<li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle"  role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-         Courses
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="createCourse_basma.php">Create</a>
-          <a class="dropdown-item" href="courseDashboard_mm.php">Dashboard</a>
-        </div>
-				<li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle"  role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-         Tracks
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="createTrack_basma.html">Create</a>
-          <a class="dropdown-item" href="trackDashboard_mm.html">Dashboard</a>
-		  
-        </div> 
-		
-			<li class="nav-item dropdown">
-			<a role="button" href="teach.html" class="navbar" style="color: #a2a2a2">Teach</a>
-       
-		
-            </ul>
-			<ul class="nav navbar-nav navbar-right">
-      <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
-    </ul>
-        </div>
-    </nav>
-	
-</header>
+<?php
+require_once(__DIR__.'/../app/Controllers/header.php');
+?>
 
 <body>
 
@@ -125,14 +56,15 @@ if(isset($data['error']) && !empty($data['error'])){
     }
     elseif ($flag === 2){
         echo '<div class="alert alert-danger alert-dismissible">
-        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>WARNING!</strong> There is no track with such ID</div>';
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>WARNING!</strong> Choose Track Name</div>';
     }
     ?>
     <div class="container">
         <div class="row justify-content-center align-items-center">
             <div class="col-sm-6 align-self-center auth-wrapper">
                 <div class="auth-intro">
-                    <h1 class="auth-title">Adding New Courses form</h1>
+                    <h1 class="auth-title">Create Course</h1>
+                        <?php if($flag === 0){?>
                     <form id="NewCourseForm" method="post" action="\app\Controllers\createCourse.php" enctype="multipart/form-data">
                         <div class="form-group">
                             <label for="name">CourseName:</label>
@@ -141,8 +73,13 @@ if(isset($data['error']) && !empty($data['error'])){
 
 
                         <div class="form-group">
-                            <label for="trackName">Track ID:</label>
-                            <input id="track" name="track_id" type="text" placeholder="Enter Track ID" class="form-control" required>
+                            <label for="trackName">Track Name:</label>
+                            <select name='track_id' class="form-control">
+                                <option disabled selected >Track Name</option>
+                                <?php foreach ($tracks as $track): ?>
+                                    <option value="<?php echo $track->getId() ?> "><?php echo $track->getName() ?> </option>
+                                <?php endforeach ?>
+                            </select>
 
                         </div>
 
@@ -158,10 +95,47 @@ if(isset($data['error']) && !empty($data['error'])){
 
 
                         <div class="text-center submit-btn">
-                            <button type="Submit" class="btn btn-primary" >Submit</button>
+                            <button type="Submit" name="create_course" class="btn btn-primary" >Submit</button>
                         </div>
 
                     </form>
+                        <?php } ?>
+                        <?php if($flag != 0){ ?>
+                            <form id="NewCourseForm" method="post" action="\app\Controllers\createCourse.php" enctype="multipart/form-data">
+                                <div class="form-group">
+                                    <label for="name">CourseName:</label>
+                                    <input id="Name" name="name" type="text" placeholder="Enter course name" class="form-control" value="<?php echo $data['name']?>" required>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <label for="trackName">Track Name:</label>
+                                    <select name='track_id' class="form-control">
+                                        <option disabled selected >Track Name</option>
+                                        <?php foreach ($tracks as $track): ?>
+                                            <option value="<?php echo $track->getId() ?> "><?php echo $track->getName() ?> </option>
+                                        <?php endforeach ?>
+                                    </select>
+
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="description">Description:</label>
+                                    <input id="description" name="description" type="text" placeholder="Enter course description" value="<?php echo $data['description']?>" class="form-control" required style="height: 70px">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="pic">Course Image: </label>
+                                    <input id="pic" type="file" name="image_path" accept="image/*" class="form-control" required>
+                                </div>
+
+
+                                <div class="text-center submit-btn">
+                                    <button type="Submit" name="create_course" class="btn btn-primary" >Submit</button>
+                                </div>
+
+                            </form>
+                        <?php } ?>
                 </div>
             </div>
         </div>

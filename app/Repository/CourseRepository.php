@@ -270,6 +270,7 @@ class CourseRepository
         }
         catch (PDOException $e){
             echo $e->getMessage();
+            exit();
         }
         return $result;
     }
@@ -287,6 +288,7 @@ class CourseRepository
         }
         catch (PDOException $e){
             echo $e->getMessage();
+            exit();
         }
         return $result;
     }
@@ -304,6 +306,7 @@ class CourseRepository
         }
         catch (PDOException $e){
             echo $e->getMessage();
+            exit();
         }
         return $result;
     }
@@ -321,6 +324,7 @@ class CourseRepository
             $result = $stmt->fetchAll();
         } catch (PDOException $e) {
             echo $e->getMessage();
+            exit();
         }
         return $result;
     }
@@ -339,6 +343,7 @@ class CourseRepository
             $result = $stmt->fetchAll();
         } catch (PDOException $e) {
             echo $e->getMessage();
+            exit();
         }
         return $result;
     }
@@ -356,6 +361,7 @@ class CourseRepository
             $result = $stmt->fetchAll();
         } catch (PDOException $e) {
             echo $e->getMessage();
+            exit();
         }
         return $result;
     }
@@ -374,6 +380,7 @@ class CourseRepository
             $result = $stmt->fetchAll();
         } catch (PDOException $e) {
             echo $e->getMessage();
+            exit();
         }
         return $result;
     }
@@ -391,6 +398,7 @@ class CourseRepository
         }
         catch (PDOException $e){
             echo $e->getMessage();
+            exit();
         }
         if(empty($result)){
             return false;
@@ -414,12 +422,31 @@ class CourseRepository
         }
         catch (PDOException $e){
             echo $e->getMessage();
+            exit();
         }
         if(empty($result)){
             return true;
         }
         return false;
 
+    }
+
+    public function getAllInstructors($course_id):array
+    {
+        $result = [];
+        try{
+            $db = DBConnection::connect();
+            $stmt = $db->prepare('SELECT * FROM instructor WHERE id IN (SELECT instructor_id from course_has_instructor WHERE course_id = :course_id)');
+            $stmt->bindValue(':course_id',$course_id);
+            $stmt->execute();
+            $stmt->setFetchMode(PDO::FETCH_CLASS,Instructor::class);
+            $result = $stmt->fetchAll();
+        }
+        catch (PDOException $e){
+            echo $e->getMessage();
+            exit();
+        }
+        return $result;
     }
 
 
