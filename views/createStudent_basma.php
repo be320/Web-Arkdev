@@ -34,6 +34,55 @@
                 <div class="col-sm-6 align-self-center auth-wrapper">
                     <div class="auth-intro">
                         <h1 style="margin-top: 75px;" class="auth-title">New Student</h1>
+                        <script type="text/javascript">
+
+                            function checkForm(form)
+                            {
+                                if(form.name.value == "") {
+                                    alert("Error: name cannot be blank!");
+                                    form.name.focus();
+                                    return false;
+                                }
+                                re = /^\w+$/;
+                                if(form.password.value != "" && form.password.value == form.password2.value) {
+                                    if(form.password.value.length < 6) {
+                                        alert("Error: Password must contain at least six characters!");
+                                        form.password.focus();
+                                        return false;
+                                    }
+                                    if(form.password.value == form.name.value) {
+                                        alert("Error: Password must be different from name!");
+                                        form.password.focus();
+                                        return false;
+                                    }
+                                    re = /[0-9]/;
+                                    if(!re.test(form.password.value)) {
+                                        alert("Error: password must contain at least one number (0-9)!");
+                                        form.password.focus();
+                                        return false;
+                                    }
+                                    re = /[a-z]/;
+                                    if(!re.test(form.password.value)) {
+                                        alert("Error: password must contain at least one lowercase letter (a-z)!");
+                                        form.password.focus();
+                                        return false;
+                                    }
+                                    re = /[A-Z]/;
+                                    if(!re.test(form.password.value)) {
+                                        alert("Error: password must contain at least one uppercase letter (A-Z)!");
+                                        form.password.focus();
+                                        return false;
+                                    }
+                                }
+                                else {
+                                    alert("Error: Please check that you've entered and confirmed your password!");
+                                    form.password.focus();
+                                    return false;
+                                }
+                                return true;
+                            }
+
+                        </script>
                         <form id="NewStudentForm" action="/../app/Controllers/createStudent.php" method="post" enctype="multipart/form-data">
                             <div class="form-group">
                                 <i class="far fa-user"></i>
@@ -44,24 +93,19 @@
                             <div class="form-group">
                                 <i class="far fa-envelope"></i>
                                 <label for="email">Email:</label>
-                                <input id="email" name="email" type="email" placeholder="Enter your email as emailname@...com" class="form-control" required>
+                                <input id="email" name="email" type="email" placeholder="Enter your Email" class="form-control" required>
                             </div>
 
                             <div class="form-group">
-                                <i class="far fa-key"></i>
+                                <i class="fa fa-key"></i>
                                 <label for="password">Password:</label>
                                 <input id="password1" name="password" type="password" placeholder="Enter your password" class="form-control" required>
                             </div>
-
-                            <div class="form-group">
-                                <i class="far fa-key"></i>
-                                <label for="password">Reenter password:</label>
-                                <input id="password2" name="password2" type="password" placeholder="Reenter your Password" class="form-control" required>
-                            </div>
+                            
 
                             <label for="level">Level: </label>
                             <select class="form-control" name="level" id="level">
-                                <option value="0">.....</option>
+                                <option value="0">Enter Your Level</option>
                                 <option value="Freshmen">Freshman</option>
                                 <option value="Sophomore">Sophomore</option>
                                 <option value="Junior">Junior</option>
@@ -92,7 +136,7 @@
 
 
 
-                                <label for="pic">Profile Image:: </label>
+                                <label for="pic">Profile Image: </label>
                                 <input id="pic" type="file" name="image_path" accept="image/*" class="form-control">
 
 
