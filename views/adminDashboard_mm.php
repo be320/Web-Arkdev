@@ -172,6 +172,5 @@ if(isset($_POST['filter'])){
     <script src="../js/jquery.validate.js"></script>
     <script src="../js/main.js"></script>
 
-
 </body>
 </html>
