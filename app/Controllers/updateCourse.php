@@ -3,6 +3,7 @@ require_once(__DIR__.'/../Repository/CourseRepository.php');
 require_once(__DIR__.'/../Models/Course.php');
 
 $data = $_POST;
+var_dump($data);
 $hasErrors = false;
 if( !isset($data['name']) || empty($data['name']) ){
     $hasErrors = true;
@@ -28,6 +29,8 @@ if($hasErrors === false){
     $success = $courseRepo->update($course);
 
 }
+var_dump($success);
+
 if($success){
     header('Location: /views/courseDashboard_mm.php');
     exit();
