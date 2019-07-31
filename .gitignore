@@ -1,5 +1,9 @@
-
 .idea
 /app/Config/app.php
 /Owner/nbproject/private/
+<<<<<<< HEAD
 /images/
+=======
+/views/nbproject/private/
+/images
+>>>>>>> c483f2cd835a02d2cd42a6fa12b78270e239399c

@@ -1,47 +1,67 @@
 <?php
-// in order to use this api >>> you send a 
-// student_id
-// course_id 
-// then it will drop the course if the student is already enrolled in it
-
-// @return 
-// it return 'status' (0) if success , (1) if failed, (2) if the inputs are incorrect
-// and a 'message' with the description.
 require_once(__DIR__ . '/../Repository/EnrollmentRepository.php');
+require_once(__DIR__ . '/../Repository/StudentRepository.php');
+require_once(__DIR__ . '/../Repository/CourseRepository.php'); 
 
 $inputJSON = file_get_contents('php://input');
 $input = json_decode($inputJSON, true);
 
 $hasErrors = false;
 
-$course = $input['course_id'];
-$student = $input['student_id'];
+$courseID = $input['course_id'];
+$studentID = $input['student_id'];
 
-if (!isset($course) || empty($course))
+if (!isset($courseID) || empty($courseID))
     $hasErrors = true;
-else if (!isset($student) || empty($student))
+else if (!isset($studentID) || empty($studentID))
     $hasErrors = true;
 
-
-if ($hasErrors === false) {
-    $studentRepo = new EnrollmentRepository();
-    $result = $studentRepo->dropCourse($student, $course);
-
-    if (!$result){
-        $response['status'] = 1;
-        $response['message'] = "Failed to drop Course or IDs don't exist";
-    }
-    else{
-        $response['status'] = 0;
-        $response['message'] = "Successfully dropped from the course";
-    }
-}
-else{
+if($hasErrors === true) {
     $response['status'] = 2;
     $response['message'] = "a parameter is empty";
+    echo json_encode($response);
+    exit();
 }
 
-$response = json_encode($response);
 
-echo $response;
-exit();
+$enrollRepo = new EnrollmentRepository();
+$studentRepo = new StudentRepository();
+$courseRepo = new CourseRepository();
+
+
+$student = $studentRepo->getById($studentID);
+$course = $courseRepo->getByIdAsoc($courseID);
+$enrollment = $enrollRepo->getEnrollment($studentID, $courseID);
+
+
+if(!$student) {
+    $response['status'] = 1;
+    $response['message'] = "student doesn't exist";
+    echo json_encode($response);
+    exit();
+}
+else if(!$course) {
+    $response['status'] = 2;
+    $response['message'] = "course doesn't exist";
+    echo json_encode($response);
+    exit();
+}
+else if(!$enrollment) {
+    $response['status'] = 3;
+    $response['message'] = "student isn't enrolled in course";
+    echo json_encode($response);
+    exit();
+}
+else {
+    $result = $enrollRepo->dropCourse($studentID, $courseID);
+    if($result) {
+        $response['status'] = 0;
+        $response['message'] = "Successfully dropped the course";
+    }
+    else {
+        $response['status'] = 4;
+        $response['message'] = "coudn't drop course try again later";
+    }
+
+    echo json_encode($response);
+}

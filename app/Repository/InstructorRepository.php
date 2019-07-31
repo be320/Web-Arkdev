@@ -136,5 +136,25 @@ class InstructorRepository
         return $result;
     }
 
+    public function getByInstructorName($instructorName): array
+    {
+        $result = [];
+        try{
+            $db = DBConnection::connect();
+            $stmt = $db->prepare('SELECT * from instructor WHERE name LIKE :instructorName');
+            $stmt->bindValue(':instructorName',"%$instructorName%");
+            $stmt->execute();
+            $stmt->setFetchMode(PDO::FETCH_CLASS,Instructor::class);
+            $result = $stmt->fetchAll();
+            //var_dump($result);
+            //exit();
+        }
+        catch (PDOException $e){
+            echo $e->getMessage();
+            exit();
+        }
+        return $result;
+    }
+
 
 }
