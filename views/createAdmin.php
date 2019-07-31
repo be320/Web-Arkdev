@@ -102,13 +102,7 @@ require_once(__DIR__.'/layout/header.php');
                      <label for="password">Password:</label>
                      <input id="password1" name="password" type="password" placeholder="Enter password" class="form-control" required>
                  </div>
-                
-                 <div class="form-group">
-                     <i class="fa fa-key"></i>
-                     <label for="password">Reenter password:</label>
-                     <input name="password2" id="password2" name="password2" type="password" placeholder="Reenter Password" class="form-control" required>
-                 </div>
-                
+                 
                  <div class="text-center submit-btn">
                     <button name="submit" type="Submit" class="btn btn-primary" >Submit</button>
                  </div>

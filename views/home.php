@@ -64,17 +64,6 @@ require_once(__DIR__.'/../app/includes/sessionAuth.php');
  
 </div>
 
-
-
-
-	
-	<!-- Optional JavaScript -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="../js/jquery-3.3.1.slim.min.js"></script>
-<script src="../js/popper.min.js"></script>
-<script src="../js/bootstrap.min.js"></script>
-<script src="../js/jquery.validate.js"></script>
-<script src="../js/main.js"></script>
 <script>
 
 var slideIndex = 1;
@@ -103,7 +92,6 @@ function showSlides(n) {
   slides[slideIndex-1].style.display = "block";  
   dots[slideIndex-1].className += " active";
 }
-
 </script>
 
 <?php
