@@ -27,6 +27,6 @@ if ($hasErrors === false) {
 
 //*** Handle redirection after saving ***//
 if ($success) {
-    header('Location: /views/trackDashboard_mm.php');
+    header('Location: /views/trackDashboard.php');
     exit();
 }

@@ -1,8 +1,10 @@
 <?php
 require_once(__DIR__ . '/../app/Repository/InstructorRepository.php');
-$instructorRepo = new InstructorRepository();
-$instructors = $instructorRepo->getAll();
+require_once(__DIR__ . '/../app/Controllers/getInstructors.php');
+require_once(__DIR__.'/../app/includes/sessionStart.php');
+require_once(__DIR__.'/../app/includes/sessionAuth.php');
 ?>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -11,84 +13,52 @@ $instructors = $instructorRepo->getAll();
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/all.css">
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/all.css">
+    <link rel="stylesheet" href="../css/main.css">
 
-    <title>Workshop | Dashboard</title>
+    <title>Instructor | Dashboard</title>
 </head>
-<body>
 
-<header>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Simple App</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/login.php">Login</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/register.php">Register</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" href="/dashboard.php">Dashboard</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/app/Controllers/logout.php">Logout</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-</header>
+<?php
+    require_once(__DIR__.'/layout/header.php');
+?>
 
-<article class="main container">
-    <section>
-        <table class="table table-striped">
-            <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">First Name</th>
-                <th scope="col">Email</th>
-                <th scope="col">Actions</th>
-            </tr>
-            </thead>
-            <tbody>
+<!------------------------------------------------------------------------------------------------------------------->
+<div class="main">
+    <div class="main-img">
+        <img style="height:190px"src="../images/books.jpg" class="banner" alt="banner"/>
+    </div>
+    <form method="get" action="">
+    <div style="padding-top:43px; padding-left:210px; marginbackground-color:none;" id="navbar">
+        <br><br><br>
+        <input type="text" class="form-control col-2 d-inline" placeholder="Instructor Name" name="instructorName" >
+        <input type="submit" class="btn btn-primary col-1 d-inline" value="Filter" name="filter">
+    </div>
+    </form>
+<main class="grid">
 
-            <?php
-            foreach ($instructors as $instructor) {
-                echo '<tr>';
-                echo '<th scope="row">' . $instructor->getId() . '</th>';
-                echo '<td>' . $instructor->getFname() . '</td>';
-                echo '<td>' . $instructor->getEmail() . '</td>';
+<?php
+    foreach ($instructors as &$instructor) {
 
-                echo '<td>';
-                echo '<a class="btn btn-primary" href="/edit.php?id=' . $instructor->getId() . '">Edit</a>';
-                echo '<a class="btn btn-danger m-lg-1" href="/app/Controllers/delete.php?id=' . $instructor->getId() . '">Delete</a>';
-                echo '</td>';
+    echo ' <article>';
+    echo ' <img style="height:190px" src="../images/'.$instructor->getImagePath().'"'.' alt="Sample photo">';
+    echo ' <div class="text">';
+    echo '<p>';
+    echo '<b style="text-decoration:underline">Name:</b><br>'.$instructor->getName().'<br>';
+    echo '<b style="text-decoration:underline">Email:</b><br>'.$instructor->getEmail().'<br>';
+    echo '<b style="text-decoration:underline">Bio: </b><br>'.$instructor->getBio().'<br>';
 
-                echo '</tr>';
-            }
-            ?>
+    echo'  </p>';
+    echo' <a class="btn btn-primary m-lg-1" href="../instructorEdit.php?id=' . $instructor->getInstructorId(). '">Edit</a> ';
+    echo' <a class="btn btn-danger m-lg-1" href="../app/Controllers/deleteInstructor.php?id=' . $instructor->getInstructorId(). '">Delete</a> ';
+    echo' </div>';
+    echo'</article>';
+    }
+?>
 
-            </tbody>
-        </table>
-    </section>
-</article>
-
-<!-- Optional JavaScript -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="js/jquery-3.3.1.slim.min.js"></script>
-<script src="js/popper.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/jquery.validate.js"></script>
-<script src="js/main.js"></script>
-
-</body>
-</html>
+</main>
+</div>
+<?php
+    require_once(__DIR__.'/layout/footer.php');
+?>

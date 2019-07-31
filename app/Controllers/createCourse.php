@@ -14,7 +14,7 @@ if (isset($_POST['create_course'])){
 //checks if there is a course with such name or not
     if($courseRepo->checkCourseNameExists($data['name'])){
         $error = 'errorNameExists';
-        header('Location: /views/createCourse_basma.php?error='.$error.'&name='.$data['name'].'&description='.$data['description'].'');
+        header('Location: /views/createCourse.php?error='.$error.'&name='.$data['name'].'&description='.$data['description'].'');
         exit();
     }
     if( !isset($data['description']) || empty($data['description']) ){
@@ -26,7 +26,7 @@ if (isset($_POST['create_course'])){
 //checks if there is a track with such ID or not
     if($courseRepo->checkTrackIdExists($data['track_id'])){
         $error = 'errorTrackNotExist';
-        header('Location: /views/createCourse_basma.php?error='.$error.$data['name'].'&description='.$data['description'].'');
+        header('Location: /views/createCourse.php?error='.$error.$data['name'].'&description='.$data['description'].'');
         exit();
     }
 
@@ -45,7 +45,7 @@ if (isset($_POST['create_course'])){
     if($success){
         uploadFile();
         $state = 'courseAdded';
-        header('Location: /views/courseDashboard_mm.php?state='.$state.'');
+        header('Location: /views/courseDashboard.php?state='.$state.'');
         exit();
     }
 }else{

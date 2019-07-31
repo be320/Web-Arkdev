@@ -2,6 +2,8 @@
 require_once(__DIR__.'/../app/Repository/TrackRepository.php');
 require_once(__DIR__.'/../app/Models/Track.php');
 require_once(__DIR__.'/../app/Controllers/createCourse.php');
+require_once(__DIR__.'/../app/includes/sessionStart.php');
+require_once(__DIR__.'/../app/includes/sessionAuth.php');
 $data = $_GET;
 $flag = 0;
 
@@ -35,11 +37,9 @@ if(isset($data['error']) && !empty($data['error'])){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-<body>
-<header>
- 
+
 <?php
-require_once(__DIR__.'/../app/Controllers/header.php');
+require_once(__DIR__.'/layout/header.php');
 ?>
 
 <body>
@@ -73,7 +73,6 @@ require_once(__DIR__.'/../app/Controllers/header.php');
                             <label for="name">CourseName:</label>
                             <input id="Name" name="name" type="text" placeholder="Enter course name" class="form-control" required>
                         </div>
-
 
                         <div class="form-group">
                             <label for="trackName">Track Name:</label>
@@ -143,13 +142,6 @@ require_once(__DIR__.'/../app/Controllers/header.php');
     </div>
 </div>
 
-<script src="../js/jquery-3.3.1.slim.min.js"></script>
-<script src="../js/popper.min.js"></script>
-<script src="../js/bootstrap.min.js"></script>
-<script src="../js/jquery.validate.js"></script>
-<script src="../js/main.js"></script>
-
-</body>
-</html>
-
-
+<?php
+require_once(__DIR__.'/layout/footer.php');
+?>

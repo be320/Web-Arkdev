@@ -1,7 +1,9 @@
 <?php
 require_once(__DIR__ . '/../app/Repository/CourseRepository.php');
-$courseRepo = new CourseRepository();
-$courses = $courseRepo->getAll();
+require_once(__DIR__ . '/../app/Repository/TrackRepository.php');
+require_once(__DIR__ . '/../app/Controllers/getCourses.php');
+require_once(__DIR__.'/../app/includes/sessionStart.php');
+require_once(__DIR__.'/../app/includes/sessionAuth.php');
 ?>
 <!doctype html>
 <html lang="en">
@@ -11,84 +13,91 @@ $courses = $courseRepo->getAll();
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/all.css">
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/all.css">
+    <link rel="stylesheet" href="../css/main.css">
 
-    <title>Workshop | Dashboard</title>
+    <title>Course | Dashboard</title>
 </head>
-<body>
 
-<header>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Simple App</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/login.php">Login</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/register.php">Register</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" href="/dashboard.php">Dashboard</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/app/Controllers/logout.php">Logout</a>
-                </li>
-            </ul>
+<?php
+require_once(__DIR__.'/layout/header.php');
+?>
+
+<!------------------------------------------------------------------------------------------------------------------->
+<div class="main">
+    <div class="main-img">
+        <img src="../images/books.jpg" class="banner" alt="banner"/>
+    </div>
+
+    <form method="get" action="">
+        <div style="padding-top:43px; padding-left:210px; marginbackground-color:none;" id="navbar">
+            <br><br><br>
+            <input type="text" class="form-control col-2 d-inline" placeholder="Course Name" name="courseName" >
+            <input type="text" class="form-control col-2 d-inline" placeholder="Track Name" name="trackName">
+            <input type="text" class="form-control col-2 d-inline" placeholder="Instructor Name" name="instructorName">
+            <input type="submit" class="btn btn-primary col-1 d-inline" value="Filter" name="filter">
         </div>
-    </nav>
-</header>
+        <!--
+        <ul>
 
-<article class="main container">
-    <section>
-        <table class="table table-striped">
-            <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">First Name</th>
-                <th scope="col">Email</th>
-                <th scope="col">Actions</th>
-            </tr>
-            </thead>
-            <tbody>
+            <li><input style="border:2px solid #6da17b" type="text" name="courseName" placeholder="Course Name" class="form-control"></li>
+            <li><input style="border:2px solid #6da17b" type="text" name="trackName" placeholder="Track Name" class="form-control"></li>
 
-            <?php
-            foreach ($courses as $course) {
-                echo '<tr>';
-                echo '<th scope="row">' . $course->getId() . '</th>';
-                echo '<td>' . $course->getFname() . '</td>';
-                echo '<td>' . $course->getEmail() . '</td>';
+            <li><input style="border:2px solid #6da17b" type="text" name="instructorName" placeholder="Instructor Name" class="form-control"></li>
+            <li><button style="border:2px solid white; width:130px; background-color:#6da17b; color: white; text-align:center;" type="submit" name="filter" class="btn btn-primary">Filter</button></li>
+        </ul>
+        -->
+    </form>
 
-                echo '<td>';
-                echo '<a class="btn btn-primary" href="/edit.php?id=' . $course->getId() . '">Edit</a>';
-                echo '<a class="btn btn-danger m-lg-1" href="/app/Controllers/delete.php?id=' . $course->getId() . '">Delete</a>';
-                echo '</td>';
+    <?php
+    if($flag === 1){
+        echo '<div class="alert alert-success alert-dismissible" >
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>CONGRATS!</strong> Course added Successfully</div>';
+    }
+    ?>
+    <main class="grid">
 
-                echo '</tr>';
-            }
-            ?>
+        <?php
 
-            </tbody>
-        </table>
-    </section>
-</article>
+        foreach ($courses as $course){
+            echo '<article>';
+            echo '<img src="../images/'.$course->getImagePath().'" alt="Sample photo">';
+            echo '<div class="text">';
+            echo '<p>';
+            echo '<b style="text-decoration:underline">Name:</b><br>'. $course->getName() .'<br>';
+            echo '<b style="text-decoration:underline">ID:</b><br>'. $course->getId() .'<br>';
+            echo '<b style="text-decoration:underline">Description:</b><br>'.$course->getDescription().'<br>';
+            echo '<b style="text-decoration:underline">Track:</b><br>'.($trackRepo->getById($course->getTrackId()))->getName(). '<br>';
+            echo '<b style="text-decoration:underline">Instructors:</b><br>';
+                echo '<ul>';
+                $instructors = $courseRepo->getAllInstructors($course->getId());
+                foreach ($instructors as $instructor){
+                    echo '<li>'.$instructor['name'].'</li>';
+                }
+                echo '</ul>'
+                . '</b>';
+            echo '</p>';
+            echo '<a class="btn btn-primary m-lg-1" href="/courseEdit.php?id='  . $course->getId() .  '">Edit</a>';
+            echo '<a class="btn btn-danger m-lg-1" href="/app/Controllers/deleteCourse.php?id='  .  $course->getId().  '">Delete</a>';
+            echo '</div> ';
+            echo '</article>';
+            $course = null;
+        }
 
-<!-- Optional JavaScript -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="js/jquery-3.3.1.slim.min.js"></script>
-<script src="js/popper.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/jquery.validate.js"></script>
-<script src="js/main.js"></script>
+        ?>
 
-</body>
-</html>
+    </main>
+
+    <?php
+    //To show a message box incase of no results
+    if(empty($courses)){
+        echo'<div class="alert alert-warning alert-dismissible">
+  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>NOTE!</strong> No Courses with such properties.</div>';
+    }
+    ?>
+
+</div>
+<?php
+require_once(__DIR__.'/layout/footer.php');
+?>

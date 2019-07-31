@@ -1,5 +1,9 @@
 <?php
 require_once(__DIR__.'/getForTeach.php');
+require_once(__DIR__.'/../app/includes/sessionStart.php');
+require_once(__DIR__.'/../app/includes/sessionAuth.php');
+
+
 $data = $_GET;
 $flag = 0;
 if(isset($data['error'])){
@@ -39,11 +43,8 @@ if(isset($data['error'])){
     <title>Assign Course</title>
 </head>
 
-<body>
-<header>
- 
 <?php
-    require_once(__DIR__.'/../app/Controllers/header.php');
+    require_once(__DIR__.'/layout/header.php');
   ?>
 <!------------------------------------------------------------------------------------------------------------------->
 <div class="main">
@@ -132,8 +133,8 @@ if(isset($data['error'])){
                     </form>
                     <br>
                     <div class="text-center">
-                        <a href="courseDashboard_mm.php" target="_blank"><button class="btn btn-secondary mb-1">Course Dashboard</button></a>
-                        <a href="instructorDashboard_mm.php" target="_blank"><button class="btn btn-secondary mb-1">Instructor Dashboard</button></a>
+                        <a href="courseDashboard.php" target="_blank"><button class="btn btn-secondary mb-1">Course Dashboard</button></a>
+                        <a href="instructorDashboard.php" target="_blank"><button class="btn btn-secondary mb-1">Instructor Dashboard</button></a>
                     </div>
                 </div>
             </div>
@@ -141,13 +142,7 @@ if(isset($data['error'])){
     </div>
 
 </div>
-<!-- Optional JavaScript -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="../js/jquery-3.3.1.slim.min.js"></script>
-<script src="../js/popper.min.js"></script>
-<script src="../js/bootstrap.min.js"></script>
-<script src="../js/jquery.validate.js"></script>
-<script src="../js/main.js"></script>
 
-</body>
-</html>
+<?php
+    require_once(__DIR__.'/layout/footer.php');
+?>

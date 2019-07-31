@@ -13,6 +13,6 @@ if($hasErrors === false){
     $success = $InstructorRepo->deleteById($data['id']);
 }
 if($success){
-    header("Location: ../../views/instructorDashboard_mm.php");
+    header("Location: /views/instructorDashboard.php");
     exit();
 }

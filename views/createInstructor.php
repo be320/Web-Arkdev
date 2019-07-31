@@ -1,3 +1,7 @@
+<?php
+require_once(__DIR__.'/../app/includes/sessionStart.php');
+require_once(__DIR__.'/../app/includes/sessionAuth.php');
+?>
 <!DOCTYPE html>
 <html lang= "en">
     <head>
@@ -14,11 +18,9 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
-    <body>
-	<header>
- 
+
   <?php
-require_once(__DIR__.'/../app/Controllers/header.php');
+require_once(__DIR__.'/layout/header.php');
 ?>
 
 <body>
@@ -47,15 +49,15 @@ require_once(__DIR__.'/../app/Controllers/header.php');
                  </div>
                 
                  <div class="form-group">
-                     <i class="far fa-key"></i>
+                     <i class="fa fa-address-card"></i>
                      <label for="bio">Bio:</label>
                      <input id="bio" name="bio" type="text" placeholder="Enter your bio" class="form-control" required style="height: 70px">
                  </div>
 				
 				<div class="form-group">
-
-				 <label for="pic">Profile Image:: </label>
-				 <input id="pic" type="file" name="image_path" accept="image/*" class="form-control">
+                    <i class="fa fa-image"></i>
+				    <label for="pic">Profile Image: </label>
+				    <input id="pic" type="file" name="image_path" accept="image/*" class="form-control">
 				</div>
 
 				  <div class="text-center submit-btn">
@@ -69,12 +71,6 @@ require_once(__DIR__.'/../app/Controllers/header.php');
     </div>
 	</div>
             
-<script src="../js/jquery-3.3.1.slim.min.js"></script>
-<script src="../js/popper.min.js"></script>
-<script src="../js/bootstrap.min.js"></script>
-<script src="../js/jquery.validate.js"></script>
-<script src="../js/main.js"></script>
-            
-</body>
-    </body>
-</html>
+<?php
+    require_once(__DIR__.'/layout/footer.php');
+?>

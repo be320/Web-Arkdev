@@ -18,6 +18,6 @@ if ($hasErrors === false) {
 }
 
 if ($success) {
-    header('Location: /views/index_mm.html');
+    header('Location: /views/trackDashboard.php');
     exit();
 }

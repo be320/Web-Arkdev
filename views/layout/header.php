@@ -1,5 +1,7 @@
+<body>
+<header>
 <nav class="navbar fixed-top navbar-expand-lg navbar-dark indigo">
-        <a href="home_mm.php" class="navbar-brand" style="color: #a2a2a2"><strong>Welcome</strong></a>
+        <a href="/views/home.php" class="navbar-brand" style="color: #a2a2a2"><strong>Welcome</strong></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -11,8 +13,8 @@
                         Admins
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="createAdmin_basma.php">Create</a>
-                        <a class="dropdown-item" href="adminDashboard_mm.php">Dashboard</a>
+                        <a class="dropdown-item" href="createAdmin.php">Create</a>
+                        <a class="dropdown-item" href="adminDashboard.php">Dashboard</a>
                     </div>
 
                 <li class="nav-item dropdown">
@@ -20,8 +22,8 @@
                         Instructors
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="createInstructor_basma.php">Create</a>
-                        <a class="dropdown-item" href="instructorDashboard_mm.php">Dashboard</a>
+                        <a class="dropdown-item" href="createInstructor.php">Create</a>
+                        <a class="dropdown-item" href="instructorDashboard.php">Dashboard</a>
                     </div>
 
 
@@ -30,8 +32,8 @@
                         Students
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="createStudent_basma.php">Create</a>
-                        <a class="dropdown-item" href="studentDashboard_mm.php">Dashboard</a>
+                        <a class="dropdown-item" href="createStudent.php">Create</a>
+                        <a class="dropdown-item" href="studentDashboard.php">Dashboard</a>
                     </div>
 
 
@@ -40,16 +42,16 @@
                         Courses
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="createCourse_basma.php">Create</a>
-                        <a class="dropdown-item" href="courseDashboard_mm.php">Dashboard</a>
+                        <a class="dropdown-item" href="createCourse.php">Create</a>
+                        <a class="dropdown-item" href="courseDashboard.php">Dashboard</a>
                     </div>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle"  role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Tracks
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="createTrack_basma.php">Create</a>
-                        <a class="dropdown-item" href="trackDashboard_mm.php">Dashboard</a>
+                        <a class="dropdown-item" href="createTrack.php">Create</a>
+                        <a class="dropdown-item" href="trackDashboard.php">Dashboard</a>
 
                     </div>
 
@@ -63,5 +65,4 @@
     </ul>
         </div>
     </nav>
-	
 </header>

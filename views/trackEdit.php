@@ -1,4 +1,7 @@
 <?php
+require_once(__DIR__.'/../app/includes/sessionStart.php');
+require_once(__DIR__.'/../app/includes/sessionAuth.php');
+
 $data = $_GET;
 require_once(__DIR__ . '/../app/Repository/TrackRepository.php');
 $trackRepo = new TrackRepository();
@@ -18,12 +21,9 @@ $track = $trackRepo->getById($data['id']);
     <title>project | edit</title>
 </head>
 
-<body>
-    <header>
- 
-    <?php
-    require_once(__DIR__.'/../app/Controllers/header.php');
-  ?>
+<?php
+    require_once(__DIR__.'/views/layout/header.php');
+?>
   
 <div class="main">
     <div class="main-img">
@@ -52,15 +52,6 @@ $track = $trackRepo->getById($data['id']);
         </div>
     </div>
 </div>
-
-
-<!-- Optional JavaScript -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="../js/jquery-3.3.1.slim.min.js"></script>
-<script src="../js/popper.min.js"></script>
-<script src="../js/bootstrap.min.js"></script>
-<script src="../js/jquery.validate.js"></script>
-<script src="../js/main.js"></script>
-
-</body>
-</html>
+<?php
+require_once(__DIR__.'/views/layout/footer.php');
+?>

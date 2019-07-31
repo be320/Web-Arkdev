@@ -1,94 +1,85 @@
 <?php
 require_once(__DIR__ . '/../app/Repository/TrackRepository.php');
+require_once(__DIR__.'/../app/includes/sessionStart.php');
+require_once(__DIR__.'/../app/includes/sessionAuth.php');
 $trackRepo = new TrackRepository();
 $tracks = $trackRepo->getAll();
 ?>
-<!doctype html>
+
 <html lang="en">
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/all.css">
-    <link rel="stylesheet" href="css/main.css">
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="../css/bootstrap.min.css">
+        <link rel="stylesheet" href="../css/all.css">
+        <link rel="stylesheet" href="../css/main.css">
 
-    <title>Workshop | Dashboard</title>
-</head>
-<body>
+        <title>Track | Dashboard</title>
+    </head>
 
-<header>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Simple App</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/login.php">Login</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/register.php">Register</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" href="/dashboard.php">Dashboard</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/app/Controllers/logout.php">Logout</a>
-                </li>
-            </ul>
+    <?php
+        require_once(__DIR__.'/views/layout/header.php');
+    ?>
+        <!------------------------------------------------------------------------------------------------------------------->
+        <div class="main">
+            <div class="main-img">
+                <img src="../images/books.jpg" class="banner" alt="banner"/>
+            </div>
+            <br><br><br><br>
+	<div class="container">
+        <div class="row justify- align-items-center ">
+<div class="col-sm-12 align-self-center auth-wrapper" style="background-color: rgb(0,0,0,0);border: 0;box-shadow: 0 0 12px 3px black;">	  <form class="form-inline"style="align-items: center;justify-content: center;" >
+        <input style="border:2px solid #6da17b" type="text" placeholder="Name">
+		<input style="border:2px solid white; width:160px; background-color:#6da17b; color: white; text-align:center;" type="button" value="Search">
+      </form>
+	  </div>
+	  </div>
+	  </div>
+            <article class="main container">
+                <section>
+                    <div id="1">
+                        <table border="1" class="table table-striped">  <!--to auto increment # coln-->
+                            <thead>
+                                <tr  class="table-info">
+                                    <th style="text-align:center; border-bottom:2px solid black; border-right:1px solid black;" scope="col">#</th>
+                                    <th style="text-align:center; border-bottom:2px solid black;border-right:1px solid black;" scope="col">Track Name</th>
+                                    <th style="text-align:center; border-bottom:2px solid black; padding-left:10px" colspan="2" scope="col">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody> 
+
+                                <?php
+                                foreach ($tracks as $track) {
+//                         <tr>
+//			 <td></td> numbered 1 as border
+//			  <td>Communication</td>
+//			  <td style="text-align:center;"><button style="background-color:BLUE; font-weight:bold; color:white; border:2px solid black;" type="button">Edit</button></td>
+//			  <td style="text-align:center;"><button style="background-color:RED; font-weight:bold; color:white; border:2px solid black;" type="button">Delete</button></td>
+//			  
+//			  
+//			</tr>-->
+
+                                    echo '<tr>';
+                                    echo '<th scope="row">' . $track->getId() . '</th>';
+                                    echo '<td>' . $track->getName() . '</td>';
+                                    echo '<td>';
+                                    echo '<a class="btn btn-primary" href="/views/trackEdit.php?id=' . $track->getId() . '">Edit</a>';
+                                    echo '<a class="btn btn-danger m-lg-1" href="/app/Controllers/deleteTrack.php?id=' . $track->getId() . '">Delete</a>';
+                                    echo '</td>';
+
+                                    echo '</tr>';
+                                }
+                                ?>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </article>
         </div>
-    </nav>
-</header>
-
-<article class="main container">
-    <section>
-        <table class="table table-striped">
-            <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">First Name</th>
-                <th scope="col">Email</th>
-                <th scope="col">Actions</th>
-            </tr>
-            </thead>
-            <tbody>
-
-            <?php
-            foreach ($tracks as $track) {
-                echo '<tr>';
-                echo '<th scope="row">' . $track->getId() . '</th>';
-                echo '<td>' . $track->getName() . '</td>';
-                
-
-                echo '<td>';
-                echo '<a class="btn btn-primary" href="/edit.php?id=' . $track->getId() . '">Edit</a>';
-                echo '<a class="btn btn-danger m-lg-1" href="/app/Controllers/delete.php?id=' . $track->getId() . '">Delete</a>';
-                echo '</td>';
-
-                echo '</tr>';
-            }
-            ?>
-
-            </tbody>
-        </table>
-    </section>
-</article>
-
-<!-- Optional JavaScript -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="js/jquery-3.3.1.slim.min.js"></script>
-<script src="js/popper.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/jquery.validate.js"></script>
-<script src="js/main.js"></script>
-
-</body>
-</html>
+        <?php
+    require_once(__DIR__.'/views/layout/footer.php');
+?>

@@ -1,11 +1,7 @@
 <?php
-
-
 require_once (__DIR__."/../includes/uploadFile.php");
 require_once(__DIR__ . '/../Repository/InstructorRepository.php');
-
 session_start();
-
 
 $photo =$_FILES;
 $data = $_POST;
@@ -51,7 +47,7 @@ if ($hasErrors === false) {
 //*** Handle redirection after saving ***//
     if ($success) {
         $filePath = uploadFile();
-        header('Location: ../../views/instructorDashboard_mm.php');
+        header('Location: ../../views/instructorDashboard.php');
         exit();
     }
 }

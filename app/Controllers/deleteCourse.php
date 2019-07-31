@@ -15,6 +15,6 @@ if($hasErrors === false){
     $success = $courseRepo->deleteById($data['id']);
 }
 if($success){
-    header("Location: /views/courseDashboard_mm.php");
+    header("Location: /views/courseDashboard.php");
     exit();
 }

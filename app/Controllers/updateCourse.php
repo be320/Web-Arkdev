@@ -29,6 +29,6 @@ if($hasErrors === false){
 
 }
 if($success){
-    header('Location: /views/courseDashboard_mm.php');
+    header('Location: /views/courseDashboard.php');
     exit();
 }

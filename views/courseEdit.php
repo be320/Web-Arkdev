@@ -2,6 +2,8 @@
 require_once(__DIR__.'/../app/Repository/CourseRepository.php');
 require_once(__DIR__.'/../app/Models/Course.php');
 require_once(__DIR__.'/../app/Repository/TrackRepository.php');
+require_once(__DIR__.'/../app/includes/sessionStart.php');
+require_once(__DIR__.'/../app/includes/sessionAuth.php');
 
 $data = $_GET;
 if(!isset($data['id']) || empty($data['id'])){
@@ -41,11 +43,8 @@ foreach ($tracks as $track){
     <title>project | edit</title>
 </head>
 
-<body>
-<header>
- 
 <?php
-require_once(__DIR__.'/../app/Controllers/header.php');
+require_once(__DIR__.'/layout/header.php');
 ?>
 
 <div class="main">
@@ -88,13 +87,6 @@ require_once(__DIR__.'/../app/Controllers/header.php');
 </div>
 
 
-<!-- Optional JavaScript -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="../js/jquery-3.3.1.slim.min.js"></script>
-<script src="../js/popper.min.js"></script>
-<script src="../js/bootstrap.min.js"></script>
-<script src="../js/jquery.validate.js"></script>
-<script src="../js/main.js"></script>
-
-</body>
-</html>
+<?php
+require_once(__DIR__.'/layout/footer.php');
+?>

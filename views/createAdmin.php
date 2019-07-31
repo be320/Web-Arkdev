@@ -1,3 +1,7 @@
+<?php
+require_once(__DIR__.'/../app/includes/sessionStart.php');
+require_once(__DIR__.'/../app/includes/sessionAuth.php');
+?>
 <!DOCTYPE html>
 <html lang= "en">
     <head>
@@ -14,11 +18,9 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
-    <body>
-	<header>
 
 <?php
-require_once(__DIR__.'/../app/Controllers/header.php');
+require_once(__DIR__.'/layout/header.php');
 ?>
 
 <body>
@@ -32,7 +34,7 @@ require_once(__DIR__.'/../app/Controllers/header.php');
               <div class="row justify-content-center align-items-center ">
                    <div class="col-sm-6 align-self-center auth-wrapper">
                         <div class="auth-intro">
-                            <h1 class="auth-title">Register</h1>
+                            <h1 class="auth-title">Register Admin</h1>
 							<script type="text/javascript">
 
   function checkForm(form)
@@ -115,13 +117,8 @@ require_once(__DIR__.'/../app/Controllers/header.php');
               </div>
          </div>
     </div>
-	</div>
-            
-<script src="../js/jquery-3.3.1.slim.min.js"></script>
-<script src="../js/popper.min.js"></script>
-<script src="../js/bootstrap.min.js"></script>
-<script src="../js/jquery.validate.js"></script>
-<script src="../js/main.js"></script>
-            
-</body>
-</html>
+  </div>
+  
+<?php
+require_once(__DIR__.'/layout/footer.php');
+?>

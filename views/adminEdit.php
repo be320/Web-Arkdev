@@ -1,20 +1,21 @@
 <?php
-
+require_once(__DIR__.'/../app/includes/sessionStart.php');
+require_once(__DIR__.'/../app/includes/sessionAuth.php');
 require_once(__DIR__ . '/../app/Repository/AdminRepository.php');
 
 // Check if there are parameter in Get
 if (isset($_GET['id']) && !empty($_GET['id'])) {
-    $Admin_id = $_GET['id'];
+    $id = $_GET['id'];
 } else {
     echo 'There is no parameter id in requested URL.';
     exit();
 }
 
-// select and get the Admin from DB with $Admin_id
+// select and get the Admin from DB with $id
 $AdminRepository = new AdminRepository();
-$Admin = $AdminRepository->getById($Admin_id);
+$Admin = $AdminRepository->getById($id);
 
-// Check if there are exist Admin with $Admin_id
+// Check if there are exist Admin with $id
 if (!$Admin) {
     echo 'No Admin with the selected ID';
     exit();
@@ -29,80 +30,59 @@ if (!$Admin) {
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/all.css">
-    <link rel="stylesheet" href="css/main.css">
-
-    <title>Workshop | Home</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/all.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <title>Admin edit</title>
 </head>
-<body>
 
-<header>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Simple App</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item active">
-                    <a class="nav-link" href="">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/login.php">Login</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/register.php">Register</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/dashboard.php">Dashboard</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-</header>
+<?php
+    require_once(__DIR__.'/layout/header.php');
+?>
 
-<article class="main container">
-    <form method="post" action="/app/Controllers/updateAdmin.php">
+<div class="main">
+    <div class="main-img">
+        <img src="../images/books.jpg" class="banner" alt="banner"/>
+    </div>
+	<br><br><br>
+    <div class="container">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-sm-6 align-self-center auth-wrapper">
+                <div class="auth-intro">
+                    <h2 class="auth-title">Update</h2>
+                </div>
+                <form id="admin_Form" method="post" action="/app/Controllers/updateAdmin.php">
+                  
+                <input type="hidden" name="id" value="<?php echo $Admin->getId(); ?>">
 
-        <input type="hidden" name="id" value="<?php echo $Admin->getId(); ?>">
-
-        <div class="form-group">
-            <label for="firstName">First Name</label>
-            <input id="firstName" value="<?php echo $Admin->getname(); ?>" name="name" type="text"
+                    <div class="form-group">
+                        <i class="far fa-user"></i>
+                        <label for="name">Name</label>
+                        <input id="firstName" value="<?php echo $Admin->getname(); ?>" name="name" type="text"
                    placeholder="First Name" class="form-control"
                    required/>
+                    </div>
+                
+                    <div class="form-group">
+                       <i class="fa fa-envelope"></i>
+                        <label for="email">Email</label>
+                        <input id="email" name="email" value="<?php echo $Admin->getEmail(); ?>" type="text" placeholder="Email" class="form-control" required/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="pass" hidden>Password</label>
+                        <input id="pass" type="password" name="password" value="<?php echo $Admin->getPassword(); ?>" class="form-control" disabled required hidden/>
+                    </div>
+
+                    <div class="text-center submit-btn">
+                        <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+                    </div>
+               
+            </div>
         </div>
+    </div>
+</div>
 
-        <div class="form-group">
-            <label for="email">Email</label>
-            <input id="email" name="email" value="<?php echo $Admin->getEmail(); ?>" type="text" placeholder="Email"
-                   class="form-control"
-                   required/>
-        </div>
-
-        <div class="form-group">
-            <label for="pass">Password</label>
-            <input id="pass" type="password" name="password" placeholder="Entre Your Password"
-                   class="form-control"
-                   required/>
-        </div>
-
-        <div class="text-center submit-btn">
-            <button type="submit" class="btn btn-primary">Update</button>
-        </div>
-
-    </form>
-</article>
-
-<!-- Optional JavaScript -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="js/jquery-3.3.1.slim.min.js"></script>
-<script src="js/popper.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/jquery.validate.js"></script>
-<script src="js/main.js"></script>
-
-</body>
-</html>
+<?php
+require_once(__DIR__.'/layout/footer.php');
+?>

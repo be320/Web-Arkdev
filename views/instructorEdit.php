@@ -1,6 +1,7 @@
 <?php
-
 require_once(__DIR__ . '/../app/Repository/InstructorRepository.php');
+require_once(__DIR__.'/../app/includes/sessionStart.php');
+require_once(__DIR__.'/../app/includes/sessionAuth.php');
 
 // Check if there are parameter in Get
 if (isset($_GET['id']) && !empty($_GET['id'])) {
@@ -37,11 +38,8 @@ if (!$instructor) {
     <title>project | edit</title>
 </head>
 
-<body>
-    <header>
- 
   <?php
-    require_once(__DIR__.'/../app/Controllers/header.php');
+    require_once(__DIR__.'/layout/header.php');
   ?>
   
 <div class="main">
@@ -93,14 +91,6 @@ if (!$instructor) {
     </div>
 </div>
 
-
-<!-- Optional JavaScript -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="../js/jquery-3.3.1.slim.min.js"></script>
-<script src="../js/popper.min.js"></script>
-<script src="../js/bootstrap.min.js"></script>
-<script src="../js/jquery.validate.js"></script>
-<script src="../js/main.js"></script>
-
-</body>
-</html>
+<?php
+    require_once(__DIR__.'/layout/footer.php');
+?>

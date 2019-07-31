@@ -45,6 +45,6 @@ if ($hasErrors === false) {
 
 //*** Handle redirection after saving ***//
 if ($success) {
-    header('Location: /views/studentDashboard_mm.php');
+    header('Location: /views/studentDashboard.php');
     exit();
 }

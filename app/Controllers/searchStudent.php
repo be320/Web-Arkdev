@@ -9,5 +9,5 @@ if($query['name']){
     $students=$studentRepo->getByName($query['name']);
 }
 //$success = $studentRepo->create($data,$photo['image_path']);
-header('Location: /views/studentDashboard_mm');
+header('Location: /views/studentDashboard.php');
 exit();

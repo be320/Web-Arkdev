@@ -4,12 +4,12 @@ require_once(__DIR__ . '/../includes/sessionStart.php');
 
 
 if (!isset($_POST['email']) || empty($_POST['email'])) {
-    header('location: /index_mm.html');
+    header('location: /index.html');
     exit();
 }
 
 if (!isset($_POST['password']) || empty($_POST['password'])) {
-    header('Location: /index_mm.html');
+    header('Location: /index.html');
     exit();
 }
 
@@ -20,10 +20,10 @@ $admin = $adminRepo->login($data['email'], $data['password']);
 
 if ($admin) {
     $_SESSION['admin'] = $admin;
-    header('Location: /views/adminDashboard_mm.php');
+    header('Location: /views/adminDashboard.php');
     exit();
 
 } else {
-    header('Location: /views/index_mm.html');
+    header('Location: /index.html');
     exit();
 }
