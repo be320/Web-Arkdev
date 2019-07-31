@@ -34,7 +34,7 @@ require_once(__DIR__.'/../app/Controllers/header.php');
     <div style="padding-top:43px; padding-left:210px; marginbackground-color:none;" id="navbar">
         <br><br><br>
         <input type="text" class="form-control col-2 d-inline" placeholder="Instructor Name" name="instructorName" >
-        <input type="submit" class="btn btn-primary col-1 d-inline" value="Filter" name="filter">
+        <input type="submit" class="form-control btn-primary col-1 d-inline" value="Filter" name="filter">
     </div>
     </form>
 <main class="grid">

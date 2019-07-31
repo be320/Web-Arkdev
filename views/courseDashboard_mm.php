@@ -38,7 +38,7 @@ require_once(__DIR__.'/../app/Controllers/header.php');
             <input type="text" class="form-control col-2 d-inline" placeholder="Course Name" name="courseName" >
             <input type="text" class="form-control col-2 d-inline" placeholder="Track Name" name="trackName">
             <input type="text" class="form-control col-2 d-inline" placeholder="Instructor Name" name="instructorName">
-            <input type="submit" class="btn btn-primary col-1 d-inline" value="Filter" name="filter">
+            <input type="submit" class="form-control btn-primary col-1 d-inline" value="Filter" name="filter">
         </div>
         <!--
         <ul>
@@ -64,7 +64,7 @@ require_once(__DIR__.'/../app/Controllers/header.php');
 
         foreach ($courses as $course){
             echo '<article>';
-            echo '<img src="../images/'.$course->getImagePath().'" alt="Sample photo">';
+            echo '<img src="../images/'.$course->getImagePath().'" alt="Sample photo" height="200" width="250">';
             echo '<div class="text">';
             echo '<p>';
             echo '<b style="text-decoration:underline">Name:</b><br>'. $course->getName() .'<br>';
