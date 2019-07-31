@@ -21,7 +21,7 @@ $tracks = $trackRepo->getAll();
     </head>
 
     <?php
-        require_once(__DIR__.'/views/layout/header.php');
+        require_once(__DIR__.'/layout/header.php');
     ?>
         <!------------------------------------------------------------------------------------------------------------------->
         <div class="main">
@@ -66,7 +66,7 @@ $tracks = $trackRepo->getAll();
                                     echo '<th scope="row">' . $track->getId() . '</th>';
                                     echo '<td>' . $track->getName() . '</td>';
                                     echo '<td>';
-                                    echo '<a class="btn btn-primary" href="/views/trackEdit.php?id=' . $track->getId() . '">Edit</a>';
+                                    echo '<a class="btn btn-primary" href="/trackEdit.php?id=' . $track->getId() . '">Edit</a>';
                                     echo '<a class="btn btn-danger m-lg-1" href="/app/Controllers/deleteTrack.php?id=' . $track->getId() . '">Delete</a>';
                                     echo '</td>';
 
@@ -81,5 +81,5 @@ $tracks = $trackRepo->getAll();
             </article>
         </div>
         <?php
-    require_once(__DIR__.'/views/layout/footer.php');
+    require_once(__DIR__.'/layout/footer.php');
 ?>
