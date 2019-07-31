@@ -53,7 +53,7 @@ else {
     <form method="get" action="/views/studentDashboard_mm.php">
         <div style="padding-top:43px; padding-left:210px; marginbackground-color:none;" id="navbar">
             <ul>
-                <li><input style="border:2px solid #6da17b" type="text" name="name" placeholder="Name"></li>
+                <li><input  style="border:2px solid #6da17b" type="text" name="name" placeholder="Name"></li>
                 <li><input style="border:2px solid #6da17b" type="text" name="email" placeholder="Email"></li>
                 <li><select style="font-weight:bold;border:2px solid #6da17b;margin-left:4px; height:30px" name="gender" >
                     <option style="color:#6da17b;font-weight:bold;" disabled selected>Gender:</option>
@@ -83,7 +83,7 @@ foreach($students as $student)
 {
 
    echo '<article>';
-    echo'<img src="../images/'.$student->getImagePath().'" alt="Sample photo">';
+    echo'<img src="../images/'.$student->getImagePath().'" alt="Sample photo" height="200" width="250">';
    echo' <div class="text">';
     echo' <p>';
     echo' <b style="text-decoration:underline">ID:</b><br>'.$student->getId().'<br>';
