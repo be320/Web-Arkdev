@@ -137,7 +137,7 @@ exit();
                         
                     <div class="form-group">
                         <label for="level">Level</label>
-                        <select class="form-control" name="level" id="level">
+                        <select class="form-control" name="level" id="level" value="<?php echo $student->getLevel(); ?>">
                         <option value="<?php echo $student->getLevel(); ?>"><?php echo $student->getLevel(); ?></option>
                         <option  value="Freshman">Freshman</option>
                         <option value="Sophomore">Sophomore</option>

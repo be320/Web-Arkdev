@@ -24,6 +24,6 @@ if ($admin) {
     exit();
 
 } else {
-    header('Location: /views/index_mm.html');
+    header('Location: index.html');
     exit();
 }

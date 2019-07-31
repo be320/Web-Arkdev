@@ -6,7 +6,6 @@ $tracks = $trackRepo->getAll();
 //for checking if exists a course with such name or not
 $data = $_GET;
 $flag = 0;
-
 //To show a message box incase of an error
 if(isset($data['error']) && !empty($data['error'])){
     //incase of existence of such Course Name
@@ -18,8 +17,6 @@ if(isset($data['error']) && !empty($data['error'])){
         $flag = 2;
     }
 }
-
-
 ?>
 <!DOCTYPE html>
 <html lang= "en">

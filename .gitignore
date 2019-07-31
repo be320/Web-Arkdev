@@ -1,7 +1,5 @@
 
 .idea
-app/Config/app.php
+/app/Config/app.php
 /Owner/nbproject/private/
-
-/views/nbproject/private/
-app/Config/app.php
+/images/
