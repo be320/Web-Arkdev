@@ -50,7 +50,7 @@ require_once(__DIR__.'/layout/header.php');
 <article class="container-fluid">
     <section>
 	<div>
-	<table  class="table table-striped">
+	<table class="table table-striped">
 		<thead>
             <tr>
                 <th scope="col">ID</th>

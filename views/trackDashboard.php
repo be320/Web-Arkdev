@@ -28,40 +28,21 @@ $tracks = $trackRepo->getAll();
             <div class="main-img">
                 <img src="../images/books.jpg" class="banner" alt="banner"/>
             </div>
-            <br><br><br><br>
-	<div class="container">
-        <div class="row justify- align-items-center ">
-<div class="col-sm-12 align-self-center auth-wrapper" style="background-color: rgb(0,0,0,0);border: 0;box-shadow: 0 0 12px 3px black;">	  <form class="form-inline"style="align-items: center;justify-content: center;" >
-        <input style="border:2px solid #6da17b" type="text" placeholder="Name">
-		<input style="border:2px solid white; width:160px; background-color:#6da17b; color: white; text-align:center;" type="button" value="Search">
-      </form>
-	  </div>
-	  </div>
-	  </div>
-            <article class="main container">
+            <article class="container-fluid">
                 <section>
                     <div id="1">
-                        <table border="1" class="table table-striped">  <!--to auto increment # coln-->
+                        <table class="table table-striped">
                             <thead>
-                                <tr  class="table-info">
-                                    <th style="text-align:center; border-bottom:2px solid black; border-right:1px solid black;" scope="col">#</th>
-                                    <th style="text-align:center; border-bottom:2px solid black;border-right:1px solid black;" scope="col">Track Name</th>
-                                    <th style="text-align:center; border-bottom:2px solid black; padding-left:10px" colspan="2" scope="col">Actions</th>
+                                <tr>
+                                    <th scope="col">ID</th>
+                                    <th scope="col">Track Name</th>
+                                    <th colspan="2" scope="col">Actions</th>
                                 </tr>
                             </thead>
                             <tbody> 
 
                                 <?php
                                 foreach ($tracks as $track) {
-//                         <tr>
-//			 <td></td> numbered 1 as border
-//			  <td>Communication</td>
-//			  <td style="text-align:center;"><button style="background-color:BLUE; font-weight:bold; color:white; border:2px solid black;" type="button">Edit</button></td>
-//			  <td style="text-align:center;"><button style="background-color:RED; font-weight:bold; color:white; border:2px solid black;" type="button">Delete</button></td>
-//			  
-//			  
-//			</tr>-->
-
                                     echo '<tr>';
                                     echo '<th scope="row">' . $track->getId() . '</th>';
                                     echo '<td>' . $track->getName() . '</td>';
@@ -73,7 +54,6 @@ $tracks = $trackRepo->getAll();
                                     echo '</tr>';
                                 }
                                 ?>
-
                             </tbody>
                         </table>
                     </div>
