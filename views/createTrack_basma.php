@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/all.css">
       
-        <title>New Admin Form</title>
+        <title>Create Track</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
@@ -30,14 +30,14 @@
               <div class="row justify-content-center align-items-center ">
                    <div class="col-sm-6 align-self-center auth-wrapper">
                         <div class="auth-intro">
-                            <h1 class="auth-title">Create Track Form</h1>
+                            <h1 class="auth-title">New Track</h1>
             
               
                             <form id="NewTrackForm" action="/app/Controllers/createTrack.php" method="post">
                  <div class="form-group">
                      <i class="far fa-user"></i>
                      <label for="name">Name</label>
-                     <input id="Name" name="name" type="text" placeholder="Enter your full name" class="form-control" required>
+                     <input id="Name" name="name" type="text" placeholder="Enter Track name" class="form-control" required>
                  </div>
                  
                  <div class="text-center submit-btn">

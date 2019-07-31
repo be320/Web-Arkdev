@@ -36,7 +36,7 @@ if(isset($data['error'])){
     <link rel="stylesheet" href="../css/all.css">
     <link rel="stylesheet" href="../css/main.css">
 
-    <title>Assign Instructor</title>
+    <title>Assign Course</title>
 </head>
 
 <body>
@@ -81,7 +81,7 @@ if(isset($data['error'])){
         <div class="row justify-content-center align-items-center">
             <div class="col-sm-6 align-self-center auth-wrapper">
                 <div class="auth-intro">
-                    <h1 class="auth-title">Assign</h1>
+                    <h1 class="auth-title">Assign course to instructor</h1>
                     <form id="assignInstructor" method="post" action="/app/Controllers/teachAssign.php">
                         <select name="course_id" class="form-control">
                             <option disabled selected >Course Name</option>

@@ -28,7 +28,7 @@ if(isset($_POST['filter'])){
     <link rel="stylesheet" href="../css/all.css">
     <link rel="stylesheet" href="../css/main.css">
 
-    <title>Admin Dashboard</title>
+    <title>Admin | Dashboard</title>
 </head>
 
 <body>

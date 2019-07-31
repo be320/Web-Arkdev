@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/all.css">
       
-        <title>New Student Form</title>
+        <title>New Student</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
@@ -33,7 +33,7 @@ require_once(__DIR__.'/../app/Controllers/header.php');
               <div class="row justify-content-center align-items-center ">
                    <div class="col-sm-6 align-self-center auth-wrapper">
                         <div class="auth-intro">
-                            <h1 style="margin-top: 75px;" class="auth-title">Adding New Student Form</h1>
+                            <h1 style="margin-top: 75px;" class="auth-title">New Student</h1>
             <form id="NewStudentForm" action="/../app/Controllers/createStudent.php" method="post" enctype="multipart/form-data">
                  <div class="form-group">
                      <i class="far fa-user"></i>
