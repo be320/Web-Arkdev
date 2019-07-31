@@ -73,7 +73,7 @@
         </div> 
 		
 			<li class="nav-item dropdown">
-			<a role="button" href="teach.html" class="navbar" style="color: #a2a2a2">Teach</a>
+			<a role="button" href="teach.php" class="navbar" style="color: #a2a2a2">Teach</a>
        
 		
             </ul>
@@ -96,7 +96,7 @@
                    <div class="col-sm-6 align-self-center auth-wrapper">
                         <div class="auth-intro">
                             <h1 class="auth-title">Create Instructor Form</h1>
-                            <form action="/ArkDevProject2/app/Controllers/createInstructor.php" method="post" id="NewInstructorForm" enctype="multipart/form-data">
+                            <form action="/app/Controllers/createInstructor.php" method="post" id="NewInstructorForm" enctype="multipart/form-data">
                                 <div class="form-group">
                      <i class="far fa-user"></i>
                      <label for="name">Name:</label>

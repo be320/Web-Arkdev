@@ -15,7 +15,6 @@ if( !isset($data['description']) || empty($data['description']) ){
 if( !isset($data['track_id']) || empty($data['track_id']) ){
     $hasErrors = true;
 }
-var_dump($hasErrors);
 
 $success = false;
 if($hasErrors === false){
@@ -28,7 +27,6 @@ if($hasErrors === false){
     $courseRepo = new CourseRepository();
     $success = $courseRepo->update($course);
 
-    var_dump($success);
 }
 if($success){
     header('Location: /views/courseDashboard_mm.php');

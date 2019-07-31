@@ -41,4 +41,26 @@ class TeachRepository
         }
         return $success;
     }
+
+    public function checkExist($courseId,$instructorId):bool
+    {
+        try{
+            $db = DBConnection::connect();
+            $stmt = $db->prepare('SELECT * FROM course_has_instructor WHERE course_id = :course_id AND instructor_id = :instructor_id');
+            $stmt->bindValue(':course_id',$courseId);
+            $stmt->bindValue(':instructor_id',$instructorId);
+            $stmt->execute();
+            $stmt->setFetchMode(PDO::FETCH_CLASS,Teach::class);
+            $result = $stmt->fetchAll();
+        }
+        catch (PDOException $e){
+            echo $e->getMessage();
+            exit();
+        }
+        if(empty($result)){
+            return false;
+        }
+        return true;
+
+    }
 }

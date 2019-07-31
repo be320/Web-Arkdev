@@ -51,6 +51,14 @@ class Instructor
     }
 
     /**
+     * @param mixed $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
      * @return mixed
      */
     public function getName()
@@ -89,5 +97,14 @@ class Instructor
     {
         return $this->bio;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
 
 }

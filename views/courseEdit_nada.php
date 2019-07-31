@@ -1,6 +1,7 @@
 <?php
 require_once(__DIR__.'/../app/Repository/CourseRepository.php');
 require_once(__DIR__.'/../app/Models/Course.php');
+require_once(__DIR__.'/../app/Repository/TrackRepository.php');
 
 $data = $_GET;
 if(!isset($data['id']) || empty($data['id'])){
@@ -10,7 +11,20 @@ if(!isset($data['id']) || empty($data['id'])){
 else {
     $courseRepo = new CourseRepository();
     $course = $courseRepo->getById($data['id']);
+    $trackRepo = new TrackRepository();
+    $tracks = $trackRepo->getAll();
 }
+
+/*
+foreach ($tracks as $track){
+    //var_dump($track);
+    $trackID =$course->getTrackId();
+    var_dump($trackRepo->getById($trackID));
+    $trackObj = $trackRepo->getById($trackID);
+    var_dump($trackObj->getName());
+    exit();
+}
+*/
 ?>
 
 <!doctype html>
@@ -86,7 +100,7 @@ else {
         </div> 
 		
 			<li class="nav-item dropdown">
-			<a role="button" href="teach.html" class="navbar" style="color: #a2a2a2">Teach</a>
+			<a role="button" href="teach.php" class="navbar" style="color: #a2a2a2">Teach</a>
        
 		
             </ul>
@@ -115,7 +129,7 @@ else {
                     </div>
                     <div class="form-group">
                         <label for="name">ID</label>
-                        <input id="id" type="name" placeholder="Course ID" name="id" class="form-control" value="<?php echo $course->getId(); ?>" required disabled/>
+                        <input id="id" type="name" placeholder="Course ID" name="id" class="form-control" value="<?php echo $course->getId(); ?>" required readonly/>
                     </div>
                     <div class="form-group">
                         <label for="name">Track</label>

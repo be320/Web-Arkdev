@@ -23,7 +23,7 @@ class TrackRepository
         } catch (PDOException $e) {
             echo $e->getMessage();
             exit();
-        }            echo $e->getMessage();
+        }
 
 
         return $success;
@@ -108,6 +108,7 @@ public function update(Track $track): bool
 
         return $result;
     }
+
 
     /**
      * return track by an assoc array

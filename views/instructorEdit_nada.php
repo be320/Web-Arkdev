@@ -96,7 +96,7 @@ if (!$instructor) {
         </div> 
 		
 			<li class="nav-item dropdown">
-			<a role="button" href="teach.html" class="navbar" style="color: #a2a2a2">Teach</a>
+			<a role="button" href="teach.php" class="navbar" style="color: #a2a2a2">Teach</a>
        
 		
             </ul>
@@ -118,7 +118,7 @@ if (!$instructor) {
                 <div class="auth-intro">
                     <h2 class="auth-title"> Edit Instructor Information </h2>
                 </div>
-                <form id="Instructor_Form" action="/ArkDevProject2/app/Controllers/updateInstructor.php" method="post" enctype="multipart/form-data">
+                <form id="Instructor_Form" action="/app/Controllers/updateInstructor.php" method="post" enctype="multipart/form-data">
                     <div class="form-group">
                         <i class="far fa-user"></i>
 
