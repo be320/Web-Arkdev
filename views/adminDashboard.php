@@ -96,5 +96,5 @@ require_once(__DIR__.'/layout/header.php');
 </article>
 </div>
 <?php
-require_once(__DIR__.'/layout/footer.php');
+  require_once(__DIR__.'/layout/footer.php');
 ?>
