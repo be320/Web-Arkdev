@@ -40,16 +40,6 @@ require_once(__DIR__ . '/../app/Controllers/getCourses.php');
                 <input type="text" class="form-control col-2 d-inline" placeholder="Instructor Name" name="instructorName">
                 <input type="submit" class="btn btn-primary col-1 d-inline" value="Filter" name="filter">
             </div>
-            <!--
-            <ul>
-
-                <li><input style="border:2px solid #6da17b" type="text" name="courseName" placeholder="Course Name" class="form-control"></li>
-                <li><input style="border:2px solid #6da17b" type="text" name="trackName" placeholder="Track Name" class="form-control"></li>
-
-                <li><input style="border:2px solid #6da17b" type="text" name="instructorName" placeholder="Instructor Name" class="form-control"></li>
-                <li><button style="border:2px solid white; width:130px; background-color:#6da17b; color: white; text-align:center;" type="submit" name="filter" class="btn btn-primary">Filter</button></li>
-            </ul>
-            -->
         </form>
 
         <?php
@@ -64,7 +54,7 @@ require_once(__DIR__ . '/../app/Controllers/getCourses.php');
 
             foreach ($courses as $course){
                 echo '<article>';
-                echo '<img src="../images/'.$course->getImagePath().'" alt="Sample photo">';
+                echo '<img src="../images/'.$course->getImagePath().'" alt="Sample photo" height="200" width="250">';
                 echo '<div class="text">';
                 echo '<p>';
                 echo '<b style="text-decoration:underline">Name:</b><br>'. $course->getName() .'<br>';
