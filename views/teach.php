@@ -8,10 +8,10 @@ if(isset($data['error'])){
     }elseif ($data['error'] === 'courseNotAlreadyAssignedToInstructor'){
         $flag = 2;
     }
-    elseif ($data['error'] === 'chooseCourseId'){
+    elseif ($data['error'] === 'chooseCourseName'){
         $flag = 3;
     }
-    elseif ($data['error'] === 'chooseInstructorId'){
+    elseif ($data['error'] === 'chooseInstructorName'){
         $flag = 4;
     }
 }elseif (isset($data['state'])){
@@ -62,11 +62,11 @@ if(isset($data['error'])){
     }
     elseif ($flag === 3){
         echo '<div class="alert alert-danger alert-dismissible">
-        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>WARNING!</strong> Please choose Course ID then try again</div>';
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>WARNING!</strong> Please choose Course Name then try again</div>';
     }
     elseif ($flag === 4){
         echo '<div class="alert alert-danger alert-dismissible">
-        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>WARNING!</strong> Please choose Instructor ID then try again</div>';
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>WARNING!</strong> Please choose Instructor Name then try again</div>';
     }
     elseif ($flag === 5){
         echo '<div class="alert alert-success alert-dismissible">

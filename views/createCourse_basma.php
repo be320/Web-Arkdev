@@ -11,7 +11,7 @@ if(isset($data['error']) && !empty($data['error'])){
         $flag = 1;
     }
     //in case of no Track with such ID
-    elseif ($data['error'] === 'errorTrackNotExist'){
+    elseif ($data['error'] === 'chooseTrackName'){
         $flag = 2;
     }
 }
@@ -56,7 +56,7 @@ require_once(__DIR__.'/../app/Controllers/header.php');
     }
     elseif ($flag === 2){
         echo '<div class="alert alert-danger alert-dismissible">
-        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>WARNING!</strong> There is no track with such ID</div>';
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>WARNING!</strong> Choose Track Name</div>';
     }
     ?>
     <div class="container">
@@ -75,6 +75,7 @@ require_once(__DIR__.'/../app/Controllers/header.php');
                         <div class="form-group">
                             <label for="trackName">Track Name:</label>
                             <select name='track_id' class="form-control">
+                                <option disabled selected >Track Name</option>
                                 <?php foreach ($tracks as $track): ?>
                                     <option value="<?php echo $track->getId() ?> "><?php echo $track->getName() ?> </option>
                                 <?php endforeach ?>
@@ -110,6 +111,7 @@ require_once(__DIR__.'/../app/Controllers/header.php');
                                 <div class="form-group">
                                     <label for="trackName">Track Name:</label>
                                     <select name='track_id' class="form-control">
+                                        <option disabled selected >Track Name</option>
                                         <?php foreach ($tracks as $track): ?>
                                             <option value="<?php echo $track->getId() ?> "><?php echo $track->getName() ?> </option>
                                         <?php endforeach ?>
