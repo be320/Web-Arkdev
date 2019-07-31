@@ -4,7 +4,6 @@ require_once(__DIR__.'/../app/Models/Track.php');
 require_once(__DIR__.'/../app/Controllers/createCourse.php');
 $data = $_GET;
 $flag = 0;
-
 //To show a message box incase of an error
 if(isset($data['error']) && !empty($data['error'])){
     //in case of existence of such Course Name
@@ -16,8 +15,6 @@ if(isset($data['error']) && !empty($data['error'])){
         $flag = 2;
     }
 }
-
-
 ?>
 <!DOCTYPE html>
 <html lang= "en">
