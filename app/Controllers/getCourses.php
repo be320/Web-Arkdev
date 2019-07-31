@@ -1,5 +1,6 @@
 <?php
 $courseRepo = new CourseRepository();
+$trackRepo = new TrackRepository();
 $courses = [];
 $flag = 0;
 $data = $_GET;
@@ -25,6 +26,9 @@ if( isset($data['filter']) && !empty($data['filter']) ){
     }
     elseif ((isset($data['courseName']) && !empty($data['courseName'])) && (isset($data['instructorName']) && !empty($data['instructorName'])) && (isset($data['trackName']) && !empty($data['trackName']))){
         $courses = $courseRepo->getByCourseNameAndInstructorNameAndTrackName($data['courseName'], $data['instructorName'], $data['trackName']);
+    }
+    else{
+        $courses = $courseRepo->getAll();
     }
 }
 else {

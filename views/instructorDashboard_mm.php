@@ -1,10 +1,9 @@
 <?php
 
 require_once(__DIR__ . '/../app/Repository/InstructorRepository.php');
-$instructorRepo = new InstructorRepository();
-$instructors = $instructorRepo->getAll();
-//print_r($instructors);
-//exit();
+require_once(__DIR__ . '/../app/Controllers/getInstructors.php');
+
+
 ?>
 
 <!doctype html>
@@ -94,17 +93,13 @@ $instructors = $instructorRepo->getAll();
     <div class="main-img">
         <img style="height:190px"src="../images/books.jpg" class="banner" alt="banner"/>
     </div>
-	 <br><br><br><br>
-	<div class="container">
-        <div class="row justify- align-items-center ">
-<div class="col-sm-12 align-self-center auth-wrapper" style="background-color: rgb(0,0,0,0);border: 0;box-shadow: 0 0 12px 3px black;">	
-  <form class="form-inline"style="align-items: center;justify-content: center;" >
-        <input style="border:2px solid #6da17b" type="text" placeholder="Name">
-		<input style="border:2px solid white; width:160px; background-color:#6da17b; color: white; text-align:center;" type="button" value="Search">
-      </form>
-	  </div>
-	  </div>
-	  </div>
+    <form method="get" action="">
+    <div style="padding-top:43px; padding-left:210px; marginbackground-color:none;" id="navbar">
+        <br><br><br>
+        <input type="text" class="form-control col-2 d-inline" placeholder="Instructor Name" name="instructorName" >
+        <input type="submit" class="btn btn-primary col-1 d-inline" value="Filter" name="filter">
+    </div>
+    </form>
 <main class="grid">
 
 
@@ -114,13 +109,13 @@ $instructors = $instructorRepo->getAll();
 
 foreach ($instructors as &$instructor) {
 
-  echo' <article>';
-  echo' <img style="height:190px" src="../images/'.$instructor->getImagePath().'"'.' alt="Sample photo">';
-  echo' <div class="text">';
-  echo'   <p>';
-  echo'	  <b style="display: block; text-decoration:underline">Name:</b><br>'.$instructor->getName().'<br>';
-  echo'	  <b style="display: block; text-decoration:underline">Email:</b><br>'.$instructor->getEmail().'<br>';
-  echo'	  <b style="display: block; text-decoration:underline">Bio: </b><br>'.$instructor->getBio().'<br>';
+  echo ' <article>';
+  echo ' <img style="height:190px" src="../images/'.$instructor->getImagePath().'"'.' alt="Sample photo">';
+  echo ' <div class="text">';
+  echo '<p>';
+  echo '<b style="text-decoration:underline">Name:</b><br>'.$instructor->getName().'<br>';
+  echo '<b style="text-decoration:underline">Email:</b><br>'.$instructor->getEmail().'<br>';
+  echo '<b style="text-decoration:underline">Bio: </b><br>'.$instructor->getBio().'<br>';
 
   echo'  </p>';
   echo' <a class="btn btn-primary m-lg-1" href="../views/instructorEdit_nada.php?id=' . $instructor->getInstructorId(). '">Edit</a> ';

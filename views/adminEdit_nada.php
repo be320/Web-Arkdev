@@ -95,7 +95,7 @@ if (!$Admin) {
         </div> 
 		
 			<li class="nav-item dropdown">
-			<a role="button" href="teach.html" class="navbar" style="color: #a2a2a2">Teach</a>
+			<a role="button" href="teach.php" class="navbar" style="color: #a2a2a2">Teach</a>
        
 		
             </ul>

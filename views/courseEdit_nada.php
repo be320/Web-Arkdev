@@ -100,7 +100,7 @@ foreach ($tracks as $track){
         </div> 
 		
 			<li class="nav-item dropdown">
-			<a role="button" href="teach.html" class="navbar" style="color: #a2a2a2">Teach</a>
+			<a role="button" href="teach.php" class="navbar" style="color: #a2a2a2">Teach</a>
        
 		
             </ul>
@@ -129,13 +129,11 @@ foreach ($tracks as $track){
                     </div>
                     <div class="form-group">
                         <label for="name">ID</label>
-                        <input id="id" type="name" placeholder="Course ID" name="id" class="form-control" value="<?php echo $course->getId(); ?>" required disabled/>
+                        <input id="id" type="name" placeholder="Course ID" name="id" class="form-control" value="<?php echo $course->getId(); ?>" required readonly/>
                     </div>
                     <div class="form-group">
                         <label for="name">Track</label>
                         <input id="name" type="name" placeholder="Exist in which Track" name="track_id" class="form-control" value="<?php echo $course->getTrackId(); ?>" required/>
-
-
                     </div>
                     <div class="form-group">
                         <i class="fa fa-edit"></i>

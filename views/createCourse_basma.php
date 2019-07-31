@@ -2,17 +2,16 @@
 require_once(__DIR__.'/../app/Repository/TrackRepository.php');
 require_once(__DIR__.'/../app/Models/Track.php');
 require_once(__DIR__.'/../app/Controllers/createCourse.php');
-//for checking if exists a course with such name or not
 $data = $_GET;
 $flag = 0;
 
 //To show a message box incase of an error
 if(isset($data['error']) && !empty($data['error'])){
-    //incase of existence of such Course Name
+    //in case of existence of such Course Name
     if($data['error'] === 'errorNameExists'){
-    $flag = 1;
+        $flag = 1;
     }
-    //incase of no Track with such ID
+    //in case of no Track with such ID
     elseif ($data['error'] === 'errorTrackNotExist'){
         $flag = 2;
     }
@@ -95,7 +94,7 @@ if(isset($data['error']) && !empty($data['error'])){
         </div> 
 		
 			<li class="nav-item dropdown">
-			<a role="button" href="teach.html" class="navbar" style="color: #a2a2a2">Teach</a>
+			<a role="button" href="teach.php" class="navbar" style="color: #a2a2a2">Teach</a>
        
 		
             </ul>
@@ -131,7 +130,8 @@ if(isset($data['error']) && !empty($data['error'])){
         <div class="row justify-content-center align-items-center">
             <div class="col-sm-6 align-self-center auth-wrapper">
                 <div class="auth-intro">
-                    <h1 class="auth-title">Adding New Courses form</h1>
+                    <h1 class="auth-title">Adding New Courses Form</h1>
+                        <?php if($flag === 0){?>
                     <form id="NewCourseForm" method="post" action="\app\Controllers\createCourse.php" enctype="multipart/form-data">
                         <div class="form-group">
                             <label for="name">CourseName:</label>
@@ -140,9 +140,8 @@ if(isset($data['error']) && !empty($data['error'])){
 
 
                         <div class="form-group">
-                            <label for="trackName">Track ID:</label>
-<!--                            <input id="track" name="track_id" type="selec" placeholder="Enter Track ID" class="form-control" required>-->
-                            <select name='track_id'>
+                            <label for="trackName">Track Name:</label>
+                            <select name='track_id' class="form-control">
                                 <?php foreach ($tracks as $track): ?>
                                     <option value="<?php echo $track->getId() ?> "><?php echo $track->getName() ?> </option>
                                 <?php endforeach ?>
@@ -166,6 +165,42 @@ if(isset($data['error']) && !empty($data['error'])){
                         </div>
 
                     </form>
+                        <?php } ?>
+                        <?php if($flag != 0){ ?>
+                            <form id="NewCourseForm" method="post" action="\app\Controllers\createCourse.php" enctype="multipart/form-data">
+                                <div class="form-group">
+                                    <label for="name">CourseName:</label>
+                                    <input id="Name" name="name" type="text" placeholder="Enter course name" class="form-control" value="<?php echo $data['name']?>" required>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <label for="trackName">Track Name:</label>
+                                    <select name='track_id' class="form-control">
+                                        <?php foreach ($tracks as $track): ?>
+                                            <option value="<?php echo $track->getId() ?> "><?php echo $track->getName() ?> </option>
+                                        <?php endforeach ?>
+                                    </select>
+
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="description">Description:</label>
+                                    <input id="description" name="description" type="text" placeholder="Enter course description" value="<?php echo $data['description']?>" class="form-control" required style="height: 70px">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="pic">Course Image: </label>
+                                    <input id="pic" type="file" name="image_path" accept="image/*" class="form-control" required>
+                                </div>
+
+
+                                <div class="text-center submit-btn">
+                                    <button type="Submit" name="create_course" class="btn btn-primary" >Submit</button>
+                                </div>
+
+                            </form>
+                        <?php } ?>
                 </div>
             </div>
         </div>

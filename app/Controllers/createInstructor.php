@@ -36,9 +36,10 @@ if ($hasErrors === false) {
     $success = $userRepo->createInstructor($data,$photo['image_path']);
     if ($success) {
         $filePath = uploadFile();
+        header('Location: /views/instructorDashboard_mm.php');
         // todo: do not miss to update the created user with the upload file path
     }
 
-
 }
+
 

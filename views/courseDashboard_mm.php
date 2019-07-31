@@ -4,8 +4,6 @@ require_once(__DIR__ . '/../app/Repository/TrackRepository.php');
 require_once(__DIR__ . '/../app/Controllers/getCourses.php');
 
 
-$trackRepo = new TrackRepository();
-
 ?>
 <!doctype html>
 <html lang="en">
@@ -81,7 +79,7 @@ $trackRepo = new TrackRepository();
                     </div>
 
                 <li class="nav-item dropdown">
-                    <a role="button" href="teach.html" class="navbar" style="color: #a2a2a2">Teach</a>
+                    <a role="button" href="teach.php" class="navbar" style="color: #a2a2a2">Teach</a>
 
 
             </ul>
@@ -105,7 +103,7 @@ $trackRepo = new TrackRepository();
             <input type="text" class="form-control col-2 d-inline" placeholder="Course Name" name="courseName" >
             <input type="text" class="form-control col-2 d-inline" placeholder="Track Name" name="trackName">
             <input type="text" class="form-control col-2 d-inline" placeholder="Instructor Name" name="instructorName">
-            <input type="submit" class="btn btn-primary col-2 d-inline" value="Filter" name="filter">
+            <input type="submit" class="btn btn-primary col-1 d-inline" value="Filter" name="filter">
         </div>
         <!--
         <ul>
@@ -137,7 +135,15 @@ $trackRepo = new TrackRepository();
             echo '<b style="text-decoration:underline">Name:</b><br>'. $course->getName() .'<br>';
             echo '<b style="text-decoration:underline">ID:</b><br>'. $course->getId() .'<br>';
             echo '<b style="text-decoration:underline">Description:</b><br>'.$course->getDescription().'<br>';
-            echo '<b style="text-decoration:underline">Track:</b><br>'.($trackRepo->getById($course->getTrackId()))->getName(). '</b>';
+            echo '<b style="text-decoration:underline">Track:</b><br>'.($trackRepo->getById($course->getTrackId()))->getName(). '<br>';
+            echo '<b style="text-decoration:underline">Instructors:</b><br>';
+                echo '<ul>';
+                $instructors = $courseRepo->getAllInstructors($course->getId());
+                foreach ($instructors as $instructor){
+                    echo '<li>'.$instructor['name'].'</li>';
+                }
+                echo '</ul>'
+                . '</b>';
             echo '</p>';
             echo '<a class="btn btn-primary m-lg-1" href="/views/courseEdit_nada.php?id='  . $course->getId() .  '">Edit</a>';
             echo '<a class="btn btn-danger m-lg-1" href="/app/Controllers/deleteCourse.php?id='  .  $course->getId().  '">Delete</a>';
