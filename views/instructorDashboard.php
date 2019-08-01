@@ -33,7 +33,7 @@ require_once(__DIR__.'/../app/includes/sessionAuth.php');
     <div style="padding-top:43px; padding-left:210px; marginbackground-color:none;" id="navbar">
         <br><br><br>
         <input type="text" class="form-control col-2 d-inline" placeholder="Instructor Name" name="instructorName" >
-        <input type="submit" class="btn btn-primary col-1 d-inline" value="Filter" name="filter">
+        <input type="submit" class="form-control btn-primary col-1 d-inline" value="Filter" name="filter">
     </div>
     </form>
 <main class="grid">
@@ -50,7 +50,7 @@ require_once(__DIR__.'/../app/includes/sessionAuth.php');
     echo '<b style="text-decoration:underline">Bio: </b><br>'.$instructor->getBio().'<br>';
 
     echo'  </p>';
-    echo' <a class="btn btn-primary m-lg-1" href="../instructorEdit.php?id=' . $instructor->getInstructorId(). '">Edit</a> ';
+    echo' <a class="btn btn-primary m-lg-1" href="../views/instructorEdit.php?id=' . $instructor->getInstructorId(). '">Edit</a> ';
     echo' <a class="btn btn-danger m-lg-1" href="../app/Controllers/deleteInstructor.php?id=' . $instructor->getInstructorId(). '">Delete</a> ';
     echo' </div>';
     echo'</article>';
