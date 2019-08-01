@@ -42,9 +42,18 @@ if ($hasErrors === false) {
     }
     else{
 
-        $response['id'] = $result->getId();
+        // $response['id'] = $result->getId();
         $response['status'] = 0;
         $response['message'] = "Successfully logged in";
+        $response['account'] = [
+            'id'=>$result->getId(),
+            'name'=>$result->getName(),
+            'email'=>$result->getEmail(),
+            'level'=>$result->getLevel(),
+            'gpa'=>$result->getGpa(),
+            'gender'=>$result->getGender(),
+
+        ];
     }
 }
 else{
