@@ -35,7 +35,6 @@ if ($hasErrors === false) {
     $result = $studentRepo->login($email, $password);
 
     if (!$result){
-        $response['id'] = -1;
         $response['status'] = 1;
         $response['message'] = "Invalid Email or Password";
 
@@ -57,7 +56,6 @@ if ($hasErrors === false) {
     }
 }
 else{
-    $response['id'] = -1;
     $response['status'] = 2;
     $response['message'] = "invalid or missing parameters";
 

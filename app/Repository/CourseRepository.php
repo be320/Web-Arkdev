@@ -449,8 +449,25 @@ class CourseRepository
         return $result;
     }
 
+    public function getIdsByStudent($studentId) {
+      $result = [];
 
+      try {
+          $db = DBConnection::connect();
+          $stmt = $db->prepare("SELECT course_id from student_has_course where student_id = :studentid ");
+          $stmt->bindValue(':studentid', $studentId);
+          $success = $stmt->execute();
+          $stmt->setFetchMode(PDO::FETCH_COLUMN, 0);
+          $result = $stmt->fetchall();
+
+      }
+      catch (PDOException $e){
+          echo $e->getMessage();
+          exit();
+      }
+      return $result;
+
+    }
 
 
 }
-
