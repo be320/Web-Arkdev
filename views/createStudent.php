@@ -100,25 +100,25 @@ require_once(__DIR__.'/../app/includes/sessionAuth.php');
                             <div class="form-group">
                                 <i class="far fa-user"></i>
                                 <label for="name">Name:</label>
-                                <input id="Name" name="name" type="text" placeholder="Enter your full name" class="form-control" required>
+                                <input id="Name" name="name" type="text" placeholder="Enter full name" class="form-control" required>
                             </div>
 
                             <div class="form-group">
                                 <i class="far fa-envelope"></i>
                                 <label for="email">Email:</label>
-                                <input id="email" name="email" type="email" placeholder="Enter your Email" class="form-control" required>
+                                <input id="email" name="email" type="email" placeholder="Enter Email" class="form-control" required>
                             </div>
 
                             <div class="form-group">
                                 <i class="fa fa-key"></i>
                                 <label for="password">Password:</label>
-                                <input id="password1" name="password" type="password" placeholder="Enter your password" class="form-control" required>
+                                <input id="password1" name="password" type="password" placeholder="Enter password" class="form-control" required>
                             </div>
                             
                             <i class="fa fa-level-up-alt"></i>
                             <label for="level">Level: </label>
                             <select class="form-control" name="level" id="level">
-                                <option value="0">Enter Your Level</option>
+                                <option value="0">Enter Level</option>
                                 <option value="Freshmen">Freshman</option>
                                 <option value="Sophomore">Sophomore</option>
                                 <option value="Junior">Junior</option>
@@ -129,7 +129,7 @@ require_once(__DIR__.'/../app/includes/sessionAuth.php');
                             <div class="form-group">
                             <i class="fa fa-percentage"></i>
                                 <label for="gpa">GPA:</label>
-                                <input id="gpa" name="gpa" type="gpa" placeholder="Enter your gpa" class="form-control" required>
+                                <input id="gpa" name="gpa" type="gpa" placeholder="Enter gpa" class="form-control" required>
                             </div>
 
                             <div class="form-group">

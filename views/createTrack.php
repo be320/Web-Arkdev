@@ -37,8 +37,8 @@ require_once(__DIR__.'/../app/includes/sessionAuth.php');
               
                             <form id="NewTrackForm" action="/app/Controllers/createTrack.php" method="post">
                  <div class="form-group">
-                     <i class="far fa-user"></i>
-                     <label for="name">Name</label>
+                     <i class="fa fa-adjust"></i>
+                     <label for="name">Name:</label>
                      <input id="Name" name="name" type="text" placeholder="Enter Track name" class="form-control" required>
                  </div>
                  
