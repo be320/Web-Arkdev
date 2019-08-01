@@ -22,7 +22,7 @@ $track = $trackRepo->getById($data['id']);
 </head>
 
 <?php
-    require_once(__DIR__.'/views/layout/header.php');
+    require_once(__DIR__.'/layout/header.php');
 ?>
   
 <div class="main">
@@ -53,5 +53,5 @@ $track = $trackRepo->getById($data['id']);
     </div>
 </div>
 <?php
-require_once(__DIR__.'/views/layout/footer.php');
+require_once(__DIR__.'/layout/footer.php');
 ?>

@@ -111,6 +111,7 @@ require_once(__DIR__.'/layout/header.php');
                                     <label for="trackName">Track Name:</label>
                                     <select name='track_id' class="form-control">
                                         <option disabled selected >Track Name</option>
+
                                         <?php foreach ($tracks as $track): ?>
                                             <option value="<?php echo $track->getId() ?> "><?php echo $track->getName() ?> </option>
                                         <?php endforeach ?>

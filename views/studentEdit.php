@@ -77,8 +77,8 @@ exit();
                         <option  value="Freshman">Freshman</option>
                         <option value="Sophomore">Sophomore</option>
                         <option value="Junior">Junior</option>
-                        <option value="Senior1">Senior 1</option>
-                        <option value="Senior2">Senior 2</option>
+                        <option value="Senior 1">Senior 1</option>
+                        <option value="Senior 2">Senior 2</option>
                         </select>
                                
                     </div>

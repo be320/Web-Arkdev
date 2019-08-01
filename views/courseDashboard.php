@@ -78,7 +78,7 @@ require_once(__DIR__.'/layout/header.php');
                 echo '</ul>'
                 . '</b>';
             echo '</p>';
-            echo '<a class="btn btn-primary m-lg-1" href="/courseEdit.php?id='  . $course->getId() .  '">Edit</a>';
+            echo '<a class="btn btn-primary m-lg-1" href="/views/courseEdit?id='  . $course->getId() .  '">Edit</a>';
             echo '<a class="btn btn-danger m-lg-1" href="/app/Controllers/deleteCourse.php?id='  .  $course->getId().  '">Delete</a>';
             echo '</div> ';
             echo '</article>';

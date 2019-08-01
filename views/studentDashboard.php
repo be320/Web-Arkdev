@@ -50,7 +50,7 @@ else {
         <img src="../images/books.jpg" class="banner" alt="banner"/>
     </div>
 
-    <form method="get" action="/studentDashboard.php">
+    <form method="get" action="/views/studentDashboard.php">
         <div style="padding-top:43px; padding-left:210px; marginbackground-color:none;" id="navbar">
             <ul>
                 <li><input style="border:2px solid #6da17b" type="text" name="name" placeholder="Name"></li>
@@ -94,7 +94,7 @@ foreach($students as $student)
 	  echo'<b style="text-decoration:underline">Level:</b><br>'.$student->getLevel().'<br>';
 
 	   echo'</p> ';
-      echo' <a class="btn btn-primary m-lg-1" href="/studentEdit.php?id=' . $student->getId() . '">Edit</a> ';
+      echo' <a class="btn btn-primary m-lg-1" href="/views/studentEdit.php?id=' . $student->getId() . '">Edit</a> ';
       echo' <a class="btn btn-danger m-lg-1" href="/app/Controllers/deleteStudent.php?id=' . $student->getId() . '">Delete</a> ';
      echo'</div> ';
    echo'</article> ';
