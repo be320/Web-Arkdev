@@ -7,7 +7,7 @@ require_once(__DIR__ . '/../app/Repository/TrackRepository.php');
 $trackRepo = new TrackRepository();
 $track = $trackRepo->getById($data['id']);
 ?>
-
+    <!doctype html>
 <html lang="en">
 <head>
     <!-- Required meta tags -->

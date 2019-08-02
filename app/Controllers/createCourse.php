@@ -14,7 +14,7 @@ if (isset($_POST['create_course'])){
 //checks if there is a course with such name or not
     if($courseRepo->checkCourseNameExists($data['name'])){
         $error = 'errorNameExists';
-        header('Location: /views/createCourse.php?error='.$error.'&name='.$data['name'].'&description='.$data['description'].'');
+        header('Location: /views/createCourse.php?error='.$error.'&name='.$data['name'].'&description='.$data['description'].'&track_id='.$data['track_id'].'');
         exit();
     }
     if( !isset($data['description']) || empty($data['description']) ){

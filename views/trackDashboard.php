@@ -5,7 +5,7 @@ require_once(__DIR__.'/../app/includes/sessionAuth.php');
 $trackRepo = new TrackRepository();
 $tracks = $trackRepo->getAll();
 ?>
-
+<!doctype html>
 <html lang="en">
     <head>
         <!-- Required meta tags -->

@@ -54,6 +54,10 @@ require_once(__DIR__.'/layout/header.php');
     if($flag === 1){
         echo '<div class="alert alert-success alert-dismissible" >
         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>CONGRATS!</strong> Course added Successfully</div>';
+    }elseif ($flag === 2){
+        echo '<div class="alert alert-success alert-dismissible" >
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>CONGRATS!</strong> Course edited Successfully</div>';
+
     }
     ?>
     <main class="grid">
@@ -78,7 +82,7 @@ require_once(__DIR__.'/layout/header.php');
                 echo '</ul>'
                 . '</b>';
             echo '</p>';
-            echo '<a class="btn btn-primary m-lg-1" href="/views/courseEdit?id='  . $course->getId() .  '">Edit</a>';
+            echo '<a class="btn btn-primary m-lg-1" href="/views/courseEdit.php?id='  . $course->getId() .  '">Edit</a>';
             echo '<a class="btn btn-danger m-lg-1" href="/app/Controllers/deleteCourse.php?id='  .  $course->getId().  '">Delete</a>';
             echo '</div> ';
             echo '</article>';

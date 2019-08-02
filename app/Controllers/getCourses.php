@@ -34,6 +34,10 @@ if( isset($data['filter']) && !empty($data['filter']) ){
 else {
     $courses = $courseRepo->getAll();
 }
-if(isset($data['state']) && $data['state'] === 'courseAdded'){
-    $flag = 1;
+if(isset($data['state'])){
+    if($data['state'] === 'courseAdded') {
+        $flag = 1;
+    }elseif ($data['state'] === 'courseEdited'){
+        $flag = 2;
+    }
 }
