@@ -35,20 +35,27 @@ if ($hasErrors === false) {
     $result = $studentRepo->login($email, $password);
 
     if (!$result){
-        $response['id'] = -1;
         $response['status'] = 1;
         $response['message'] = "Invalid Email or Password";
 
     }
     else{
 
-        $response['id'] = $result->getId();
+        // $response['id'] = $result->getId();
         $response['status'] = 0;
         $response['message'] = "Successfully logged in";
+        $response['account'] = [
+            'id'=>$result->getId(),
+            'name'=>$result->getName(),
+            'email'=>$result->getEmail(),
+            'level'=>$result->getLevel(),
+            'gpa'=>$result->getGpa(),
+            'gender'=>$result->getGender(),
+
+        ];
     }
 }
 else{
-    $response['id'] = -1;
     $response['status'] = 2;
     $response['message'] = "invalid or missing parameters";
 

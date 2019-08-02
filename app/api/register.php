@@ -80,11 +80,20 @@ if($hasErrors) {
 }
 
 $success = $studentRepo->create($data, $_FILES);
+$student = $studentRepo->login($data['email'], $data['password']);
 
 // Start upload user image if user created successfully
 if ($success) {
     $response["status"] = 0;
     $response['message'] = "User created";
+    $response['account'] = [
+        'id'=>$student->getId(),
+        'name'=>$student->getName(),
+        'email'=>$student->getEmail(),
+        'level'=>$student->getLevel(),
+        'gpa'=>$student->getGpa(),
+        'gender'=>$student->getGender(),
+    ];
 
     // if(isset($_FILES['image_path'])) {
     //     $filePath = uploadFile();
